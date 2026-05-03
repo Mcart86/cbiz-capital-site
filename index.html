@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBiz Capital</title>
+
+<style>
+
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #061B3A;
+  background: #F6F9FC;
+}
+
+/* NAV */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+  background: white;
+  font-weight: 600;
+}
+
+/* HERO */
+.hero {
+  padding: 80px 60px;
+}
+
+.hero h1 {
+  font-size: 56px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero span {
+  color: #4F46E5;
+}
+
+.hero p {
+  max-width: 500px;
+  color: #6b7280;
+}
+
+/* STAT BAR */
+.stats {
+  margin: 40px 60px;
+  background: linear-gradient(135deg, #061B3A, #3730A3);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  color: white;
+}
+
+.stats div {
+  flex: 1;
+  text-align: center;
+}
+
+.stats h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+/* FEATURED DEAL */
+.featured {
+  padding: 80px 60px;
+}
+
+.featured h2 {
+  font-size: 36px;
+}
+
+.featured-card {
+  display: flex;
+  gap: 30px;
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.featured-card img {
+  width: 50%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.featured-info h3 {
+  font-size: 32px;
+}
+
+/* LOAN PROGRAMS */
+.loan-programs {
+  padding: 80px 60px;
+}
+
+.loan-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.feature-card {
+  background: linear-gradient(135deg, #EEF0FF, #DDE2FF);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.small-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid #E5EAF3;
+  transition: 0.2s;
+}
+
+.small-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(6,27,58,0.08);
+  border-color: #4F46E5;
+}
+
+/* WHY SECTION */
+.why {
+  padding: 80px 60px;
+  display: flex;
+  gap: 60px;
+}
+
+.why-left {
+  flex: 1;
+}
+
+.why-right {
+  flex: 1;
+}
+
+.why-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  margin-top: 20px;
+}
+
+/* TESTIMONIAL */
+.testimonial {
+  padding: 80px 60px;
+  background: #EEF0FF;
+}
+
+.testimonial-card {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.testimonial img {
+  width: 300px;
+  border-radius: 20px;
+}
+
+/* CTA */
+.cta {
+  padding: 80px 60px;
+  background: linear-gradient(135deg, #061B3A, #3730A3);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* FOOTER */
+footer {
+  background: #061B3A;
+  color: white;
+  padding: 40px 60px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div>CBIZ CAPITAL</div>
+  <div>Loans Solutions About Resources</div>
+</header>
+
+<section class="hero">
+  <h1>Close Faster.<br><span>Scale Smarter.</span></h1>
+  <p>Fast, flexible capital for real estate investors, brokers, and developers.</p>
+</section>
+
+<div class="stats">
+  <div><h3>$500M+</h3><p>Capital Funded</p></div>
+  <div><h3>1,200+</h3><p>Deals Closed</p></div>
+  <div><h3>35+</h3><p>Years Experience</p></div>
+  <div><h3>Nationwide</h3><p>Lending</p></div>
+</div>
+
+<section class="featured">
+  <h2>Featured Recent Closing</h2>
+
+  <div class="featured-card">
+    <img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0" />
+
+    <div class="featured-info">
+      <h3>$1,378,200</h3>
+      <p>Multi-Family (6 Units)</p>
+      <p>Philadelphia, PA</p>
+      <p>Rate/Term Refinance</p>
+    </div>
+  </div>
+</section>
+
+<section class="loan-programs">
+  <h2>Capital Solutions for Every Real Estate Strategy</h2>
+
+  <div class="loan-grid">
+
+    <div class="feature-card">
+      <h3>DSCR Rental Loans</h3>
+      <p>Scale your rental portfolio using property cash flow.</p>
+    </div>
+
+    <div class="small-card">
+      <h3>Fix & Flip Loans</h3>
+      <p>Fast capital for renovations.</p>
+    </div>
+
+    <div class="small-card">
+      <h3>Bridge Loans</h3>
+      <p>Short-term financing.</p>
+    </div>
+
+    <div class="small-card">
+      <h3>Asset-Based Lending</h3>
+    </div>
+
+    <div class="small-card">
+      <h3>Multifamily</h3>
+    </div>
+
+  </div>
+</section>
+
+<section class="why">
+  <div class="why-left">
+    <h2>Financing Built for Real Estate Investors</h2>
+  </div>
+
+  <div class="why-right">
+    <p>Every deal is different. We structure financing around your strategy.</p>
+
+    <div class="why-card">
+      <h3>Fast, Clear Direction</h3>
+    </div>
+
+    <div class="why-card">
+      <h3>Flexible Deal Structuring</h3>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="testimonial-card">
+    <img src="YOUR_IMAGE_HERE" />
+
+    <div>
+      <h3>Joe Mesi, Principal</h3>
+      <p>"We move fast, structure smart, and get deals done when others can't."</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Have a deal that needs funding?</h2>
+  <button>Submit Your Deal</button>
+</section>
+
+<footer>
+  <p>© 2026 CBiz Capital</p>
+</footer>
+
+</body>
+</html>
