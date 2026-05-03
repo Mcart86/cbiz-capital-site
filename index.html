@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -14,21 +13,105 @@ body {
   color:#061B3A;
 }
 
+/* HERO */
 .hero {
-  padding:80px;
+  padding:80px 60px;
 }
 
 .hero h1 {
-  font-size:60px;
+  font-size:64px;
   margin:0;
+  line-height:1.1;
 }
 
 .hero span {
   color:#4F46E5;
 }
 
+.hero p {
+  margin-top:20px;
+  font-size:18px;
+  color:#555;
+}
+
+/* STAT BAR */
 .stats {
   display:flex;
-  margin:40px;
+  margin:40px 60px;
   border-radius:20px;
-  overflow
+  overflow:hidden;
+  background:linear-gradient(135deg,#061B3A,#3730A3);
+  color:white;
+}
+
+.stats div {
+  flex:1;
+  text-align:center;
+  padding:30px 10px;
+}
+
+.stats h3 {
+  margin:0;
+  font-size:24px;
+}
+
+/* CARDS */
+.section {
+  padding:60px;
+}
+
+.card {
+  background:white;
+  padding:25px;
+  border-radius:14px;
+  margin-bottom:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.card h2 {
+  margin-top:0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Close Faster.<br><span>Scale Smarter.</span></h1>
+  <p>Fast, flexible capital for real estate investors, brokers, and developers.</p>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div><h3>$500M+</h3><p>Capital Funded</p></div>
+  <div><h3>1,200+</h3><p>Deals Closed</p></div>
+  <div><h3>35+</h3><p>Years Experience</p></div>
+  <div><h3>Nationwide</h3><p>Lending</p></div>
+</div>
+
+<!-- CONTENT -->
+<div class="section">
+
+  <div class="card">
+    <h2>Featured Deal</h2>
+    <p><strong>$1,378,200</strong><br>
+    Multi-Family (6 Units)<br>
+    Philadelphia, PA<br>
+    Rate/Term Refinance</p>
+  </div>
+
+  <div class="card">
+    <h2>Loan Programs</h2>
+    <p>DSCR Rental Loans • Fix & Flip • Bridge Loans • Multifamily</p>
+  </div>
+
+  <div class="card">
+    <h2>Why CBiz Capital</h2>
+    <p>We structure financing around your deal, timeline, and exit strategy — not a one-size-fits-all approval box.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
