@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>DSCR Rental Loans | CBiz Capital</title>
+<title>Fix &amp; Flip Loans | CBiz Capital</title>
 <style>
 :root{--navy:#061B3A;--primary:#4F46E5;--primary-dark:#3730A3;--light-purple:#EEF0FF;--purple-border:#D8DBFF;--section:#F7F8FC;--border:#E5EAF3;--muted:#5B6B82;--white:#fff}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -14,7 +14,7 @@ a{text-decoration:none;color:inherit}
 .btn.primary{color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-dark));box-shadow:0 8px 24px rgba(79,70,229,.3)}
 .btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,70,229,.38)}
 .btn.secondary{background:#fff;color:var(--navy);border-color:var(--border);box-shadow:0 2px 8px rgba(6,27,58,.06)}
-.btn.secondary:hover{transform:translateY(-2px);border-color:var(--primary);box-shadow:0 8px 20px rgba(6,27,58,.1)}
+.btn.secondary:hover{transform:translateY(-2px);border-color:var(--primary)}
 .eyebrow{color:var(--primary);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 16px;display:block}
 .site-header{background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
 .header-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
@@ -32,17 +32,17 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
 .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
 .hero-badge{background:#fff;border:1px solid var(--purple-border);border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;color:var(--navy);box-shadow:0 2px 8px rgba(6,27,58,.06)}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-.calc-card{background:#fff;border:1px solid var(--purple-border);border-radius:22px;padding:36px;box-shadow:0 20px 60px rgba(6,27,58,.1),0 0 0 1px rgba(79,70,229,.06);position:relative;overflow:hidden}
-.calc-card::before{content:"";position:absolute;right:-50px;top:-50px;width:160px;height:160px;background:radial-gradient(circle,rgba(79,70,229,.08),transparent 70%);border-radius:50%;pointer-events:none}
-.calc-card>*{position:relative;z-index:1}
-.calc-card h3{font-size:28px;font-weight:800;letter-spacing:-.5px;margin:0 0 20px;line-height:1.15}
-.calc-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border);font-size:14px}
-.calc-row span{color:var(--muted);font-weight:500}
-.calc-row strong{color:var(--navy);font-weight:700}
-.dscr-score{margin-top:20px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border-radius:16px;padding:22px 26px;display:flex;justify-content:space-between;align-items:center}
-.dscr-score-label{font-size:12px;font-weight:700;opacity:.8;text-transform:uppercase;letter-spacing:.1em}
-.dscr-score-value{font-size:42px;font-weight:900;line-height:1}
-.dscr-note{margin-top:12px;font-size:12px;color:var(--muted);text-align:center}
+.deal-card{background:#fff;border:1px solid var(--purple-border);border-radius:22px;padding:36px;box-shadow:0 20px 60px rgba(6,27,58,.1),0 0 0 1px rgba(79,70,229,.06);position:relative;overflow:hidden}
+.deal-card::before{content:"";position:absolute;right:-50px;top:-50px;width:160px;height:160px;background:radial-gradient(circle,rgba(79,70,229,.08),transparent 70%);border-radius:50%;pointer-events:none}
+.deal-card>*{position:relative;z-index:1}
+.deal-card h3{font-size:26px;font-weight:800;letter-spacing:-.5px;margin:0 0 20px;line-height:1.15}
+.deal-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--border);font-size:14px}
+.deal-row span{color:var(--muted);font-weight:500}
+.deal-row strong{color:var(--navy);font-weight:700}
+.deal-result{margin-top:20px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border-radius:16px;padding:22px 26px;display:flex;justify-content:space-between;align-items:center}
+.deal-result-label{font-size:12px;font-weight:700;opacity:.8;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.deal-result-value{font-size:36px;font-weight:900;line-height:1}
+.deal-note{margin-top:12px;font-size:12px;color:var(--muted);text-align:center}
 .proof-strip{margin:0 auto 80px;width:min(1180px,calc(100% - 48px));background:linear-gradient(135deg,var(--navy) 0%,#0D2554 50%,var(--primary-dark) 100%);border-radius:20px;box-shadow:0 24px 60px rgba(6,27,58,.2);overflow:hidden}
 .proof-inner{display:grid;grid-template-columns:repeat(4,1fr)}
 .proof-item{padding:28px 32px;border-right:1px solid rgba(255,255,255,.1)}
@@ -66,14 +66,12 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
 .icon{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--light-purple);border:1px solid var(--purple-border);color:var(--primary);font-weight:900;font-size:13px;margin-bottom:20px}
 .card h3{font-size:20px;font-weight:800;line-height:1.2;margin:0 0 10px;letter-spacing:-.3px}
 .card p{font-size:15px;line-height:1.65;color:#475569}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.step-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:32px;box-shadow:0 4px 16px rgba(6,27,58,.04);position:relative;overflow:hidden}
-.step-card::after{content:attr(data-step);position:absolute;right:16px;top:10px;font-size:88px;font-weight:900;color:rgba(79,70,229,.04);line-height:1;pointer-events:none}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:30px;box-shadow:0 4px 16px rgba(6,27,58,.04);position:relative;overflow:hidden}
+.step-card::after{content:attr(data-step);position:absolute;right:12px;top:8px;font-size:80px;font-weight:900;color:rgba(79,70,229,.04);line-height:1;pointer-events:none}
 .step-num{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--light-purple);border:1px solid var(--purple-border);color:var(--primary);font-weight:900;font-size:14px;margin-bottom:20px}
-.step-card h3{font-size:20px;font-weight:800;letter-spacing:-.3px;margin:0 0 10px}
-.step-card p{font-size:15px;line-height:1.65;color:#475569}
-.calc-section{background:linear-gradient(180deg,#fff 0%,var(--section) 100%)}
-.calc-box{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:24px;padding:52px;box-shadow:0 24px 70px rgba(6,27,58,.07)}
+.step-card h3{font-size:18px;font-weight:800;letter-spacing:-.3px;margin:0 0 8px}
+.step-card p{font-size:14px;line-height:1.6;color:#475569}
 .req-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
 .req-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px;box-shadow:0 4px 16px rgba(6,27,58,.04)}
 .req-card h4{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--primary);margin:0 0 8px}
@@ -92,7 +90,7 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
 .footer-logo{font-size:18px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .footer-desc{font-size:14px;color:rgba(255,255,255,.45);line-height:1.65;max-width:280px}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.07);margin-top:44px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3)}
-@media(max-width:960px){.nav{display:none}.hero-inner,.split,.calc-box,.footer-grid{grid-template-columns:1fr}.grid-3,.steps,.proof-inner,.req-grid{grid-template-columns:1fr}.cta-inner{flex-direction:column;align-items:flex-start}.section{padding:64px 0}.hero{padding:60px 0 0}}
+@media(max-width:960px){.nav{display:none}.hero-inner,.split,.footer-grid{grid-template-columns:1fr}.grid-3,.proof-inner,.req-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.cta-inner{flex-direction:column;align-items:flex-start}.section{padding:64px 0}.hero{padding:60px 0 0}}
 </style>
 </head>
 <body>
@@ -102,157 +100,148 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
     <a class="logo" href="index.html"><span class="logo-mark">C</span>CBIZCAPITAL</a>
     <nav class="nav">
       <a href="index.html">Home</a>
-      <a href="dscr-rental-loans.html" class="active">DSCR Loans</a>
-      <a href="fix-and-flip.html">Fix &amp; Flip</a>
+      <a href="dscr-rental-loans.html">DSCR Loans</a>
+      <a href="fix-and-flip.html" class="active">Fix &amp; Flip</a>
       <a href="bridge-loans.html">Bridge Loans</a>
       <a class="btn primary" href="#contact">Submit Deal →</a>
     </nav>
   </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <div class="container hero-inner">
     <div>
-      <div class="hero-pill">DSCR Rental Loans</div>
-      <h1>Scale Rentals.<br><span class="hero-title-accent">Fund Smarter.</span></h1>
-      <p class="hero-sub">Qualify using property cash flow — not personal income. CBiz Capital helps real estate investors purchase, refinance, and grow rental portfolios with fast, flexible DSCR financing.</p>
+      <div class="hero-pill">Fix &amp; Flip Loans</div>
+      <h1>Buy. Rehab.<br><span class="hero-title-accent">Profit Fast.</span></h1>
+      <p class="hero-sub">Fast capital for acquisitions and renovations. CBiz Capital structures fix &amp; flip financing around your deal timeline, project scope, and exit strategy — so you can move when opportunity knocks.</p>
       <div class="hero-badges">
-        <span class="hero-badge">No Personal DTI</span>
-        <span class="hero-badge">LLC Ownership Available</span>
-        <span class="hero-badge">Built for Portfolio Growth</span>
+        <span class="hero-badge">Fast Closings</span>
+        <span class="hero-badge">Rehab Draws Available</span>
+        <span class="hero-badge">Investor-Only Terms</span>
       </div>
       <div class="hero-actions">
         <a class="btn primary" href="#contact">Submit Your Deal →</a>
-        <a class="btn secondary" href="#calculator">DSCR Calculator →</a>
+        <a class="btn secondary" href="#how-it-works">How It Works →</a>
       </div>
     </div>
-    <div class="calc-card">
-      <span class="eyebrow">DSCR Scenario</span>
-      <h3>Rental Cash Flow Review</h3>
-      <div class="calc-row"><span>Monthly Rent</span><strong>$3,800</strong></div>
-      <div class="calc-row"><span>Monthly Debt Payment</span><strong>$2,950</strong></div>
-      <div class="calc-row"><span>Property Type</span><strong>Single-Family Rental</strong></div>
-      <div class="dscr-score">
-        <div><div class="dscr-score-label">Estimated DSCR</div><div class="dscr-score-value">1.29x</div></div>
-        <div style="text-align:right;font-size:13px;opacity:.8;line-height:1.5">Qualifies<br>for financing</div>
+    <div class="deal-card">
+      <span class="eyebrow">Sample Flip Scenario</span>
+      <h3>Acquisition &amp; Rehab</h3>
+      <div class="deal-row"><span>Purchase Price</span><strong>$210,000</strong></div>
+      <div class="deal-row"><span>Rehab Budget</span><strong>$65,000</strong></div>
+      <div class="deal-row"><span>After Repair Value (ARV)</span><strong>$385,000</strong></div>
+      <div class="deal-row"><span>LTC (Loan-to-Cost)</span><strong>Up to 85%</strong></div>
+      <div class="deal-result">
+        <div>
+          <div class="deal-result-label">Estimated Gross Profit</div>
+          <div class="deal-result-value">$110K+</div>
+        </div>
+        <div style="text-align:right;font-size:13px;opacity:.8;line-height:1.5">Deal<br>Funded</div>
       </div>
-      <p class="dscr-note">Illustrative example. Submit your scenario for actual terms.</p>
+      <p class="deal-note">Illustrative example. Submit your scenario for actual terms.</p>
     </div>
   </div>
 </section>
 
+<!-- PROOF STRIP -->
 <div class="container">
   <div class="proof-strip">
     <div class="proof-inner">
-      <div class="proof-item"><strong>24–48 hrs</strong><span>Terms Reviewed</span></div>
-      <div class="proof-item"><strong>20–30 Days</strong><span>To Close</span></div>
-      <div class="proof-item"><strong>LLC</strong><span>Ownership Friendly</span></div>
-      <div class="proof-item"><strong>Nationwide</strong><span>Lending Options</span></div>
+      <div class="proof-item"><strong>7–14 Days</strong><span>To Close</span></div>
+      <div class="proof-item"><strong>Up to 85%</strong><span>Loan-to-Cost</span></div>
+      <div class="proof-item"><strong>12–18 Mo</strong><span>Loan Terms</span></div>
+      <div class="proof-item"><strong>24 hrs</strong><span>Term Feedback</span></div>
     </div>
   </div>
 </div>
 
+<!-- WHY SECTION -->
 <section class="section">
   <div class="container split">
     <div>
-      <span class="eyebrow">Rental Property Financing</span>
-      <h2>Qualify Based on Property Income</h2>
-      <p class="section-lead">DSCR loans are built for investors who want to grow without the constraints of traditional lending. Approval is based on the property's ability to cover its debt service — not your W-2.</p>
-      <a class="btn primary" href="#contact">Review My Scenario →</a>
+      <span class="eyebrow">Rehab Financing</span>
+      <h2>Capital That Moves as Fast as You Do</h2>
+      <p class="section-lead">Traditional lenders can't keep up with active investors. CBiz Capital structures fix &amp; flip loans around your purchase timeline and renovation plan — from acquisition to final draw.</p>
+      <a class="btn primary" href="#contact">Review My Deal →</a>
     </div>
     <div class="panel">
       <h3>Best For</h3>
-      <p class="sub">Investors who need flexible, scalable financing</p>
+      <p class="sub">Active flippers and rehab investors</p>
       <ul class="check-list">
-        <li>Rental property investors</li>
-        <li>Self-employed borrowers</li>
-        <li>LLC-owned investment properties</li>
-        <li>Portfolio owners scaling quickly</li>
-        <li>Purchase or refinance scenarios</li>
-        <li>Long-term hold strategies</li>
+        <li>Single-family acquisitions and rehabs</li>
+        <li>Distressed property purchases</li>
+        <li>Value-add renovations for resale</li>
+        <li>Experienced and first-time flippers</li>
+        <li>Wholesale-to-flip transitions</li>
+        <li>Multi-unit rehab projects</li>
       </ul>
     </div>
   </div>
 </section>
 
+<!-- BENEFITS -->
 <section class="section light">
   <div class="container">
     <span class="eyebrow">Benefits</span>
-    <h2>Why Investors Choose DSCR Loans</h2>
-    <p class="section-lead">Flexible rental property financing built for investors who prioritize cash flow, speed, and long-term portfolio scale.</p>
+    <h2>Built for Serious Flippers</h2>
+    <p class="section-lead">Fix &amp; flip financing structured to match the pace, scope, and economics of active real estate investors.</p>
     <div class="grid-3">
-      <div class="card"><div class="icon">01</div><h3>No Personal Income Focus</h3><p>Qualify using property cash flow instead of traditional income documentation or employment verification.</p></div>
-      <div class="card"><div class="icon">02</div><h3>Portfolio Growth</h3><p>Scale beyond the limits of conventional investment property lending without income restrictions.</p></div>
-      <div class="card"><div class="icon">03</div><h3>LLC Friendly</h3><p>Many scenarios allow investors to close in an LLC name — keeping assets protected and organized.</p></div>
-      <div class="card"><div class="icon">04</div><h3>Purchase or Refinance</h3><p>Use DSCR financing for acquisitions, rate/term refinances, or cash-out strategies.</p></div>
-      <div class="card"><div class="icon">05</div><h3>Investor-Focused Terms</h3><p>Loan structures designed around rental property strategy — not owner-occupied underwriting boxes.</p></div>
-      <div class="card"><div class="icon">06</div><h3>Fast Review</h3><p>Get real feedback quickly so you can move on your opportunity before the window closes.</p></div>
+      <div class="card"><div class="icon">01</div><h3>Fast Capital Access</h3><p>Close in days, not weeks. Speed is your edge — we make sure financing isn't the bottleneck.</p></div>
+      <div class="card"><div class="icon">02</div><h3>Rehab Draw Schedule</h3><p>Access renovation funds in draws as work is completed. Capital released when you need it.</p></div>
+      <div class="card"><div class="icon">03</div><h3>ARV-Based Lending</h3><p>Qualify on the after-repair value — not just current purchase price — to maximize your buying power.</p></div>
+      <div class="card"><div class="icon">04</div><h3>Interest-Only Payments</h3><p>Preserve cash flow during the rehab with interest-only payment structures on short-term loans.</p></div>
+      <div class="card"><div class="icon">05</div><h3>No Prepayment Penalty</h3><p>Sell faster, pay off early. Many programs carry no prepayment penalty on short-term flip loans.</p></div>
+      <div class="card"><div class="icon">06</div><h3>Experienced or First-Time</h3><p>Whether you've done 50 flips or your first, we'll find a structure that works for your track record.</p></div>
     </div>
   </div>
 </section>
 
-<section class="section">
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="section">
+  <div class="container">
+    <span class="eyebrow">Process</span>
+    <h2>From Contract to Close — Fast</h2>
+    <p class="section-lead">A clear, investor-friendly process designed to get you funded before the deal slips.</p>
+    <div class="steps">
+      <div class="step-card" data-step="01"><div class="step-num">01</div><h3>Submit the Deal</h3><p>Share the address, purchase price, rehab scope, and your ARV estimate.</p></div>
+      <div class="step-card" data-step="02"><div class="step-num">02</div><h3>Get Term Sheet</h3><p>We review and respond with financing terms within 24 hours. No guesswork.</p></div>
+      <div class="step-card" data-step="03"><div class="step-num">03</div><h3>Close &amp; Fund</h3><p>Move to close quickly. Funds released for acquisition at closing.</p></div>
+      <div class="step-card" data-step="04"><div class="step-num">04</div><h3>Draw &amp; Sell</h3><p>Pull rehab draws as work is done. Sell at top dollar and pay off the loan.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="section light">
   <div class="container">
     <span class="eyebrow">Loan Parameters</span>
     <h2>General Requirements</h2>
-    <p class="section-lead">Typical loan parameters for DSCR rental financing. Every deal is different — submit your scenario for a specific review.</p>
+    <p class="section-lead">Typical fix &amp; flip loan parameters. Every deal is unique — submit yours for a specific review.</p>
     <div class="req-grid">
-      <div class="req-card"><h4>Minimum DSCR</h4><p>1.0x – 1.25x</p><span>Varies by lender and property type</span></div>
-      <div class="req-card"><h4>Loan Amounts</h4><p>$100K – $3M+</p><span>Single-family, multi-unit, and portfolios</span></div>
-      <div class="req-card"><h4>Credit Score</h4><p>620+ Minimum</p><span>Better pricing available at 700+</span></div>
-      <div class="req-card"><h4>Property Types</h4><p>SFR, 2–4 Units, Condos</p><span>Short-term rental scenarios available</span></div>
-      <div class="req-card"><h4>Ownership</h4><p>Individual or LLC</p><span>Entity-level ownership supported</span></div>
-      <div class="req-card"><h4>Use of Funds</h4><p>Purchase or Refinance</p><span>Rate/term and cash-out available</span></div>
+      <div class="req-card"><h4>Loan Amounts</h4><p>$75K – $2.5M</p><span>SFR, 2–4 units, small multifamily</span></div>
+      <div class="req-card"><h4>Loan-to-Cost</h4><p>Up to 85% LTC</p><span>Based on total project cost</span></div>
+      <div class="req-card"><h4>Loan-to-ARV</h4><p>Up to 70% ARV</p><span>After-repair value underwriting</span></div>
+      <div class="req-card"><h4>Loan Term</h4><p>12 – 18 Months</p><span>Extensions available in some cases</span></div>
+      <div class="req-card"><h4>Credit Score</h4><p>620+ Minimum</p><span>Better pricing at 680+</span></div>
+      <div class="req-card"><h4>Experience</h4><p>All Levels</p><span>First-time flippers considered</span></div>
     </div>
   </div>
 </section>
 
-<section id="calculator" class="section calc-section">
-  <div class="container calc-box">
-    <div>
-      <span class="eyebrow">DSCR Calculator</span>
-      <h2>Run the Numbers Before You Apply</h2>
-      <p class="section-lead">Use the CBiz Capital DSCR Calculator to estimate property cash flow, debt coverage ratio, and potential loan fit before submitting your deal.</p>
-      <a class="btn primary" href="https://cbiz-tools.vercel.app/" target="_blank" rel="noopener">Use DSCR Calculator →</a>
-    </div>
-    <div class="panel">
-      <h3>Calculator Covers</h3>
-      <p class="sub">Estimate your deal before you submit</p>
-      <ul class="check-list">
-        <li>Monthly rent vs. debt payments</li>
-        <li>Estimated DSCR ratio</li>
-        <li>Purchase and refinance planning</li>
-        <li>Fast investor scenario review</li>
-        <li>Cash-out strategy modeling</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="section light">
-  <div class="container">
-    <span class="eyebrow">Process</span>
-    <h2>A Simple Path to DSCR Funding</h2>
-    <p class="section-lead">Straightforward steps designed to help investors move quickly from scenario review to funding.</p>
-    <div class="steps">
-      <div class="step-card" data-step="01"><div class="step-num">01</div><h3>Submit Your Property</h3><p>Send the address, estimated rent, current value, and your loan request. We'll review quickly.</p></div>
-      <div class="step-card" data-step="02"><div class="step-num">02</div><h3>Review Cash Flow</h3><p>We evaluate the rental income, debt service coverage, and structure that fits your strategy.</p></div>
-      <div class="step-card" data-step="03"><div class="step-num">03</div><h3>Get Terms &amp; Close</h3><p>Move forward with financing structured around your rental property and long-term goals.</p></div>
-    </div>
-  </div>
-</section>
-
+<!-- CTA -->
 <section id="contact" class="cta-band">
   <div class="container cta-inner">
     <div>
       <span class="eyebrow-white">Start Here</span>
-      <h2>Ready to Finance Your Next Rental?</h2>
-      <p>Submit your DSCR scenario and get financing feedback within 24–48 hours.</p>
+      <h2>Have a Flip Under Contract?</h2>
+      <p>Submit your deal and get financing terms within 24 hours. Move fast.</p>
     </div>
     <a class="btn secondary" href="mailto:info@cbizcapital.com">Submit Your Deal →</a>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>

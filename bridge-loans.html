@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bridge Loans | CBiz Capital</title>
+<style>
+:root{--navy:#061B3A;--primary:#4F46E5;--primary-dark:#3730A3;--light-purple:#EEF0FF;--purple-border:#D8DBFF;--section:#F7F8FC;--border:#E5EAF3;--muted:#5B6B82;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--navy);background:#fff;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,calc(100% - 48px));margin:0 auto}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;border:1.5px solid transparent;transition:all .2s ease;cursor:pointer}
+.btn.primary{color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-dark));box-shadow:0 8px 24px rgba(79,70,229,.3)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,70,229,.38)}
+.btn.secondary{background:#fff;color:var(--navy);border-color:var(--border);box-shadow:0 2px 8px rgba(6,27,58,.06)}
+.btn.secondary:hover{transform:translateY(-2px);border-color:var(--primary)}
+.eyebrow{color:var(--primary);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 16px;display:block}
+.site-header{background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.header-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:20px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:grid;place-items:center;color:#fff;font-weight:900;font-size:15px}
+.nav{display:flex;gap:28px;align-items:center;font-size:14px;font-weight:600}
+.nav a{color:var(--muted);transition:color .2s}
+.nav a:hover,.nav a.active{color:var(--navy);font-weight:700}
+.hero{background:radial-gradient(ellipse at 80% 20%,rgba(79,70,229,.1),transparent 50%),linear-gradient(180deg,#fff 0%,var(--section) 100%);overflow:hidden;padding:80px 0 0}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding-bottom:80px}
+.hero-pill{display:inline-flex;padding:7px 14px;border-radius:999px;background:var(--light-purple);border:1px solid var(--purple-border);color:var(--primary);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin:0 0 24px;font-weight:900}
+.hero-title-accent{color:var(--primary)}
+.hero-sub{max-width:520px;font-size:18px;line-height:1.65;color:#475569;margin:0 0 28px}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.hero-badge{background:#fff;border:1px solid var(--purple-border);border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;color:var(--navy);box-shadow:0 2px 8px rgba(6,27,58,.06)}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.scenario-card{background:#fff;border:1px solid var(--purple-border);border-radius:22px;padding:36px;box-shadow:0 20px 60px rgba(6,27,58,.1),0 0 0 1px rgba(79,70,229,.06);position:relative;overflow:hidden}
+.scenario-card::before{content:"";position:absolute;right:-50px;top:-50px;width:160px;height:160px;background:radial-gradient(circle,rgba(79,70,229,.08),transparent 70%);border-radius:50%;pointer-events:none}
+.scenario-card>*{position:relative;z-index:1}
+.scenario-card h3{font-size:26px;font-weight:800;letter-spacing:-.5px;margin:0 0 20px;line-height:1.15}
+.scenario-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--border);font-size:14px}
+.scenario-row span{color:var(--muted);font-weight:500}
+.scenario-row strong{color:var(--navy);font-weight:700}
+.scenario-result{margin-top:20px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border-radius:16px;padding:22px 26px;display:flex;justify-content:space-between;align-items:center}
+.scenario-result-label{font-size:12px;font-weight:700;opacity:.8;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.scenario-result-value{font-size:32px;font-weight:900;line-height:1}
+.scenario-note{margin-top:12px;font-size:12px;color:var(--muted);text-align:center}
+.proof-strip{margin:0 auto 80px;width:min(1180px,calc(100% - 48px));background:linear-gradient(135deg,var(--navy) 0%,#0D2554 50%,var(--primary-dark) 100%);border-radius:20px;box-shadow:0 24px 60px rgba(6,27,58,.2);overflow:hidden}
+.proof-inner{display:grid;grid-template-columns:repeat(4,1fr)}
+.proof-item{padding:28px 32px;border-right:1px solid rgba(255,255,255,.1)}
+.proof-item:last-child{border-right:none}
+.proof-item strong{display:block;color:#fff;font-size:clamp(22px,2vw,30px);font-weight:900;line-height:1.1;letter-spacing:-.5px}
+.proof-item span{display:block;margin-top:6px;color:rgba(255,255,255,.65);font-size:13px;font-weight:500}
+.section{padding:88px 0}
+.section.light{background:var(--section)}
+.section h2{font-size:clamp(32px,3.5vw,52px);line-height:1.08;letter-spacing:-1.5px;margin:0 0 18px;font-weight:900}
+.section-lead{font-size:17px;color:var(--muted);line-height:1.7;max-width:680px;margin:0 0 44px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.panel{background:linear-gradient(135deg,var(--light-purple) 0%,#DDE0FF 100%);border:1px solid var(--purple-border);border-radius:22px;padding:44px;box-shadow:0 20px 55px rgba(79,70,229,.1)}
+.panel h3{font-size:28px;font-weight:800;letter-spacing:-.5px;margin:0 0 6px}
+.panel .sub{font-size:14px;color:var(--muted);margin:0 0 22px}
+.check-list{list-style:none;padding:0;margin:0}
+.check-list li{position:relative;padding-left:26px;margin-bottom:12px;font-size:15px;font-weight:600;color:#1E293B;line-height:1.5}
+.check-list li::before{content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;background:var(--primary);border-radius:50%}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:32px;box-shadow:0 4px 16px rgba(6,27,58,.04);transition:all .22s ease}
+.card:hover{transform:translateY(-5px);box-shadow:0 16px 44px rgba(6,27,58,.1);border-color:var(--purple-border)}
+.icon{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--light-purple);border:1px solid var(--purple-border);color:var(--primary);font-weight:900;font-size:13px;margin-bottom:20px}
+.card h3{font-size:20px;font-weight:800;line-height:1.2;margin:0 0 10px;letter-spacing:-.3px}
+.card p{font-size:15px;line-height:1.65;color:#475569}
+.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:44px}
+.use-case{background:#fff;border:1px solid var(--border);border-radius:18px;padding:32px;box-shadow:0 4px 16px rgba(6,27,58,.04);display:flex;gap:20px;align-items:flex-start}
+.use-case-icon{flex-shrink:0;width:44px;height:44px;border-radius:12px;background:var(--light-purple);border:1px solid var(--purple-border);display:grid;place-items:center;color:var(--primary);font-weight:900;font-size:13px}
+.use-case h3{font-size:18px;font-weight:800;margin:0 0 8px;letter-spacing:-.2px}
+.use-case p{font-size:14px;line-height:1.65;color:#475569;margin:0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:32px;box-shadow:0 4px 16px rgba(6,27,58,.04);position:relative;overflow:hidden}
+.step-card::after{content:attr(data-step);position:absolute;right:12px;top:8px;font-size:80px;font-weight:900;color:rgba(79,70,229,.04);line-height:1;pointer-events:none}
+.step-num{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--light-purple);border:1px solid var(--purple-border);color:var(--primary);font-weight:900;font-size:14px;margin-bottom:20px}
+.step-card h3{font-size:20px;font-weight:800;letter-spacing:-.3px;margin:0 0 10px}
+.step-card p{font-size:15px;line-height:1.65;color:#475569}
+.req-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.req-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px;box-shadow:0 4px 16px rgba(6,27,58,.04)}
+.req-card h4{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--primary);margin:0 0 8px}
+.req-card p{font-size:16px;font-weight:700;color:var(--navy);margin:0}
+.req-card span{display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:500}
+.cta-band{background:linear-gradient(135deg,var(--navy) 0%,#0D2554 40%,var(--primary-dark) 100%);color:#fff;padding:80px 0}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:40px}
+.cta-inner h2{font-size:clamp(32px,3.5vw,46px);line-height:1.1;margin:0 0 12px;font-weight:900;letter-spacing:-1px}
+.cta-inner p{color:rgba(255,255,255,.72);font-size:17px;line-height:1.6}
+.eyebrow-white{color:rgba(255,255,255,.6);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px;display:block}
+.site-footer{background:#040f20;color:#fff;padding:60px 0 36px}
+.footer-grid{display:grid;grid-template-columns:1.6fr .7fr .7fr;gap:64px}
+.footer-grid strong{display:block;font-size:11px;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.12em}
+.footer-grid a,.footer-grid p{color:rgba(255,255,255,.6);display:block;margin:9px 0;font-size:14px;transition:color .2s}
+.footer-grid a:hover{color:#fff}
+.footer-logo{font-size:18px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.footer-desc{font-size:14px;color:rgba(255,255,255,.45);line-height:1.65;max-width:280px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);margin-top:44px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3)}
+@media(max-width:960px){.nav{display:none}.hero-inner,.split,.footer-grid{grid-template-columns:1fr}.grid-3,.proof-inner,.req-grid,.use-cases{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.cta-inner{flex-direction:column;align-items:flex-start}.section{padding:64px 0}.hero{padding:60px 0 0}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">C</span>CBIZCAPITAL</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="dscr-rental-loans.html">DSCR Loans</a>
+      <a href="fix-and-flip.html">Fix &amp; Flip</a>
+      <a href="bridge-loans.html" class="active">Bridge Loans</a>
+      <a class="btn primary" href="#contact">Submit Deal →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-pill">Bridge Loans</div>
+      <h1>Close the Gap.<br><span class="hero-title-accent">Don't Miss the Deal.</span></h1>
+      <p class="hero-sub">Short-term financing for time-sensitive opportunities. CBiz Capital bridges the gap between where you are and where you need to be — fast approvals, flexible terms, and reliable execution.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">Fast Approvals</span>
+        <span class="hero-badge">Flexible Exit Strategies</span>
+        <span class="hero-badge">Timing-Sensitive Deals</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn primary" href="#contact">Submit Your Scenario →</a>
+        <a class="btn secondary" href="#use-cases">See Use Cases →</a>
+      </div>
+    </div>
+    <div class="scenario-card">
+      <span class="eyebrow">Bridge Scenario</span>
+      <h3>Acquisition Before Sale</h3>
+      <div class="scenario-row"><span>New Property Price</span><strong>$650,000</strong></div>
+      <div class="scenario-row"><span>Current Property Value</span><strong>$850,000</strong></div>
+      <div class="scenario-row"><span>Bridge Loan Amount</span><strong>$520,000</strong></div>
+      <div class="scenario-row"><span>Loan Term</span><strong>12 Months</strong></div>
+      <div class="scenario-result">
+        <div>
+          <div class="scenario-result-label">Time to Close</div>
+          <div class="scenario-result-value">Under 10 Days</div>
+        </div>
+        <div style="text-align:right;font-size:13px;opacity:.8;line-height:1.5">Deal<br>Secured</div>
+      </div>
+      <p class="scenario-note">Illustrative example. Submit your scenario for actual terms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<div class="container">
+  <div class="proof-strip">
+    <div class="proof-inner">
+      <div class="proof-item"><strong>5–10 Days</strong><span>Typical Close</span></div>
+      <div class="proof-item"><strong>Up to 75%</strong><span>Loan-to-Value</span></div>
+      <div class="proof-item"><strong>6–24 Mo</strong><span>Loan Terms</span></div>
+      <div class="proof-item"><strong>24 hrs</strong><span>Scenario Review</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY SECTION -->
+<section class="section">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">Short-Term Financing</span>
+      <h2>When Timing Is Everything</h2>
+      <p class="section-lead">Bridge loans are designed for moments when the deal can't wait. Whether you're acquiring before selling, stabilizing a property, or repositioning an asset — CBiz Capital provides the capital to execute without delays.</p>
+      <a class="btn primary" href="#contact">Review My Scenario →</a>
+    </div>
+    <div class="panel">
+      <h3>Best For</h3>
+      <p class="sub">Time-sensitive real estate scenarios</p>
+      <ul class="check-list">
+        <li>Buying before existing property sells</li>
+        <li>Stabilizing vacant or distressed assets</li>
+        <li>Transitioning to permanent financing</li>
+        <li>Value-add repositioning projects</li>
+        <li>Auction and off-market acquisitions</li>
+        <li>1031 exchange timing gaps</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section light">
+  <div class="container">
+    <span class="eyebrow">Benefits</span>
+    <h2>Flexible Capital, Reliable Execution</h2>
+    <p class="section-lead">Bridge financing built for investors who operate in situations where speed, structure, and certainty matter most.</p>
+    <div class="grid-3">
+      <div class="card"><div class="icon">01</div><h3>Speed to Close</h3><p>Close in as few as 5–10 days. When a window opens, we make sure you can move through it.</p></div>
+      <div class="card"><div class="icon">02</div><h3>Flexible Exit Paths</h3><p>Sell, refinance, or stabilize. Bridge loans are structured around your intended exit — not a rigid repayment box.</p></div>
+      <div class="card"><div class="icon">03</div><h3>Asset-Based Underwriting</h3><p>Underwritten on the property's value and opportunity — not solely on conventional income documentation.</p></div>
+      <div class="card"><div class="icon">04</div><h3>Interest-Only Options</h3><p>Preserve cash flow during the bridge period with interest-only payment structures on most programs.</p></div>
+      <div class="card"><div class="icon">05</div><h3>No Long-Term Lock-In</h3><p>Bridge loans are short-term by design. No long commitments — just the capital you need, when you need it.</p></div>
+      <div class="card"><div class="icon">06</div><h3>Clear Communication</h3><p>We keep you informed at every step. No surprises, no delays from our side of the table.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section id="use-cases" class="section">
+  <div class="container">
+    <span class="eyebrow">Common Use Cases</span>
+    <h2>When Investors Use Bridge Loans</h2>
+    <p class="section-lead">Bridge financing solves specific timing problems. Here's where we see it used most.</p>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="use-case-icon">→</div>
+        <div>
+          <h3>Buy Before You Sell</h3>
+          <p>Secure your next property before your current one closes. Don't let timing kill a deal.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-icon">→</div>
+        <div>
+          <h3>1031 Exchange Gaps</h3>
+          <p>Bridge the timing gap in a 1031 exchange to avoid tax exposure while identifying replacement property.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-icon">→</div>
+        <div>
+          <h3>Stabilization Projects</h3>
+          <p>Fund a property until it's leased and stabilized, then transition to permanent financing.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-icon">→</div>
+        <div>
+          <h3>Auction &amp; Off-Market Buys</h3>
+          <p>Win fast-moving deals that require quick closes when traditional lenders can't respond in time.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-icon">→</div>
+        <div>
+          <h3>Value-Add Repositioning</h3>
+          <p>Acquire and reposition an underperforming asset before placing permanent debt on it.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-icon">→</div>
+        <div>
+          <h3>Construction Completion</h3>
+          <p>Bridge a project to completion when a construction loan runs out before permanent financing is ready.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section light">
+  <div class="container">
+    <span class="eyebrow">Process</span>
+    <h2>Simple. Fast. Reliable.</h2>
+    <p class="section-lead">A streamlined process designed for investors who need to move without friction.</p>
+    <div class="steps">
+      <div class="step-card" data-step="01"><div class="step-num">01</div><h3>Submit Your Scenario</h3><p>Share the property details, loan need, and your intended exit strategy. Be specific.</p></div>
+      <div class="step-card" data-step="02"><div class="step-num">02</div><h3>Receive Term Sheet</h3><p>We review and respond with bridge loan terms within 24 hours. No vague commitments.</p></div>
+      <div class="step-card" data-step="03"><div class="step-num">03</div><h3>Close &amp; Execute</h3><p>Move to close in days. Capital delivered so you can execute on your timeline.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Loan Parameters</span>
+    <h2>General Requirements</h2>
+    <p class="section-lead">Typical bridge loan parameters. Every scenario is unique — submit yours for a specific review.</p>
+    <div class="req-grid">
+      <div class="req-card"><h4>Loan Amounts</h4><p>$150K – $5M+</p><span>Residential and commercial bridge</span></div>
+      <div class="req-card"><h4>Loan-to-Value</h4><p>Up to 75% LTV</p><span>Based on current or stabilized value</span></div>
+      <div class="req-card"><h4>Loan Term</h4><p>6 – 24 Months</p><span>Extensions available on most programs</span></div>
+      <div class="req-card"><h4>Property Types</h4><p>Residential &amp; Commercial</p><span>SFR, multi-unit, mixed-use, light commercial</span></div>
+      <div class="req-card"><h4>Payments</h4><p>Interest-Only</p><span>Monthly payments during bridge period</span></div>
+      <div class="req-card"><h4>Credit Score</h4><p>620+ Minimum</p><span>Asset and deal strength heavily weighted</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <span class="eyebrow-white">Start Here</span>
+      <h2>Timing-Sensitive Deal on the Table?</h2>
+      <p>Submit your scenario now. We'll respond with terms within 24 hours.</p>
+    </div>
+    <a class="btn secondary" href="mailto:info@cbizcapital.com">Submit Your Scenario →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-logo"><span class="logo-mark">C</span>CBIZCAPITAL</div>
+      <p class="footer-desc">Fast, flexible real estate financing for investors, brokers, developers, and property owners.</p>
+    </div>
+    <div>
+      <strong>Loan Programs</strong>
+      <a href="dscr-rental-loans.html">DSCR Rental Loans</a>
+      <a href="fix-and-flip.html">Fix &amp; Flip Loans</a>
+      <a href="bridge-loans.html">Bridge Loans</a>
+    </div>
+    <div>
+      <strong>Contact</strong>
+      <a href="tel:2156543075">(215) 654-3075</a>
+      <a href="mailto:info@cbizcapital.com">info@cbizcapital.com</a>
+      <a href="#contact">Submit Your Deal</a>
+    </div>
+  </div>
+  <div class="container footer-bottom"><p>&copy; 2025 CBiz Capital. All rights reserved. Not a commitment to lend.</p></div>
+</footer>
+
+</body>
+</html>
