@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Recent Loan Closings | CBiz Capital</title>
+<style>
+:root{--navy:#061B3A;--primary:#4F46E5;--primary-dark:#3730A3;--light-purple:#EEF0FF;--purple-border:#D8DBFF;--section:#F7F8FC;--border:#E5EAF3;--muted:#5B6B82;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--navy);background:#fff;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,calc(100% - 48px));margin:0 auto}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;border:1.5px solid transparent;transition:all .2s ease;cursor:pointer}
+.btn.primary{color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-dark));box-shadow:0 8px 24px rgba(79,70,229,.3)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,70,229,.38)}
+.btn.secondary{background:#fff;color:var(--navy);border-color:var(--border);box-shadow:0 2px 8px rgba(6,27,58,.06)}
+.btn.secondary:hover{transform:translateY(-2px);border-color:var(--primary)}
+.eyebrow{color:var(--primary);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 16px;display:block}
+.site-header{background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.header-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:20px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:grid;place-items:center;color:#fff;font-weight:900;font-size:15px}
+.nav{display:flex;gap:28px;align-items:center;font-size:14px;font-weight:600}
+.nav a{color:var(--muted);transition:color .2s}
+.nav a:hover,.nav a.active{color:var(--navy);font-weight:700}
+
+/* Page Hero */
+.page-hero{background:radial-gradient(ellipse at 70% 50%,rgba(79,70,229,.08),transparent 60%),linear-gradient(180deg,#fff 0%,var(--section) 100%);padding:72px 0 64px;border-bottom:1px solid var(--border)}
+.page-hero-inner{max-width:680px}
+.page-hero h1{font-size:clamp(40px,5vw,64px);line-height:.98;letter-spacing:-2px;margin:0 0 18px;font-weight:900}
+.page-hero p{font-size:18px;line-height:1.65;color:#475569}
+
+/* Closings Grid */
+.closings-section{padding:80px 0}
+.closings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.closing-card{background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(6,27,58,.05);transition:all .22s ease}
+.closing-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(6,27,58,.1);border-color:var(--purple-border)}
+.closing-img{width:100%;height:200px;object-fit:cover;display:block}
+.closing-body{padding:26px}
+.closing-amount{font-size:28px;font-weight:900;letter-spacing:-1px;color:var(--navy);margin:0 0 14px;line-height:1}
+.closing-tags{display:flex;flex-wrap:wrap;gap:8px}
+.closing-tag{display:inline-flex;padding:5px 11px;border-radius:999px;font-size:12px;font-weight:700;background:var(--light-purple);color:var(--primary);border:1px solid var(--purple-border)}
+.closing-tag.location{background:var(--section);color:var(--muted);border-color:var(--border)}
+.closing-tag.type{background:#fff;color:var(--navy);border-color:var(--border)}
+
+/* Proof Strip */
+.proof-strip{margin:0 0 80px;background:linear-gradient(135deg,var(--navy) 0%,#0D2554 50%,var(--primary-dark) 100%);border-radius:20px;box-shadow:0 24px 60px rgba(6,27,58,.2);overflow:hidden}
+.proof-inner{display:grid;grid-template-columns:repeat(4,1fr)}
+.proof-item{padding:28px 32px;border-right:1px solid rgba(255,255,255,.1)}
+.proof-item:last-child{border-right:none}
+.proof-item strong{display:block;color:#fff;font-size:clamp(20px,2vw,28px);font-weight:900;line-height:1.1;letter-spacing:-.5px}
+.proof-item span{display:block;margin-top:6px;color:rgba(255,255,255,.65);font-size:13px;font-weight:500}
+
+/* Testimonials */
+.testimonials{background:var(--section);padding:88px 0}
+.testimonials h2{font-size:clamp(32px,3.5vw,48px);line-height:1.08;letter-spacing:-1.5px;margin:0 0 12px;font-weight:900}
+.testimonials .lead{font-size:17px;color:var(--muted);margin:0 0 44px;line-height:1.65}
+.testimonial-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.testimonial-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:32px;box-shadow:0 4px 16px rgba(6,27,58,.04);position:relative}
+.testimonial-card::before{content:"";position:absolute;top:0;left:24px;right:24px;height:3px;background:linear-gradient(90deg,var(--navy),var(--primary));border-radius:0 0 999px 999px}
+.stars{color:var(--primary);font-size:16px;letter-spacing:2px;margin-bottom:18px}
+.testimonial-card p{font-size:15px;line-height:1.75;color:#1E293B}
+.testimonial-card strong{display:block;margin-top:20px;font-size:14px;font-weight:700;color:var(--navy)}
+
+/* CTA Band */
+.cta-band{background:linear-gradient(135deg,var(--navy) 0%,#0D2554 40%,var(--primary-dark) 100%);color:#fff;padding:80px 0}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:40px}
+.cta-inner h2{font-size:clamp(32px,3.5vw,46px);line-height:1.1;margin:0 0 12px;font-weight:900;letter-spacing:-1px}
+.cta-inner p{color:rgba(255,255,255,.72);font-size:17px;line-height:1.6}
+.eyebrow-white{color:rgba(255,255,255,.6);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px;display:block}
+
+/* Footer */
+.site-footer{background:#040f20;color:#fff;padding:60px 0 36px}
+.footer-grid{display:grid;grid-template-columns:1.6fr .7fr .7fr;gap:64px}
+.footer-grid strong{display:block;font-size:11px;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.12em}
+.footer-grid a,.footer-grid p{color:rgba(255,255,255,.6);display:block;margin:9px 0;font-size:14px;transition:color .2s}
+.footer-grid a:hover{color:#fff}
+.footer-logo{font-size:18px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.footer-desc{font-size:14px;color:rgba(255,255,255,.45);line-height:1.65;max-width:280px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);margin-top:44px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3)}
+
+@media(max-width:960px){
+  .nav{display:none}
+  .closings-grid{grid-template-columns:1fr 1fr}
+  .testimonial-grid,.footer-grid{grid-template-columns:1fr}
+  .proof-inner{grid-template-columns:repeat(2,1fr)}
+  .cta-inner{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:560px){
+  .closings-grid{grid-template-columns:1fr}
+  .proof-inner{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">C</span>CBIZCAPITAL</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="dscr-rental-loans.html">DSCR Loans</a>
+      <a href="fix-and-flip.html">Fix &amp; Flip</a>
+      <a href="bridge-loans.html">Bridge Loans</a>
+      <a href="recent-loan-closings.html" class="active">Recent Closings</a>
+      <a class="btn primary" href="#contact">Submit Deal →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="eyebrow">Closed Deals</span>
+    <h1>Recent Loan<br>Closings</h1>
+    <p>Real transactions. Real investors. A track record of execution across Philadelphia, New Jersey, and beyond.</p>
+  </div>
+</section>
+
+<!-- CLOSINGS -->
+<section class="closings-section">
+  <div class="container">
+
+    <!-- Proof Strip -->
+    <div class="proof-strip">
+      <div class="proof-inner">
+        <div class="proof-item"><strong>$4M+</strong><span>Recently Closed</span></div>
+        <div class="proof-item"><strong>6 Deals</strong><span>Shown Below</span></div>
+        <div class="proof-item"><strong>PA &amp; NJ</strong><span>Markets Served</span></div>
+        <div class="proof-item"><strong>24–48 hrs</strong><span>Term Turnaround</span></div>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="closings-grid">
+
+      <div class="closing-card">
+        <img class="closing-img" src="https://cbizcapital.com/wp-content/uploads/2025/12/single-family-2.jpg" alt="Single Family Home - Drexel Hill PA" />
+        <div class="closing-body">
+          <div class="closing-amount">$202,500</div>
+          <div class="closing-tags">
+            <span class="closing-tag">Cash Out Refinance</span>
+            <span class="closing-tag type">Single Family</span>
+            <span class="closing-tag location">Drexel Hill, PA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="closing-card">
+        <img class="closing-img" src="https://cbizcapital.com/wp-content/uploads/2025/12/multiple-housing-1.jpg" alt="Portfolio - Philadelphia PA" />
+        <div class="closing-body">
+          <div class="closing-amount">$850,551</div>
+          <div class="closing-tags">
+            <span class="closing-tag">Cash Out Refinance</span>
+            <span class="closing-tag type">Portfolio</span>
+            <span class="closing-tag location">Philadelphia, PA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="closing-card">
+        <img class="closing-img" src="https://cbizcapital.com/wp-content/uploads/2025/12/mukti-family-home-1.jpg" alt="Multi-family - Philadelphia PA" />
+        <div class="closing-body">
+          <div class="closing-amount">$1,378,200</div>
+          <div class="closing-tags">
+            <span class="closing-tag">Rate/Term Refinance</span>
+            <span class="closing-tag type">Multi-family (6 Units)</span>
+            <span class="closing-tag location">Philadelphia, PA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="closing-card">
+        <img class="closing-img" src="https://cbizcapital.com/wp-content/uploads/2025/12/multiple-homes.avif" alt="Portfolio - Norristown PA" />
+        <div class="closing-body">
+          <div class="closing-amount">$1,436,831</div>
+          <div class="closing-tags">
+            <span class="closing-tag">Cash Out Refinance</span>
+            <span class="closing-tag type">Portfolio</span>
+            <span class="closing-tag location">Norristown, PA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="closing-card">
+        <img class="closing-img" src="https://cbizcapital.com/wp-content/uploads/2025/12/duplex-home.jpg" alt="2-4 Unit - Paulsboro NJ" />
+        <div class="closing-body">
+          <div class="closing-amount">$272,000</div>
+          <div class="closing-tags">
+            <span class="closing-tag">Purchase</span>
+            <span class="closing-tag type">2–4 Unit</span>
+            <span class="closing-tag location">Paulsboro, NJ</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="closing-card">
+        <img class="closing-img" src="https://cbizcapital.com/wp-content/uploads/2025/12/condo-exterior-1.jpg" alt="Warrantable Condo - Philadelphia PA" />
+        <div class="closing-body">
+          <div class="closing-amount">$367,500</div>
+          <div class="closing-tags">
+            <span class="closing-tag">Purchase</span>
+            <span class="closing-tag type">Warrantable Condo</span>
+            <span class="closing-tag location">Philadelphia, PA</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <span class="eyebrow">Client Feedback</span>
+    <h2>What Investors Say</h2>
+    <p class="lead">Real feedback from clients who rely on CBiz Capital deal after deal.</p>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"We have had the opportunity to use CBiz Capital / Joe Mesi for our investment properties for over three years now. After using local banks, making the switch to CBiz has been an absolute no brainer. Great rates, personalized attention, and most importantly quick and timely. From start to finish a very smooth and pain free process."</p>
+        <strong>Jerry G.</strong>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"CBiz Capital made the financing process smoother than I ever expected. They provided competitive rates and creative loan options and understood the unique needs of an investor. Every step was handled with transparency, speed, and professionalism. I was able to close on multiple properties and continue building my portfolio with confidence."</p>
+        <strong>C.Z.</strong>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"I've worked with CBiz Capital / Joe Mesi on several commercial property refinance loans, and he's been outstanding every time. Joe is incredibly knowledgeable and proactive, especially when it comes to navigating complex lending scenarios. He consistently finds solutions and makes the process smooth. Most notable is his ability to close quickly."</p>
+        <strong>R.Y.</strong>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"I had an excellent experience working with Joe on my bank refinancing. He was incredibly fast, professional, and made the entire process smooth from start to finish. Joe handled everything efficiently and kept me informed every step of the way. I highly recommend him to anyone looking for reliable financial assistance."</p>
+        <strong>M.K.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <span class="eyebrow-white">Your Deal is Next</span>
+      <h2>Ready to Close Your Next Deal?</h2>
+      <p>Submit your scenario and get financing terms within 24–48 hours.</p>
+    </div>
+    <a class="btn secondary" href="mailto:info@cbizcapital.com">Submit Your Deal →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-logo"><span class="logo-mark">C</span>CBIZCAPITAL</div>
+      <p class="footer-desc">Fast, flexible real estate financing for investors, brokers, developers, and property owners.</p>
+    </div>
+    <div>
+      <strong>Loan Programs</strong>
+      <a href="dscr-rental-loans.html">DSCR Rental Loans</a>
+      <a href="fix-and-flip.html">Fix &amp; Flip Loans</a>
+      <a href="bridge-loans.html">Bridge Loans</a>
+    </div>
+    <div>
+      <strong>Contact</strong>
+      <a href="tel:2156543075">(215) 654-3075</a>
+      <a href="mailto:info@cbizcapital.com">info@cbizcapital.com</a>
+      <a href="#contact">Submit Your Deal</a>
+    </div>
+  </div>
+  <div class="container footer-bottom"><p>&copy; 2025 CBiz Capital. All rights reserved. Not a commitment to lend.</p></div>
+</footer>
+
+</body>
+</html>
