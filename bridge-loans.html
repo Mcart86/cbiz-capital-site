@@ -20,7 +20,7 @@ a{text-decoration:none;color:inherit}
 .header-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-size:20px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
 .logo-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:grid;place-items:center;color:#fff;font-weight:900;font-size:15px}
-.nav{display:flex;gap:28px;align-items:center;font-size:14px;font-weight:600}
+
 .nav a{color:var(--muted);transition:color .2s}
 .nav a:hover,.nav a.active{color:var(--navy);font-weight:700}
 .hero{background:radial-gradient(ellipse at 80% 20%,rgba(79,70,229,.1),transparent 50%),linear-gradient(180deg,#fff 0%,var(--section) 100%);overflow:hidden;padding:80px 0 0}
@@ -95,7 +95,26 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
 .footer-logo{font-size:18px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .footer-desc{font-size:14px;color:rgba(255,255,255,.45);line-height:1.65;max-width:280px}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.07);margin-top:44px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3)}
-@media(max-width:960px){.nav{display:none}.hero-inner,.split,.footer-grid{grid-template-columns:1fr}.grid-3,.proof-inner,.req-grid,.use-cases{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.cta-inner{flex-direction:column;align-items:flex-start}.section{padding:64px 0}.hero{padding:60px 0 0}}
+@media(max-width:960px){.hero-inner,.split,.footer-grid{grid-template-columns:1fr}.grid-3,.proof-inner,.req-grid,.use-cases{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.cta-inner{flex-direction:column;align-items:flex-start}.section{padding:64px 0}.hero{padding:60px 0 0}}
+
+/* Dropdown Nav */
+.nav{display:flex;gap:4px;align-items:center;font-size:14px;font-weight:600;list-style:none;padding:0;margin:0}
+.nav>li{position:relative;list-style:none}
+.nav>li>a{display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:8px;color:var(--muted);transition:all .2s;white-space:nowrap;font-weight:600}
+.nav>li>a:hover,.nav>li>a.active{color:var(--navy);background:var(--section)}
+.nav-arrow{width:14px;height:14px;transition:transform .2s;flex-shrink:0}
+.nav>li:hover .nav-arrow{transform:rotate(180deg)}
+.dropdown{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--border);border-radius:16px;padding:8px;min-width:240px;box-shadow:0 20px 50px rgba(6,27,58,.12),0 0 0 1px rgba(6,27,58,.03);opacity:0;visibility:hidden;transition:opacity .18s,transform .18s;transform:translateX(-50%) translateY(-6px);z-index:200}
+.nav>li:hover .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.dropdown a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:var(--navy);font-size:13px;font-weight:600;transition:background .15s;text-decoration:none}
+.dropdown a:hover{background:var(--light-purple);color:var(--primary)}
+.dropdown-icon{width:34px;height:34px;border-radius:8px;background:var(--light-purple);border:1px solid var(--purple-border);display:grid;place-items:center;flex-shrink:0;font-size:11px;font-weight:900;color:var(--primary)}
+.dropdown-text strong{display:block;font-size:13px;font-weight:700;color:var(--navy);line-height:1.25}
+.dropdown-text span{display:block;font-size:11px;color:var(--muted);font-weight:500;margin-top:1px}
+.dropdown-divider{height:1px;background:var(--border);margin:6px 4px}
+.nav-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important;border-radius:9px!important;padding:9px 18px!important;margin-left:6px;font-weight:700!important;box-shadow:0 6px 18px rgba(79,70,229,.28)}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(79,70,229,.36)!important;background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important}
+@media(max-width:960px){.nav{display:none}}
 </style>
 </head>
 <body>
@@ -103,14 +122,21 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
 <header class="site-header">
   <div class="container header-inner">
     <a class="logo" href="index.html"><img src="https://cbizcapital.com/wp-content/uploads/2024/02/Group-1321316416.png" alt="CBiz Capital" style="height:38px;width:auto"></a>
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="dscr-rental-loans.html">DSCR Loans</a>
-      <a href="fix-and-flip.html">Fix &amp; Flip</a>
-      <a href="recent-loan-closings.html">Recent Closings</a>
-      <a href="blogs.html">Blog</a>
-      <a href="bridge-loans.html" class="active">Bridge Loans</a>
-      <a class="btn primary" href="#contact">Submit Deal →</a>
+        <nav class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#">Services <svg class="nav-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown">
+          <a href="dscr-rental-loans.html"><span class="dropdown-icon">DS</span><span class="dropdown-text"><strong>DSCR Rental Loans</strong><span>Cash flow-based qualification</span></span></a>
+          <a href="fix-and-flip.html"><span class="dropdown-icon">FF</span><span class="dropdown-text"><strong>Fix &amp; Flip Loans</strong><span>Fast capital for rehab projects</span></span></a>
+          <a href="bridge-loans.html"><span class="dropdown-icon">BR</span><span class="dropdown-text"><strong>Bridge Loans</strong><span>Short-term timing solutions</span></span></a>
+          <div class="dropdown-divider"></div>
+          <a href="#contact" style="justify-content:center;font-weight:700;color:var(--primary);font-size:13px">Submit Your Deal →</a>
+        </div>
+      </li>
+      <li><a href="recent-loan-closings.html">Recent Closings</a></li>
+      <li><a href="blogs.html">Blog</a></li>
+      <li><a class="nav-cta" href="#contact">Submit Deal →</a></li>
     </nav>
   </div>
 </header>
