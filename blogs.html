@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog | CBiz Capital</title>
+<style>
+:root{--navy:#061B3A;--primary:#4F46E5;--primary-dark:#3730A3;--light-purple:#EEF0FF;--purple-border:#D8DBFF;--section:#F7F8FC;--border:#E5EAF3;--muted:#5B6B82;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--navy);background:#fff;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,calc(100% - 48px));margin:0 auto}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;border:1.5px solid transparent;transition:all .2s ease}
+.btn.primary{color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-dark));box-shadow:0 8px 24px rgba(79,70,229,.3)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,70,229,.38)}
+.btn.secondary{background:#fff;color:var(--navy);border-color:var(--border)}
+.btn.secondary:hover{transform:translateY(-2px);border-color:var(--primary)}
+.eyebrow{color:var(--primary);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 16px;display:block}
+
+/* Header */
+.site-header{background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.header-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:20px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:grid;place-items:center;color:#fff;font-weight:900;font-size:15px}
+.nav{display:flex;gap:28px;align-items:center;font-size:14px;font-weight:600}
+.nav a{color:var(--muted);transition:color .2s}
+.nav a:hover,.nav a.active{color:var(--navy);font-weight:700}
+
+/* Page Hero */
+.page-hero{background:radial-gradient(ellipse at 70% 50%,rgba(79,70,229,.08),transparent 60%),linear-gradient(180deg,#fff 0%,var(--section) 100%);padding:72px 0 64px;border-bottom:1px solid var(--border)}
+.page-hero h1{font-size:clamp(40px,5vw,64px);line-height:.98;letter-spacing:-2px;margin:0 0 16px;font-weight:900}
+.page-hero p{font-size:18px;line-height:1.65;color:#475569;max-width:560px}
+
+/* Blog Cards Grid */
+.blog-section{padding:80px 0}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:80px}
+.blog-card{background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(6,27,58,.05);transition:all .22s ease;display:flex;flex-direction:column}
+.blog-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(6,27,58,.1);border-color:var(--purple-border)}
+.blog-card-img{width:100%;height:210px;object-fit:cover;display:block}
+.blog-card-body{padding:28px;flex:1;display:flex;flex-direction:column}
+.blog-card-tag{display:inline-flex;padding:5px 11px;border-radius:999px;font-size:11px;font-weight:800;background:var(--light-purple);color:var(--primary);border:1px solid var(--purple-border);margin-bottom:14px;letter-spacing:.06em;text-transform:uppercase}
+.blog-card-title{font-size:20px;font-weight:800;line-height:1.25;letter-spacing:-.3px;margin:0 0 12px;color:var(--navy)}
+.blog-card-excerpt{font-size:14px;line-height:1.7;color:#475569;flex:1;margin:0 0 20px}
+.blog-card-meta{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:18px}
+.blog-card-meta span{display:flex;align-items:center;gap:4px}
+.read-more{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--primary);transition:gap .2s}
+.blog-card:hover .read-more{gap:10px}
+
+/* Article Sections */
+.article{padding:80px 0;border-top:1px solid var(--border)}
+.article:first-of-type{border-top:none}
+.article-inner{display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start}
+.article-sidebar{}
+.article-img{width:100%;border-radius:18px;object-fit:cover;box-shadow:0 16px 44px rgba(6,27,58,.1);display:block;margin-bottom:24px}
+.article-img-secondary{width:100%;border-radius:14px;object-fit:cover;box-shadow:0 8px 24px rgba(6,27,58,.07);display:block;margin-top:20px}
+.article-tag{display:inline-flex;padding:6px 13px;border-radius:999px;font-size:11px;font-weight:800;background:var(--light-purple);color:var(--primary);border:1px solid var(--purple-border);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}
+.article h2{font-size:clamp(26px,3vw,38px);font-weight:900;line-height:1.1;letter-spacing:-1px;margin:0 0 20px}
+.article-lead{font-size:17px;line-height:1.75;color:#334155;margin:0 0 28px}
+.article-body h3{font-size:18px;font-weight:800;margin:28px 0 10px;color:var(--navy);letter-spacing:-.2px}
+.article-body p{font-size:15px;line-height:1.8;color:#475569;margin:0 0 16px}
+.article-body ul{list-style:none;padding:0;margin:0 0 20px}
+.article-body ul li{position:relative;padding-left:20px;font-size:15px;line-height:1.7;color:#475569;margin-bottom:8px}
+.article-body ul li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;background:var(--primary);border-radius:50%}
+.article-body strong{color:var(--navy);font-weight:700}
+.article-divider{height:1px;background:var(--border);margin:40px 0}
+.article-cta{display:inline-flex;align-items:center;gap:8px;background:var(--light-purple);border:1px solid var(--purple-border);color:var(--primary);padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;margin-top:8px;transition:all .2s}
+.article-cta:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+/* CTA Band */
+.cta-band{background:linear-gradient(135deg,var(--navy) 0%,#0D2554 40%,var(--primary-dark) 100%);color:#fff;padding:80px 0}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:40px}
+.cta-inner h2{font-size:clamp(32px,3.5vw,46px);line-height:1.1;margin:0 0 12px;font-weight:900;letter-spacing:-1px}
+.cta-inner p{color:rgba(255,255,255,.72);font-size:17px}
+.eyebrow-white{color:rgba(255,255,255,.6);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px;display:block}
+
+/* Footer */
+.site-footer{background:#040f20;color:#fff;padding:60px 0 36px}
+.footer-grid{display:grid;grid-template-columns:1.6fr .7fr .7fr;gap:64px}
+.footer-grid strong{display:block;font-size:11px;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.12em}
+.footer-grid a,.footer-grid p{color:rgba(255,255,255,.6);display:block;margin:9px 0;font-size:14px;transition:color .2s}
+.footer-grid a:hover{color:#fff}
+.footer-logo{font-size:18px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.footer-desc{font-size:14px;color:rgba(255,255,255,.45);line-height:1.65;max-width:280px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);margin-top:44px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3)}
+
+@media(max-width:960px){
+  .nav{display:none}
+  .blog-grid{grid-template-columns:1fr 1fr}
+  .article-inner{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .cta-inner{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:560px){
+  .blog-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">C</span>CBIZCAPITAL</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="dscr-rental-loans.html">DSCR Loans</a>
+      <a href="fix-and-flip.html">Fix &amp; Flip</a>
+      <a href="bridge-loans.html">Bridge Loans</a>
+      <a href="recent-loan-closings.html">Recent Closings</a>
+      <a href="blogs.html" class="active">Blog</a>
+      <a class="btn primary" href="#contact">Submit Deal →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Insights &amp; Education</span>
+    <h1>The CBiz Capital Blog</h1>
+    <p>Market updates, financing strategies, and insights for real estate investors navigating today's lending landscape.</p>
+  </div>
+</section>
+
+<!-- BLOG CARDS -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-grid">
+
+      <a href="#post-1" class="blog-card">
+        <img class="blog-card-img" src="https://cbizcapital.com/wp-content/uploads/2026/02/qtq80-tvociG-1024x678.jpeg" alt="2026 Housing Market Overview" />
+        <div class="blog-card-body">
+          <span class="blog-card-tag">Market Insight</span>
+          <h3 class="blog-card-title">2026 Housing Market Overview</h3>
+          <p class="blog-card-excerpt">Mortgage rates, home prices, rental trends, and fix-and-flip dynamics — what investors need to know heading into 2026.</p>
+          <div class="blog-card-meta">
+            <span>2026</span>
+            <span>·</span>
+            <span>5 min read</span>
+          </div>
+          <span class="read-more">Read Article →</span>
+        </div>
+      </a>
+
+      <a href="#post-2" class="blog-card">
+        <img class="blog-card-img" src="https://cbizcapital.com/wp-content/uploads/2026/02/image.jpeg" alt="DSCR, Fix & Flip, and Commercial Loan Guide" />
+        <div class="blog-card-body">
+          <span class="blog-card-tag">Financing Guide</span>
+          <h3 class="blog-card-title">Unlocking Opportunities: DSCR, Fix &amp; Flip, and Commercial Loans</h3>
+          <p class="blog-card-excerpt">A comprehensive breakdown of the four key financing options every real estate investor should understand.</p>
+          <div class="blog-card-meta">
+            <span>2026</span>
+            <span>·</span>
+            <span>6 min read</span>
+          </div>
+          <span class="read-more">Read Article →</span>
+        </div>
+      </a>
+
+      <a href="#post-3" class="blog-card">
+        <img class="blog-card-img" src="https://cbizcapital.com/wp-content/uploads/2025/12/condo-exterior-1.jpg" alt="Unlocking Financial Potential with CBiz Capital" />
+        <div class="blog-card-body">
+          <span class="blog-card-tag">About CBiz</span>
+          <h3 class="blog-card-title">Unlocking Financial Potential: An Overview of CBiz Capital</h3>
+          <p class="blog-card-excerpt">How CBiz Capital's tailored approach to working capital, equipment, and real estate financing helps investors move faster.</p>
+          <div class="blog-card-meta">
+            <span>2026</span>
+            <span>·</span>
+            <span>4 min read</span>
+          </div>
+          <span class="read-more">Read Article →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- ── POST 1 ── -->
+    <article id="post-1" class="article">
+      <div class="article-inner">
+        <div class="article-sidebar">
+          <img class="article-img" src="https://cbizcapital.com/wp-content/uploads/2026/02/qtq80-tvociG-1024x678.jpeg" alt="2026 Housing Market" />
+          <img class="article-img-secondary" src="https://cbizcapital.com/wp-content/uploads/2026/02/qtq80-CwTszO-1024x683.jpeg" alt="Housing construction trends" />
+        </div>
+        <div>
+          <span class="article-tag">Market Insight</span>
+          <h2>2026 Housing Market Overview – Insights from CBizCapital</h2>
+          <p class="article-lead">As we step into 2026, the housing market continues to evolve, shaped by mortgage rates above 6%, persistent inflation concerns, and shifting consumer behavior. Here's what investors and buyers should anticipate.</p>
+
+          <div class="article-body">
+            <h3>Mortgage Rates &amp; Economic Indicators</h3>
+            <ul>
+              <li><strong>Stubborn Rates:</strong> Mortgage rates remained above 6% throughout 2025, creating refinancing challenges and suppressing buyer demand.</li>
+              <li><strong>Economic Forecast:</strong> With unemployment projected at 4.2% and inflation around 2.4%, the Federal Reserve faces limited room to cut rates — keeping the mortgage rate environment elevated.</li>
+            </ul>
+
+            <h3>Home Prices &amp; Market Stability</h3>
+            <ul>
+              <li><strong>Modest Appreciation:</strong> Home prices appreciated 2–3% in 2025, with similar growth expected in 2026 — indicating stability but flagging risk in certain markets.</li>
+              <li><strong>Affordability Challenges:</strong> High rates continue to limit affordability and slow household formation, dampening overall market momentum.</li>
+            </ul>
+
+            <h3>Housing Inventory Trends</h3>
+            <ul>
+              <li><strong>Balanced Supply:</strong> Inventory hovered around 4–5 months in 2025 — a notable increase from prior years that creates more opportunity for buyers.</li>
+              <li><strong>New Construction:</strong> New construction inventory peaked at 7 months, pushing builders into a buyer's market and driving more buyer incentives.</li>
+            </ul>
+
+            <h3>Rental Market Insights</h3>
+            <ul>
+              <li><strong>Incremental Rent Growth:</strong> Rents are projected to increase 1–3% in 2026. Investors should monitor local conditions carefully, as outcomes vary significantly by market.</li>
+              <li><strong>Strong Occupancy Rates:</strong> Despite a slight decline from COVID-era highs, occupancy remains near 94% — indicating a tight rental market overall.</li>
+            </ul>
+
+            <h3>Fix &amp; Flip Dynamics</h3>
+            <ul>
+              <li><strong>Market Slowdown:</strong> The fix-and-flip market has slowed as profit margins compress. Investors are becoming more selective given tighter inventory and rising material costs.</li>
+              <li><strong>Distressed Opportunities:</strong> Increasing foreclosure rates present entry points for investors willing to navigate current market complexity.</li>
+            </ul>
+
+            <h3>Construction Trends</h3>
+            <ul>
+              <li><strong>Cautious Builder Sentiment:</strong> Despite housing demand, builders remain conservative due to rising material costs. Consistent housing starts are expected to continue at a measured pace.</li>
+              <li><strong>Margins Under Pressure:</strong> Builders are advised to pursue flexible financing strategies to protect profitability amid tight margins.</li>
+            </ul>
+
+            <div class="article-divider"></div>
+            <p>The 2026 housing market presents a mix of challenges and opportunities. Investors who stay informed, remain adaptable, and work with experienced lending partners will be best positioned to capitalize.</p>
+            <a class="article-cta" href="mailto:info@cbizcapital.com">Talk to Our Team →</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── POST 2 ── -->
+    <article id="post-2" class="article">
+      <div class="article-inner">
+        <div class="article-sidebar">
+          <img class="article-img" src="https://cbizcapital.com/wp-content/uploads/2026/02/image.jpeg" alt="DSCR and Fix & Flip Loans" />
+          <img class="article-img-secondary" src="https://cbizcapital.com/wp-content/uploads/2026/02/qtq80-UxKLt1-1024x683.jpeg" alt="Real estate investment" />
+        </div>
+        <div>
+          <span class="article-tag">Financing Guide</span>
+          <h2>Unlocking Opportunities: DSCR, Fix &amp; Flip, Construction, and Commercial Loans</h2>
+          <p class="article-lead">Having the right financing options can be the difference between seizing an opportunity and watching it pass. Here's a breakdown of the four key loan types every real estate investor should understand.</p>
+
+          <div class="article-body">
+            <h3>Understanding DSCR Loans</h3>
+            <p>DSCR loans are designed for investors who want to leverage rental property cash flow. The loan is assessed based on the property's income relative to its debt obligations — not your personal W-2.</p>
+            <ul>
+              <li><strong>Income-Based Evaluation:</strong> Qualification focuses on property income potential, not personal credit score alone.</li>
+              <li><strong>Portfolio Flexibility:</strong> Ideal for investors with multiple properties looking to scale without overstretching personal finances.</li>
+            </ul>
+
+            <h3>Fix &amp; Flip Loans</h3>
+            <p>For investors looking to renovate and resell properties quickly, Fix &amp; Flip loans provide targeted short-term capital to cover acquisition and rehab costs.</p>
+            <ul>
+              <li><strong>Fast Access to Capital:</strong> Quick approvals let investors move on deals before they're gone.</li>
+              <li><strong>Interest-Only Payments:</strong> Many programs offer interest-only structures, preserving cash flow during the renovation phase.</li>
+            </ul>
+
+            <h3>Ground Up Construction Financing</h3>
+            <p>When traditional bank financing isn't an option for new development projects, ground-up construction loans provide crucial support for developers facing unique challenges.</p>
+            <ul>
+              <li><strong>Tailored Solutions:</strong> These loans accommodate unconventional projects that may not meet standard bank criteria.</li>
+              <li><strong>Support for Developers:</strong> Whether building residential or commercial, this financing helps bring your vision to life.</li>
+            </ul>
+
+            <h3>Commercial Mortgages</h3>
+            <p>For businesses purchasing or refinancing commercial real estate — office, retail, warehouse — commercial mortgages provide the long-term capital structure you need.</p>
+            <ul>
+              <li><strong>Long-Term Stability:</strong> Typically structured over 5–20 years, providing operational stability for growing businesses.</li>
+              <li><strong>Potential Tax Benefits:</strong> Interest payments may be tax-deductible, offering additional savings for business owners.</li>
+            </ul>
+
+            <div class="article-divider"></div>
+            <p style="font-size:13px;color:var(--muted);font-style:italic">Loan amounts and approvals are contingent upon debt-to-income ratios and credit scores.</p>
+            <p style="margin-top:16px">Ready to explore your financing options? CBiz Capital is committed to helping you find the right solution for your unique investment strategy.</p>
+            <a class="article-cta" href="tel:2156543075">Call Joe: (215) 654-3075 →</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── POST 3 ── -->
+    <article id="post-3" class="article">
+      <div class="article-inner">
+        <div class="article-sidebar">
+          <img class="article-img" src="https://cbizcapital.com/wp-content/uploads/2025/12/condo-exterior-1.jpg" alt="CBiz Capital Overview" />
+          <img class="article-img-secondary" src="https://cbizcapital.com/wp-content/uploads/2026/02/GoDaddy_-004-683x1024.jpg" alt="CBiz Capital team" style="max-height:340px" />
+        </div>
+        <div>
+          <span class="article-tag">About CBiz</span>
+          <h2>Unlocking Financial Potential: An Overview of CBiz Capital</h2>
+          <p class="article-lead">In today's fast-paced business environment, securing the right financing partner is as important as the deal itself. CBiz Capital offers tailored financial solutions built around your goals — not a generic approval checklist.</p>
+
+          <div class="article-body">
+            <h3>Comprehensive Financial Solutions</h3>
+            <ul>
+              <li><strong>Working Capital Financing:</strong> Providing businesses with the liquidity to manage day-to-day operations and stay in the game.</li>
+              <li><strong>Equipment Financing:</strong> Helping businesses acquire technology and machinery without straining cash flow.</li>
+              <li><strong>Commercial Real Estate Financing:</strong> Tailored solutions for purchasing or refinancing commercial properties to grow your asset portfolio.</li>
+            </ul>
+
+            <h3>A Tailored Approach</h3>
+            <p>CBiz Capital's key strength is its personalized process. Every business is different — we work closely with clients to develop customized financing strategies that align with their specific goals and timelines.</p>
+
+            <h3>Expertise You Can Trust</h3>
+            <p>Our team of experienced professionals provides not just funding but insight into the financial landscape — helping clients navigate complex decisions with confidence.</p>
+
+            <h3>Why CBiz Capital?</h3>
+            <ul>
+              <li><strong>Flexibility:</strong> A broad range of financing options to meet diverse business needs.</li>
+              <li><strong>Speed:</strong> Time-sensitive decisions handled with urgency and clarity.</li>
+              <li><strong>Support:</strong> Guidance from initial consultation through final funding — every step of the way.</li>
+            </ul>
+
+            <div class="article-divider"></div>
+            <p>Having a reliable financial partner can make all the difference. CBiz Capital is ready to help you unlock your full potential.</p>
+            <a class="article-cta" href="tel:2156543075">Ask for Joe: (215) 654-3075 →</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <span class="eyebrow-white">Get Started</span>
+      <h2>Have a Deal That Needs Funding?</h2>
+      <p>Submit your scenario and get financing feedback within 24–48 hours.</p>
+    </div>
+    <a class="btn secondary" href="mailto:info@cbizcapital.com">Submit Your Deal →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-logo"><span class="logo-mark">C</span>CBIZCAPITAL</div>
+      <p class="footer-desc">Fast, flexible real estate financing for investors, brokers, developers, and property owners.</p>
+    </div>
+    <div>
+      <strong>Loan Programs</strong>
+      <a href="dscr-rental-loans.html">DSCR Rental Loans</a>
+      <a href="fix-and-flip.html">Fix &amp; Flip Loans</a>
+      <a href="bridge-loans.html">Bridge Loans</a>
+      <a href="recent-loan-closings.html">Recent Closings</a>
+      <a href="blogs.html">Blog</a>
+    </div>
+    <div>
+      <strong>Contact</strong>
+      <a href="tel:2156543075">(215) 654-3075</a>
+      <a href="mailto:info@cbizcapital.com">info@cbizcapital.com</a>
+      <a href="#contact">Submit Your Deal</a>
+    </div>
+  </div>
+  <div class="container footer-bottom"><p>&copy; 2025 CBiz Capital. All rights reserved. Not a commitment to lend.</p></div>
+</footer>
+
+</body>
+</html>
