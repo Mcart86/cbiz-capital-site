@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Builders Risk Insurance | CBiz Capital</title>
+<meta name="description" content="Builders Risk Insurance from CBiz Capital. Comprehensive coverage for fix & flip, rehab, and ground-up construction projects. Protecting your project from start to finish." />
+<link rel="icon" href="https://cbizcapital.com/wp-content/uploads/2024/02/Group-1321316416.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#061B3A;--primary:#4F46E5;--primary-dark:#3730A3;--light-purple:#EEF0FF;--purple-border:#D8DBFF;--section:#F7F8FC;--border:#E5EAF3;--muted:#5B6B82;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',Inter,-apple-system,sans-serif;color:var(--navy);background:#fff;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,calc(100% - 48px));margin:0 auto}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;border:1.5px solid transparent;transition:all .2s ease}
+.btn.primary{color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-dark));box-shadow:0 8px 24px rgba(79,70,229,.3)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,70,229,.38)}
+.btn.secondary{background:rgba(255,255,255,.95);color:var(--navy);border-color:transparent;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.btn.secondary:hover{transform:translateY(-2px)}
+.eyebrow{color:rgba(200,196,255,.95);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 16px;display:block}
+.section-eyebrow{color:var(--primary);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 16px;display:block}
+
+/* Navigation */
+.site-header{background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.header-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.nav{display:flex;gap:4px;align-items:center;font-size:14px;font-weight:600;list-style:none;padding:0;margin:0}
+.nav>li{position:relative;list-style:none}
+.nav>li>a{display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:8px;color:var(--muted);transition:all .2s;white-space:nowrap;font-weight:600;text-decoration:none}
+.nav>li>a:hover,.nav>li>a.active{color:var(--navy);background:var(--section)}
+.nav-arrow{width:14px;height:14px;transition:transform .2s;flex-shrink:0}
+.nav>li.open .nav-arrow{transform:rotate(180deg)}
+.dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(-6px);background:#fff;border:1px solid var(--border);border-radius:16px;padding:8px;margin-top:4px;min-width:260px;box-shadow:0 20px 50px rgba(6,27,58,.12);opacity:0;visibility:hidden;transition:opacity .18s,transform .18s;z-index:10000}
+.nav>li.open .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.dropdown a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:var(--navy);font-size:13px;font-weight:600;transition:background .15s;text-decoration:none}
+.dropdown a:hover{background:var(--light-purple);color:var(--primary)}
+.dropdown-icon{width:34px;height:34px;border-radius:8px;background:var(--light-purple);border:1px solid var(--purple-border);display:grid;place-items:center;flex-shrink:0;font-size:11px;font-weight:900;color:var(--primary)}
+.dropdown-text strong{display:block;font-size:13px;font-weight:700;color:var(--navy);line-height:1.25}
+.dropdown-text span{display:block;font-size:11px;color:var(--muted);font-weight:500;margin-top:1px}
+.dropdown-divider{height:1px;background:var(--border);margin:6px 4px}
+.nav-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important;border-radius:9px!important;padding:9px 18px!important;margin-left:6px;font-weight:700!important;box-shadow:0 6px 18px rgba(79,70,229,.28);text-decoration:none!important}
+.nav-cta:hover{transform:translateY(-1px);color:#fff!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;margin-left:8px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:#fff;z-index:9999;padding:20px;overflow-y:auto;flex-direction:column;gap:4px;border-top:1px solid var(--border)}
+.mobile-nav.open{display:flex}
+.mobile-nav a{display:block;padding:13px 16px;border-radius:10px;font-size:16px;font-weight:600;color:var(--navy);text-decoration:none;transition:background .15s}
+.mobile-nav a:hover{background:var(--section)}
+.mobile-section-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding:14px 16px 6px;margin-top:6px;display:block}
+.mobile-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important;text-align:center!important;margin-top:10px;border-radius:12px!important;padding:16px!important}
+@media(max-width:960px){.nav{display:none!important}.hamburger{display:flex}}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#0D2554 60%,var(--primary-dark) 100%);position:relative;overflow:hidden;padding:88px 0 72px}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%,rgba(79,70,229,.18) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(55,48,163,.25) 0%,transparent 50%);animation:meshShift 8s ease-in-out infinite alternate;pointer-events:none;z-index:0}
+@keyframes meshShift{0%{opacity:.7;transform:scale(1)}100%{opacity:1;transform:scale(1.04)}}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1}
+.hero-pill{display:inline-flex;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+h1{font-family:'Manrope',sans-serif;font-size:clamp(44px,5vw,76px);line-height:.96;letter-spacing:-2px;margin:0 0 24px;font-weight:900;color:#fff}
+.hero-accent{color:rgba(179,175,255,.95)}
+.hero-sub{font-size:18px;line-height:1.7;color:rgba(255,255,255,.75);margin:0 0 32px;max-width:500px}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.hero-badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;color:rgba(255,255,255,.9)}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-card{background:#fff;border-radius:22px;padding:36px;box-shadow:0 20px 60px rgba(0,0,0,.15);position:relative;overflow:hidden}
+.hero-card::before{content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;background:radial-gradient(circle,rgba(79,70,229,.07),transparent 70%);border-radius:50%}
+.hero-card>*{position:relative;z-index:1}
+.hero-card-eyebrow{color:var(--primary);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px;display:block}
+.coverage-list{list-style:none;padding:0;margin:0}
+.coverage-list li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px;font-weight:600;color:var(--navy)}
+.coverage-list li:last-child{border-bottom:none}
+.coverage-check{width:22px;height:22px;border-radius:6px;background:var(--light-purple);border:1px solid var(--purple-border);display:grid;place-items:center;flex-shrink:0}
+
+/* Proof strip */
+.proof-strip{margin:0 auto 72px;width:min(1180px,calc(100% - 48px));background:linear-gradient(135deg,var(--navy) 0%,#0D2554 50%,var(--primary-dark) 100%);border-radius:0 0 20px 20px;box-shadow:0 16px 40px rgba(6,27,58,.18);overflow:hidden}
+.proof-inner{display:grid;grid-template-columns:repeat(4,1fr)}
+.proof-item{padding:28px 32px;border-right:1px solid rgba(255,255,255,.1)}
+.proof-item:last-child{border-right:none}
+.proof-item strong{display:block;color:#fff;font-size:clamp(22px,2.2vw,30px);font-weight:900;line-height:1.1;letter-spacing:-.5px}
+.proof-item span{display:block;margin-top:6px;color:rgba(255,255,255,.65);font-size:13px;font-weight:500}
+
+/* Sections */
+.section{padding:88px 0}
+.section.light{background:linear-gradient(135deg,#1e1b4b 0%,#2d2a7a 50%,#3730A3 100%)}
+.section h2{font-family:'Manrope',sans-serif;font-size:clamp(32px,3.5vw,52px);line-height:1.08;letter-spacing:-1.5px;margin:0 0 18px;font-weight:900;color:var(--navy)}
+.section.light h2{color:#fff!important}
+.section.light .section-eyebrow{color:rgba(200,196,255,.9)!important}
+.section.light .section-lead{color:rgba(255,255,255,.8)!important}
+.section-lead{font-size:17px;color:var(--muted);line-height:1.7;max-width:680px;margin:0 0 44px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.panel{background:linear-gradient(135deg,var(--light-purple) 0%,#DDE0FF 100%);border:1px solid var(--purple-border);border-radius:22px;padding:44px;box-shadow:0 20px 55px rgba(79,70,229,.1)}
+.panel h3{font-family:'Manrope',sans-serif;font-size:26px;font-weight:800;margin:0 0 6px}
+.panel .sub{font-size:14px;color:var(--muted);margin:0 0 22px}
+.check-list{list-style:none;padding:0;margin:0}
+.check-list li{position:relative;padding-left:26px;margin-bottom:12px;font-size:15px;font-weight:600;color:#1E293B;line-height:1.5}
+.check-list li::before{content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;background:var(--primary);border-radius:50%}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border:1px solid rgba(79,70,229,.12);border-radius:18px;padding:32px;box-shadow:0 4px 16px rgba(6,27,58,.04);transition:all .22s ease}
+.card:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 20px 50px rgba(79,70,229,.15),0 0 0 1px rgba(79,70,229,.12)!important}
+.icon{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--light-purple);border:1px solid var(--purple-border);color:var(--primary);margin-bottom:20px}
+.card h3{font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;line-height:1.2;margin:0 0 10px;letter-spacing:-.3px}
+.card p{font-size:15px;line-height:1.65;color:#475569}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:32px;box-shadow:0 4px 16px rgba(6,27,58,.04)}
+.step-num{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--light-purple);border:1px solid var(--purple-border);color:var(--primary);font-weight:900;font-size:14px;margin-bottom:20px;font-family:'Manrope',sans-serif}
+.step-card h3{font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;letter-spacing:-.3px;margin:0 0 10px}
+.step-card p{font-size:15px;line-height:1.65;color:#475569}
+.cta-band{background:linear-gradient(135deg,var(--navy) 0%,#0D2554 40%,var(--primary-dark) 100%);color:#fff;padding:80px 0}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:40px}
+.cta-inner h2{font-family:'Manrope',sans-serif;font-size:clamp(32px,3.5vw,46px);line-height:1.1;margin:0 0 12px;font-weight:900;letter-spacing:-1px;color:#fff}
+.cta-inner p{color:rgba(255,255,255,.72);font-size:17px}
+.eyebrow-white{color:rgba(255,255,255,.6);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px;display:block}
+.site-footer{background:#040f20;color:#fff;padding:64px 0 36px}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px}
+.footer-grid strong{display:block;font-size:11px;font-weight:700;margin-bottom:14px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.14em}
+.footer-grid a{color:rgba(255,255,255,.6);display:block;margin:8px 0;font-size:14px;transition:color .2s;text-decoration:none}
+.footer-grid a:hover{color:#fff}
+.footer-grid p{color:rgba(255,255,255,.6);display:block;margin:8px 0;font-size:14px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);margin-top:48px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-social{margin-top:24px}
+.footer-social-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-bottom:12px}
+.footer-social-icons{display:flex;gap:8px}
+.footer-social-icons a{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:grid;place-items:center;color:rgba(255,255,255,.55);transition:all .2s;text-decoration:none}
+.footer-social-icons a:hover{background:var(--primary);border-color:var(--primary);color:#fff;transform:translateY(-2px)}
+.footer-social-icons svg{width:15px;height:15px}
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--primary),rgba(109,99,255,.8));width:0%;z-index:9999;transition:width .1s linear}
+.js-loaded .reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.js-loaded .reveal.visible{opacity:1;transform:none}
+@media(max-width:960px){.hero-inner,.split,.footer-grid{grid-template-columns:1fr}.grid-3,.steps,.proof-inner{grid-template-columns:1fr}.cta-inner{flex-direction:column;align-items:flex-start}.section{padding:64px 0}.hero{padding:64px 0 48px}}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html"><img src="https://cbizcapital.com/wp-content/uploads/2024/02/Group-1321316416.png" alt="CBiz Capital" style="height:38px;width:auto"></a>
+    <nav class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#" class="services-trigger">Services <svg class="nav-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown">
+          <a href="dscr-rental-loans.html"><span class="dropdown-icon">DS</span><span class="dropdown-text"><strong>DSCR Rental Loans</strong><span>Cash flow-based qualification</span></span></a>
+          <a href="fix-and-flip.html"><span class="dropdown-icon">FF</span><span class="dropdown-text"><strong>Fix &amp; Flip Loans</strong><span>Fast capital for rehab projects</span></span></a>
+          <a href="bridge-loans.html"><span class="dropdown-icon">BR</span><span class="dropdown-text"><strong>Bridge Loans</strong><span>Short-term timing solutions</span></span></a>
+          <a href="asset-based-lending.html"><span class="dropdown-icon">AB</span><span class="dropdown-text"><strong>Asset-Based Lending</strong><span>Collateral-driven financing</span></span></a>
+          <a href="multifamily-loans.html"><span class="dropdown-icon">MF</span><span class="dropdown-text"><strong>Small Balance Multifamily</strong><span>5–24 unit properties</span></span></a>
+          <a href="builders-risk-insurance.html"><span class="dropdown-icon">🛡</span><span class="dropdown-text"><strong>Builders Risk Insurance</strong><span>Project protection coverage</span></span></a>
+          <div class="dropdown-divider"></div>
+          <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener" style="justify-content:center;font-weight:700;color:var(--primary);font-size:13px">Apply Now →</a>
+        </div>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="recent-loan-closings.html">Recent Closings</a></li>
+      <li><a href="blogs.html">Blog</a></li>
+      <li><a href="faqs.html">FAQs</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a class="nav-cta" href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Apply Now →</a></li>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <div class="mobile-section-title">Services</div>
+  <a href="dscr-rental-loans.html">DSCR Rental Loans</a>
+  <a href="fix-and-flip.html">Fix &amp; Flip Loans</a>
+  <a href="bridge-loans.html">Bridge Loans</a>
+  <a href="asset-based-lending.html">Asset-Based Lending</a>
+  <a href="multifamily-loans.html">Small Balance Multifamily</a>
+  <a href="builders-risk-insurance.html">Builders Risk Insurance</a>
+  <div class="mobile-section-title">Company</div>
+  <a href="about.html">About</a>
+  <a href="recent-loan-closings.html">Recent Closings</a>
+  <a href="blogs.html">Blog</a>
+  <a href="faqs.html">FAQs</a>
+  <a href="contact.html">Contact</a>
+  <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" class="mobile-cta">Apply Now →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-pill">Builders Risk Insurance</div>
+      <h1>Protect Your Project.<br><span class="hero-accent">Start to Finish.</span></h1>
+      <p class="hero-sub">Comprehensive coverage for fix &amp; flip, rehab, and ground-up construction projects. CBiz Capital helps real estate investors secure the right protection before the first nail goes in.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">Comprehensive Coverage</span>
+        <span class="hero-badge">Tailored Solutions</span>
+        <span class="hero-badge">Built for Builders</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn primary" href="contact.html">Get a Quote →</a>
+        <a class="btn secondary" href="#coverage">See Coverage →</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <span class="hero-card-eyebrow">What's Covered</span>
+      <h3 style="font-family:'Manrope',sans-serif;font-size:24px;font-weight:800;margin:0 0 20px;letter-spacing:-.3px">Standard Coverage Includes</h3>
+      <ul class="coverage-list">
+        <li><div class="coverage-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>Structure under construction</li>
+        <li><div class="coverage-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>Materials &amp; supplies on-site</li>
+        <li><div class="coverage-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>Fire, wind, and weather damage</li>
+        <li><div class="coverage-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>Theft and vandalism</li>
+        <li><div class="coverage-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>Soft costs and delays</li>
+      </ul>
+      <p style="font-size:12px;color:var(--muted);margin-top:16px;text-align:center">Coverage details vary by policy. Contact us for a tailored quote.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<div class="container">
+  <div class="proof-strip">
+    <div class="proof-inner">
+      <div class="proof-item"><strong>Fast</strong><span>Quote Turnaround</span></div>
+      <div class="proof-item"><strong>Tailored</strong><span>To Your Project</span></div>
+      <div class="proof-item"><strong>All Phases</strong><span>Covered</span></div>
+      <div class="proof-item"><strong>Nationwide</strong><span>Coverage Available</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY YOU NEED IT -->
+<section class="section">
+  <div class="container split">
+    <div>
+      <span class="section-eyebrow">Why It Matters</span>
+      <h2>Your Project Is Exposed Without It</h2>
+      <p class="section-lead">Standard homeowner and commercial property policies don't cover buildings under construction. Builders Risk Insurance fills that gap — protecting your investment from the moment work begins until the project is complete.</p>
+      <a class="btn primary" href="contact.html">Get a Quote →</a>
+    </div>
+    <div class="panel">
+      <h3>Who Needs It</h3>
+      <p class="sub">If you're building or renovating, you need coverage</p>
+      <ul class="check-list">
+        <li>Fix &amp; flip investors</li>
+        <li>Ground-up construction developers</li>
+        <li>Rehab and value-add projects</li>
+        <li>New construction builds</li>
+        <li>Major renovation projects</li>
+        <li>Lenders requiring coverage at closing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE DETAILS -->
+<section id="coverage" class="section light">
+  <div class="container">
+    <span class="section-eyebrow">Coverage Details</span>
+    <h2>Comprehensive Protection</h2>
+    <p class="section-lead">Builders Risk Insurance is designed to protect your project at every stage — from groundbreaking to certificate of occupancy.</p>
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3>Structure Coverage</h3>
+        <p>Protects the building itself — framing, walls, roof, and all permanent fixtures — while under active construction or renovation.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+        <h3>Materials &amp; Equipment</h3>
+        <p>Covers building materials stored on-site or in transit, plus equipment and tools used in the construction process.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Fire &amp; Weather</h3>
+        <p>Coverage for fire, lightning, wind, hail, and other weather-related events that can cause significant damage mid-project.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <h3>Theft &amp; Vandalism</h3>
+        <p>Protects against theft of materials and equipment, and vandalism to work already completed on the structure.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Soft Costs</h3>
+        <p>Optional coverage for soft costs like architectural fees, permits, and financing costs if a covered loss causes project delays.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3>Customizable Limits</h3>
+        <p>Coverage limits tailored to your project's completed value — from small single-family rehabs to large multifamily builds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="container">
+    <span class="section-eyebrow">Process</span>
+    <h2>Get Covered in 3 Steps</h2>
+    <p class="section-lead">Fast, straightforward coverage so you can focus on the project — not the paperwork.</p>
+    <div class="steps">
+      <div class="step-card reveal">
+        <div class="step-num">01</div>
+        <h3>Tell Us About Your Project</h3>
+        <p>Share the property address, project type, construction budget, and timeline. We'll review and respond quickly.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">02</div>
+        <h3>Receive a Tailored Quote</h3>
+        <p>We structure coverage around your specific project — not a generic one-size policy. Review terms and ask questions.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">03</div>
+        <h3>Get Covered &amp; Build</h3>
+        <p>Coverage in place before your first draw or closing. You build with confidence knowing your investment is protected.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <span class="eyebrow-white">Protect Your Investment</span>
+      <h2>Ready to Get Covered?</h2>
+      <p>Contact our team for a tailored Builders Risk quote. Fast turnaround, no obligation.</p>
+    </div>
+    <a class="btn secondary" href="contact.html">Get a Quote →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div style="margin-bottom:16px"><img src="https://cbizcapital.com/wp-content/uploads/2024/02/Group-1321316416.png" alt="CBiz Capital" style="height:44px;width:auto;filter:brightness(0) invert(1)"></div>
+      <p style="color:rgba(255,255,255,.55);font-size:14px;line-height:1.65;max-width:280px">Fast, flexible real estate financing for investors, brokers, developers, and property owners.</p>
+      <div class="footer-social">
+        <p class="footer-social-label">Follow Us</p>
+        <div class="footer-social-icons">
+          <a href="https://www.facebook.com/profile.php?id=100090539796870" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/cbizcapital" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/company/cbizcapital" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="https://www.tiktok.com/@cbizcapital" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.75a4.85 4.85 0 01-1.02-.06z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <strong>Loan Programs</strong>
+      <a href="dscr-rental-loans.html">DSCR Rental Loans</a>
+      <a href="fix-and-flip.html">Fix &amp; Flip Loans</a>
+      <a href="bridge-loans.html">Bridge Loans</a>
+      <a href="asset-based-lending.html">Asset-Based Lending</a>
+      <a href="multifamily-loans.html">Small Balance Multifamily</a>
+      <a href="builders-risk-insurance.html">Builders Risk Insurance</a>
+    </div>
+    <div>
+      <strong>Company</strong>
+      <a href="about.html">About</a>
+      <a href="recent-loan-closings.html">Recent Closings</a>
+      <a href="blogs.html">Blog</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <strong>Contact</strong>
+      <a href="tel:2156543075">(215) 654-3075</a>
+      <a href="mailto:info@cbizcapital.com">info@cbizcapital.com</a>
+      <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Apply Now →</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; <span id="yr"></span> CBiz Capital. All rights reserved. Not a commitment to lend.</p>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top" style="position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(79,70,229,.35);transition:all .2s;z-index:999">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+(function(){
+  var trigger=document.querySelector('.services-trigger');
+  if(trigger){
+    var li=trigger.parentElement;
+    trigger.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();li.classList.toggle('open');});
+    document.addEventListener('click',function(e){if(!li.contains(e.target))li.classList.remove('open');});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')li.classList.remove('open');});
+  }
+  var ham=document.getElementById('hamburger'),mNav=document.getElementById('mobileNav');
+  if(ham&&mNav){ham.addEventListener('click',function(){ham.classList.toggle('open');mNav.classList.toggle('open');document.body.style.overflow=mNav.classList.contains('open')?'hidden':'';});}
+  document.documentElement.classList.add('js-loaded');
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+  }else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+  var prog=document.getElementById('scrollProgress');
+  if(prog){window.addEventListener('scroll',function(){prog.style.width=Math.min((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100,100)+'%';},{passive:true});}
+  var btt=document.getElementById('backToTop');
+  if(btt){window.addEventListener('scroll',function(){btt.style.display=window.scrollY>500?'flex':'none';},{passive:true});btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+  var yr=document.getElementById('yr');if(yr)yr.textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

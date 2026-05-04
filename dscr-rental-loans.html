@@ -159,6 +159,7 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
           <a href="bridge-loans.html"><span class="dropdown-icon">BR</span><span class="dropdown-text"><strong>Bridge Loans</strong><span>Short-term timing solutions</span></span></a>
           <a href="asset-based-lending.html"><span class="dropdown-icon">AB</span><span class="dropdown-text"><strong>Asset-Based Lending</strong><span>Collateral-driven financing</span></span></a>
           <a href="multifamily-loans.html"><span class="dropdown-icon">MF</span><span class="dropdown-text"><strong>Small Balance Multifamily</strong><span>5–24 unit properties</span></span></a>
+          <a href="builders-risk-insurance.html"><span class="dropdown-icon">🛡</span><span class="dropdown-text"><strong>Builders Risk Insurance</strong><span>Project protection coverage</span></span></a>
           <div class="dropdown-divider"></div>
           <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener" style="justify-content:center;font-weight:700;color:var(--primary);font-size:13px">Apply Now →</a>
         </div>
@@ -358,6 +359,7 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
       <a href="bridge-loans.html">Bridge Loans</a>
       <a href="asset-based-lending.html">Asset-Based Lending</a>
       <a href="multifamily-loans.html">Small Balance Multifamily</a>
+      <a href="builders-risk-insurance.html">Builders Risk Insurance</a>
     </div>
     <div>
       <strong>Company</strong>
@@ -392,20 +394,6 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
       e.stopPropagation();
       li.classList.toggle('open');
     });
-
-    // Dropdown links: stopPropagation so document handler doesn't fire on same click
-    if(dd){
-      dd.addEventListener('click', function(e){
-        // Allow navigation but stop bubbling to document close handler
-        e.stopPropagation();
-        // If it's a link, let it navigate after a tiny delay
-        var href = e.target.closest('a') && e.target.closest('a').href;
-        if(href && !href.includes('#')){
-          setTimeout(function(){ window.location.href = href; }, 10);
-          e.preventDefault();
-        }
-      });
-    }
 
     document.addEventListener('click', function(e){
       if(!li.contains(e.target)) li.classList.remove('open');
