@@ -404,7 +404,20 @@ a{text-decoration:none;color:inherit}
       li.classList.toggle('open');
     });
 
-    // Dropdown links navigate normally - don't block them
+    // Dropdown links: stopPropagation so document handler doesn't fire on same click
+    if(dd){
+      dd.addEventListener('click', function(e){
+        // Allow navigation but stop bubbling to document close handler
+        e.stopPropagation();
+        // If it's a link, let it navigate after a tiny delay
+        var href = e.target.closest('a') && e.target.closest('a').href;
+        if(href && !href.includes('#')){
+          setTimeout(function(){ window.location.href = href; }, 10);
+          e.preventDefault();
+        }
+      });
+    }
+
     document.addEventListener('click', function(e){
       if(!li.contains(e.target)) li.classList.remove('open');
     });
