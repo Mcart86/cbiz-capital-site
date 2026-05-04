@@ -312,6 +312,37 @@ a{text-decoration:none;color:inherit}
   .scenario-row{display:flex!important;justify-content:space-between!important;padding:10px 0!important;border-bottom:1px solid var(--border)!important;font-size:14px!important}
   .scenario-result{border-radius:12px!important;padding:16px!important}
 }
+
+/* ── Universal Mobile Grid Fix ── */
+@media(max-width:768px){
+  .values-grid,
+  .closings-grid,
+  .req-grid,
+  .track-grid,
+  .why-grid,
+  .grid-3,
+  .loan-secondary-grid,
+  .testimonial-grid,
+  .steps,
+  .split,
+  .hero-inner,
+  .featured-inner,
+  .about-hero-inner,
+  .loan-layout{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+  }
+  /* 2-col exception for proof strips */
+  .proof-inner,.hero-proof-inner{
+    grid-template-columns:repeat(2,1fr)!important;
+    gap:0!important;
+  }
+  /* contact grid */
+  .contact-grid{
+    grid-template-columns:1fr!important;
+  }
+}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
