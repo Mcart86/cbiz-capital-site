@@ -126,7 +126,7 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
 .nav-arrow{width:14px;height:14px;transition:transform .2s;flex-shrink:0}
 .nav>li.open .nav-arrow{transform:rotate(180deg)}
 .dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(-6px);background:#fff;border:1px solid var(--border);border-radius:16px;padding:8px;margin-top:4px;min-width:240px;box-shadow:0 20px 50px rgba(6,27,58,.12);opacity:0;visibility:hidden;transition:opacity .18s,transform .18s;z-index:10000}
-.nav>li.open .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.nav>li.open .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}.nav>li.open .dropdown a{pointer-events:auto!important}
 .dropdown a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:var(--navy);font-size:13px;font-weight:600;transition:background .15s;text-decoration:none}
 .dropdown a:hover{background:var(--light-purple);color:var(--primary)}
 .dropdown-icon{width:34px;height:34px;border-radius:8px;background:var(--light-purple);border:1px solid var(--purple-border);display:grid;place-items:center;flex-shrink:0;font-size:11px;font-weight:900;color:var(--primary)}
@@ -229,7 +229,7 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
       <div class="scenario-row"><span>LTV</span><strong>70%</strong></div>
       <div class="scenario-row"><span>Loan Type</span><strong>Interest-Only Bridge</strong></div>
       <div class="scenario-result">
-        <div><div class="scenario-result-label">Decision Timeline</div><div class="scenario-result-value"><span data-target="48" data-suffix=" hrs">24–48 hrs</span></div></div>
+        <div><div class="scenario-result-label">Decision Timeline</div><div class="scenario-result-value">24–48 hrs</div></div>
         <div style="text-align:right;font-size:13px;opacity:.8;line-height:1.5">Deal<br>Funded</div>
       </div>
       <p class="scenario-note">Illustrative example. Submit your scenario for actual terms.</p>
@@ -239,7 +239,7 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
 
 <div class="container"><div class="proof-strip">
   <div class="proof-inner">
-    <div class="proof-item"><strong><span data-target="48" data-suffix=" hrs">24–48 hrs</span></strong><span>Term Review</span></div>
+    <div class="proof-item"><strong>24–48 hrs</strong><span>Term Review</span></div>
     <div class="proof-item"><strong>Up to 70%</strong><span>LTV Available</span></div>
     <div class="proof-item"><strong>Flexible</strong><span>Underwriting</span></div>
     <div class="proof-item"><strong>Nationwide</strong><span>Lending Options</span></div>
@@ -407,10 +407,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (dropdown) dropdown.addEventListener('click', function(e) { e.stopPropagation(); });
   document.addEventListener('click', function() {
     li.classList.remove('open');
-    if (dropdown) dropdown.style.pointerEvents = 'none';
+    
   });
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') { li.classList.remove('open'); if (dropdown) dropdown.style.pointerEvents = 'none'; }
+    if (e.key === 'Escape') { li.classList.remove('open');  }
   });
 });
 </script>
@@ -419,57 +419,73 @@ document.addEventListener('DOMContentLoaded', function() {
 </button>
 <script>
 (function(){
-  // ── Dropdown ──
+  // Dropdown - simple and reliable
   var trigger = document.querySelector('.services-trigger');
   if(trigger){
     var li = trigger.parentElement;
     var dd = li.querySelector('.dropdown');
-    trigger.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();li.classList.toggle('open');if(dd)dd.style.pointerEvents=li.classList.contains('open')?'auto':'none';});
-    if(dd)dd.addEventListener('mousedown',function(e){e.stopPropagation();});
-    if(dd)dd.addEventListener('click',function(e){e.stopPropagation();});
-    document.addEventListener('click',function(){li.classList.remove('open');if(dd)dd.style.pointerEvents='none';});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'){li.classList.remove('open');if(dd)dd.style.pointerEvents='none';}});
+
+    trigger.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      li.classList.toggle('open');
+    });
+
+    // Dropdown links navigate normally - don't block them
+    document.addEventListener('click', function(e){
+      if(!li.contains(e.target)) li.classList.remove('open');
+    });
+
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape') li.classList.remove('open');
+    });
   }
 
-  // ── Mobile nav ──
-  var ham=document.getElementById('hamburger'),mNav=document.getElementById('mobileNav');
-  if(ham&&mNav){ham.addEventListener('click',function(){ham.classList.toggle('open');mNav.classList.toggle('open');document.body.style.overflow=mNav.classList.contains('open')?'hidden':'';});}
+  // Mobile nav
+  var ham=document.getElementById('hamburger'), mNav=document.getElementById('mobileNav');
+  if(ham && mNav){
+    ham.addEventListener('click', function(){
+      ham.classList.toggle('open');
+      mNav.classList.toggle('open');
+      document.body.style.overflow = mNav.classList.contains('open') ? 'hidden' : '';
+    });
+  }
 
-  // ── Scroll reveal ──
+  // Scroll reveal
   document.documentElement.classList.add('js-loaded');
   if('IntersectionObserver' in window){
-    var revObs=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}});
-    },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
-    document.querySelectorAll('.reveal').forEach(function(el){revObs.observe(el);});
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    },{threshold:0.08, rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
   } else {
-    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
   }
 
-  // ── Animated counters ──
+  // Animated counters
   function animateCounter(el){
-    var target=parseFloat(el.dataset.target),prefix=el.dataset.prefix||'',suffix=el.dataset.suffix||'',decimals=parseInt(el.dataset.decimals||0),duration=1600,start=performance.now();
-    (function tick(now){var t=Math.min((now-start)/duration,1),ease=1-Math.pow(1-t,3),val=target*ease;el.textContent=prefix+(decimals?val.toFixed(decimals):Math.floor(val))+suffix;if(t<1)requestAnimationFrame(tick);})(start);
+    var target=parseFloat(el.dataset.target), prefix=el.dataset.prefix||'', suffix=el.dataset.suffix||'', decimals=parseInt(el.dataset.decimals||0), duration=1600, start=performance.now();
+    (function tick(now){ var t=Math.min((now-start)/duration,1), ease=1-Math.pow(1-t,3), val=target*ease; el.textContent=prefix+(decimals?val.toFixed(decimals):Math.floor(val))+suffix; if(t<1)requestAnimationFrame(tick); })(start);
   }
   if('IntersectionObserver' in window){
-    var cntObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){animateCounter(e.target);cntObs.unobserve(e.target);}});},{threshold:0.5});
-    document.querySelectorAll('[data-target]').forEach(function(el){cntObs.observe(el);});
+    var cObs=new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ animateCounter(e.target); cObs.unobserve(e.target); }}); },{threshold:0.5});
+    document.querySelectorAll('[data-target]').forEach(function(el){ cObs.observe(el); });
   }
 
-  // ── Scroll progress bar ──
+  // Scroll progress
   var prog=document.getElementById('scrollProgress');
-  if(prog){window.addEventListener('scroll',function(){prog.style.width=Math.min((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100,100)+'%';},{passive:true});}
+  if(prog){ window.addEventListener('scroll',function(){ prog.style.width=Math.min((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100,100)+'%'; },{passive:true}); }
 
-  // ── Back to top ──
+  // Back to top
   var btt=document.getElementById('backToTop');
   if(btt){
-    window.addEventListener('scroll',function(){btt.style.display=window.scrollY>500?'flex':'none';},{passive:true});
-    btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+    window.addEventListener('scroll',function(){ btt.style.display=window.scrollY>500?'flex':'none'; },{passive:true});
+    btt.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
   }
 
-  // ── Auto year ──
+  // Auto year
   var yr=document.getElementById('yr');
-  if(yr)yr.textContent=new Date().getFullYear();
+  if(yr) yr.textContent=new Date().getFullYear();
 })();
 </script>
 </body>
