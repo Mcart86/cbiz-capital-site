@@ -398,6 +398,14 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
   /* Homepage stat bar - show all 4 in 2x2 */
   .hero-proof-inner{grid-template-columns:repeat(2,1fr)!important}
 }
+
+/* ── Homepage Stat Bar Fix ── */
+@media(max-width:768px){
+  .hero-proof-strip-inner{grid-template-columns:repeat(2,1fr)!important}
+  .hero-proof-item{padding:20px 16px!important;border-right:1px solid rgba(255,255,255,.1)!important}
+  .hero-proof-item strong{font-size:20px!important;white-space:normal!important}
+  .hero-proof-item span{font-size:12px!important}
+}
 </style>
 <meta name="description" content="Fast capital for rehab investors. Fix & flip loans with draw schedules, up to 85% LTC, and 7–14 day closings. Apply today." />
 <meta property="og:title" content="Fix & Flip Loans | CBiz Capital" />
