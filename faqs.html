@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FAQs | CBiz Capital</title>
+<style>
+:root{--navy:#061B3A;--primary:#4F46E5;--primary-dark:#3730A3;--light-purple:#EEF0FF;--purple-border:#D8DBFF;--section:#F7F8FC;--border:#E5EAF3;--muted:#5B6B82;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--navy);background:#fff;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,calc(100% - 48px));margin:0 auto}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;border:1.5px solid transparent;transition:all .2s ease}
+.btn.primary{color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-dark));box-shadow:0 8px 24px rgba(79,70,229,.3)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,70,229,.38)}
+.btn.secondary{background:#fff;color:var(--navy);border-color:var(--border)}
+.btn.secondary:hover{transform:translateY(-2px);border-color:var(--primary)}
+.eyebrow{color:var(--primary);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 16px;display:block}
+
+/* Header */
+.site-header{background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.header-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:20px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:grid;place-items:center;color:#fff;font-weight:900;font-size:15px}
+.nav{display:flex;gap:4px;align-items:center;font-size:14px;font-weight:600;list-style:none;padding:0;margin:0}
+.nav>li{position:relative;list-style:none}
+.nav>li>a{display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:8px;color:var(--muted);transition:all .2s;white-space:nowrap;font-weight:600}
+.nav>li>a:hover,.nav>li>a.active{color:var(--navy);background:var(--section)}
+.nav-arrow{width:14px;height:14px;transition:transform .2s;flex-shrink:0}
+.nav>li:hover .nav-arrow{transform:rotate(180deg)}
+.dropdown{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);background:#fff;border:1px solid var(--border);border-radius:16px;padding:8px;min-width:240px;box-shadow:0 20px 50px rgba(6,27,58,.12);opacity:0;visibility:hidden;transition:opacity .18s,transform .18s;z-index:200}
+.nav>li:hover .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.dropdown a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:var(--navy);font-size:13px;font-weight:600;transition:background .15s}
+.dropdown a:hover{background:var(--light-purple);color:var(--primary)}
+.dropdown-icon{width:34px;height:34px;border-radius:8px;background:var(--light-purple);border:1px solid var(--purple-border);display:grid;place-items:center;flex-shrink:0;font-size:11px;font-weight:900;color:var(--primary)}
+.dropdown-text strong{display:block;font-size:13px;font-weight:700;color:var(--navy);line-height:1.25}
+.dropdown-text span{display:block;font-size:11px;color:var(--muted);font-weight:500;margin-top:1px}
+.dropdown-divider{height:1px;background:var(--border);margin:6px 4px}
+.nav-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important;border-radius:9px!important;padding:9px 18px!important;margin-left:6px;font-weight:700!important;box-shadow:0 6px 18px rgba(79,70,229,.28)}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(79,70,229,.36)!important;color:#fff!important}
+@media(max-width:960px){.nav{display:none}}
+
+/* Page Hero */
+.page-hero{background:radial-gradient(ellipse at 70% 50%,rgba(79,70,229,.08),transparent 60%),linear-gradient(180deg,#fff 0%,var(--section) 100%);padding:72px 0 64px;border-bottom:1px solid var(--border)}
+.page-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.page-hero h1{font-size:clamp(40px,5vw,64px);line-height:.98;letter-spacing:-2px;margin:0 0 16px;font-weight:900}
+.page-hero p{font-size:17px;line-height:1.7;color:#475569;max-width:480px}
+.hero-contact-card{background:#fff;border:1px solid var(--purple-border);border-radius:20px;padding:32px;box-shadow:0 16px 48px rgba(6,27,58,.08)}
+.hero-contact-card h3{font-size:20px;font-weight:800;margin:0 0 6px}
+.hero-contact-card p{font-size:14px;color:var(--muted);margin:0 0 20px;line-height:1.6}
+.contact-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px;font-weight:600}
+.contact-row:last-of-type{border-bottom:none}
+.contact-icon{width:36px;height:36px;border-radius:10px;background:var(--light-purple);border:1px solid var(--purple-border);display:grid;place-items:center;flex-shrink:0;color:var(--primary)}
+
+/* FAQ Layout */
+.faq-section{padding:80px 0}
+.faq-layout{display:grid;grid-template-columns:260px 1fr;gap:56px;align-items:start}
+.faq-sidebar{position:sticky;top:96px}
+.faq-sidebar-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);margin:0 0 12px}
+.faq-nav-item{display:block;padding:9px 14px;border-radius:9px;font-size:14px;font-weight:600;color:var(--muted);transition:all .18s;cursor:pointer;border:none;background:none;text-align:left;width:100%}
+.faq-nav-item:hover{color:var(--navy);background:var(--section)}
+.faq-nav-item.active{color:var(--primary);background:var(--light-purple);font-weight:700}
+.faq-nav-divider{height:1px;background:var(--border);margin:8px 0}
+
+/* FAQ Categories */
+.faq-category{margin-bottom:56px}
+.faq-category:last-child{margin-bottom:0}
+.faq-category-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--border)}
+.faq-category-icon{width:40px;height:40px;border-radius:11px;background:var(--light-purple);border:1px solid var(--purple-border);display:grid;place-items:center;color:var(--primary);flex-shrink:0}
+.faq-category-title{font-size:22px;font-weight:800;letter-spacing:-.4px}
+
+/* Accordion */
+.faq-item{border:1px solid var(--border);border-radius:14px;margin-bottom:10px;overflow:hidden;transition:border-color .2s,box-shadow .2s;background:#fff}
+.faq-item.open{border-color:var(--purple-border);box-shadow:0 4px 20px rgba(79,70,229,.08)}
+.faq-question{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;cursor:pointer;font-size:15px;font-weight:700;color:var(--navy);line-height:1.4;list-style:none;user-select:none}
+.faq-question:hover{background:var(--section)}
+.faq-item.open .faq-question{background:var(--light-purple);color:var(--primary)}
+.faq-chevron{width:20px;height:20px;flex-shrink:0;transition:transform .25s;color:var(--muted)}
+.faq-item.open .faq-chevron{transform:rotate(180deg);color:var(--primary)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-answer{max-height:400px}
+.faq-answer-inner{padding:0 22px 20px;font-size:15px;line-height:1.75;color:#475569}
+.faq-answer-inner strong{color:var(--navy)}
+.faq-answer-inner a{color:var(--primary);font-weight:600;text-decoration:underline}
+
+/* CTA Band */
+.cta-band{background:linear-gradient(135deg,var(--navy) 0%,#0D2554 40%,var(--primary-dark) 100%);color:#fff;padding:80px 0}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:40px}
+.cta-inner h2{font-size:clamp(32px,3.5vw,46px);line-height:1.1;margin:0 0 12px;font-weight:900;letter-spacing:-1px}
+.cta-inner p{color:rgba(255,255,255,.72);font-size:17px}
+.eyebrow-white{color:rgba(255,255,255,.6);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px;display:block}
+
+/* Footer */
+.site-footer{background:#040f20;color:#fff;padding:60px 0 36px}
+.footer-grid{display:grid;grid-template-columns:1.6fr .7fr .7fr;gap:64px}
+.footer-grid strong{display:block;font-size:11px;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.12em}
+.footer-grid a,.footer-grid p{color:rgba(255,255,255,.6);display:block;margin:9px 0;font-size:14px;transition:color .2s}
+.footer-grid a:hover{color:#fff}
+.footer-logo{font-size:18px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.footer-desc{font-size:14px;color:rgba(255,255,255,.45);line-height:1.65;max-width:280px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);margin-top:44px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3)}
+
+@media(max-width:960px){
+  .page-hero-inner{grid-template-columns:1fr}
+  .faq-layout{grid-template-columns:1fr}
+  .faq-sidebar{display:none}
+  .cta-inner{flex-direction:column;align-items:flex-start}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html"><img src="https://cbizcapital.com/wp-content/uploads/2024/02/Group-1321316416.png" alt="CBiz Capital" style="height:38px;width:auto"></a>
+    <nav class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#">Services <svg class="nav-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown">
+          <a href="dscr-rental-loans.html"><span class="dropdown-icon">DS</span><span class="dropdown-text"><strong>DSCR Rental Loans</strong><span>Cash flow-based qualification</span></span></a>
+          <a href="fix-and-flip.html"><span class="dropdown-icon">FF</span><span class="dropdown-text"><strong>Fix &amp; Flip Loans</strong><span>Fast capital for rehab projects</span></span></a>
+          <a href="bridge-loans.html"><span class="dropdown-icon">BR</span><span class="dropdown-text"><strong>Bridge Loans</strong><span>Short-term timing solutions</span></span></a>
+          <div class="dropdown-divider"></div>
+          <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener" style="justify-content:center;font-weight:700;color:var(--primary);font-size:13px">Submit Your Deal →</a>
+        </div>
+      </li>
+      <li><a href="recent-loan-closings.html">Recent Closings</a></li>
+      <li><a href="blogs.html">Blog</a></li>
+      <li><a href="faqs.html" class="active">FAQs</a></li>
+      <li><a class="nav-cta" href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Submit Deal →</a></li>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <div>
+      <span class="eyebrow">Have Questions?</span>
+      <h1>Frequently Asked<br>Questions</h1>
+      <p>Answers to the most common questions about our loan programs, process, and requirements. Can't find what you're looking for? Call us directly.</p>
+    </div>
+    <div class="hero-contact-card">
+      <h3>Still have questions?</h3>
+      <p>Our team reviews every scenario personally. Reach out and we'll get back to you fast.</p>
+      <div class="contact-row">
+        <div class="contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.13 1 .37 1.97.72 2.9a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.18-1.18a2 2 0 012.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0122 16.92z"/></svg></div>
+        <a href="tel:2156543075" style="color:var(--navy)">(215) 654-3075 — Ask for Joe</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <a href="mailto:info@cbizcapital.com" style="color:var(--navy)">info@cbizcapital.com</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <span style="color:var(--muted)">Terms in 24–48 hours</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ CONTENT -->
+<section class="faq-section">
+  <div class="container faq-layout">
+
+    <!-- Sidebar Nav -->
+    <div class="faq-sidebar">
+      <div class="faq-sidebar-title">Jump to Section</div>
+      <button class="faq-nav-item active" onclick="scrollTo('general')">General</button>
+      <button class="faq-nav-item" onclick="scrollTo('dscr')">DSCR Loans</button>
+      <button class="faq-nav-item" onclick="scrollTo('fix-flip')">Fix &amp; Flip</button>
+      <button class="faq-nav-item" onclick="scrollTo('bridge')">Bridge Loans</button>
+      <button class="faq-nav-item" onclick="scrollTo('process')">Process &amp; Timing</button>
+      <div class="faq-nav-divider"></div>
+      <button class="faq-nav-item" onclick="window.open('https://cbizcapital.commerciallendingservicesllc.com/','_blank')" style="color:var(--primary);font-weight:700">Submit Your Deal →</button>
+    </div>
+
+    <!-- FAQ Content -->
+    <div>
+
+      <!-- GENERAL -->
+      <div class="faq-category" id="general">
+        <div class="faq-category-header">
+          <div class="faq-category-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <h2 class="faq-category-title">General Questions</h2>
+        </div>
+
+        <div class="faq-item open">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            What types of loans does CBiz Capital offer?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">CBiz Capital specializes in private real estate lending, including <strong>DSCR Rental Loans</strong>, <strong>Fix &amp; Flip Loans</strong>, <strong>Bridge Loans</strong>, <strong>Asset-Based Lending</strong>, and <strong>Small Balance Multifamily Financing</strong>. All programs are designed specifically for real estate investors — not owner-occupied borrowers.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            Who do you lend to?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">We work with <strong>real estate investors, brokers, developers, and property owners</strong> across Pennsylvania, New Jersey, and nationwide. Whether you're a first-time investor or managing a large portfolio, we structure financing around your deal and goals.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            Are these loans available for LLCs?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes. Most of our loan programs support <strong>LLC ownership</strong>, allowing investors to keep assets inside their entity structure. This is especially common with DSCR and bridge loans. Let us know your ownership structure when submitting your deal.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            What states do you lend in?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">We have strong roots in <strong>Pennsylvania and New Jersey</strong> and work with lending partners nationwide. Submit your deal with the property location and we'll confirm coverage for your market.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            What is the minimum credit score required?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Most programs require a <strong>minimum credit score of 620</strong>. Better terms and pricing are typically available at 680–700+. For bridge and asset-based loans, deal strength and property value can carry significant weight alongside credit.</div></div>
+        </div>
+      </div>
+
+      <!-- DSCR -->
+      <div class="faq-category" id="dscr">
+        <div class="faq-category-header">
+          <div class="faq-category-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <h2 class="faq-category-title">DSCR Rental Loans</h2>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            What is a DSCR loan?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">DSCR stands for <strong>Debt Service Coverage Ratio</strong>. A DSCR loan qualifies you based on the property's rental income relative to its monthly debt payment — not your personal W-2 income or DTI. A DSCR above 1.0x means the property generates enough income to cover the loan payment.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            What DSCR ratio do I need to qualify?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Most programs require a minimum DSCR of <strong>1.0x to 1.25x</strong>, depending on the lender and property type. A higher ratio means better terms and easier approval. Some programs allow sub-1.0 DSCR with compensating factors — submit your deal and we'll find the right fit.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            Do I need to show personal income for a DSCR loan?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner"><strong>No personal income documentation is required</strong> for most DSCR programs. Qualification is based on the property's cash flow. This makes DSCR loans ideal for self-employed borrowers, business owners, and investors with complex income structures.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            Can I use a DSCR loan to purchase and refinance?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes. DSCR loans are available for <strong>purchase, rate/term refinance, and cash-out refinance</strong>. Cash-out can be used to fund future acquisitions, reinvest in renovations, or pull equity from stabilized rentals.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            What property types qualify for DSCR loans?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Eligible property types typically include <strong>single-family rentals, 2–4 unit properties, warrantable condos, and short-term rentals</strong> (Airbnb/VRBO in many markets). Multi-unit and portfolio scenarios are also available — contact us for specifics.</div></div>
+        </div>
+      </div>
+
+      <!-- FIX & FLIP -->
+      <div class="faq-category" id="fix-flip">
+        <div class="faq-category-header">
+          <div class="faq-category-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+          <h2 class="faq-category-title">Fix &amp; Flip Loans</h2>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            How fast can I close on a fix &amp; flip loan?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Most fix &amp; flip loans close in <strong>7–14 days</strong> from approval. In some cases, we can move faster. Speed depends on the completeness of your submission — the more detail you provide upfront, the faster we can move.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            How do rehab draws work?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Rehab funds are released in <strong>draws as work is completed</strong>. After each inspection confirms progress, the next draw is released. This protects both the borrower and lender and ensures capital is available at each stage of the renovation.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            What is the maximum loan-to-cost (LTC)?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Fix &amp; flip loans are typically available up to <strong>85% of total project cost (LTC)</strong> and up to <strong>70% of After Repair Value (ARV)</strong>. The lower of the two thresholds applies. Strong borrower track records and deals can access higher leverage.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            Do you lend to first-time flippers?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes. We consider <strong>first-time flippers</strong> with strong deals, sufficient down payment, and a credible renovation plan. Having a licensed general contractor and a realistic ARV estimate helps significantly. Submit your deal and we'll review your specific scenario.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            Is there a prepayment penalty on fix &amp; flip loans?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Many fix &amp; flip programs carry <strong>no prepayment penalty</strong>, allowing you to sell and pay off early without penalty. Some programs may have short prepayment terms — we'll disclose this clearly when presenting your term sheet.</div></div>
+        </div>
+      </div>
+
+      <!-- BRIDGE -->
+      <div class="faq-category" id="bridge">
+        <div class="faq-category-header">
+          <div class="faq-category-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h2 class="faq-category-title">Bridge Loans</h2>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            What is a bridge loan used for?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Bridge loans are short-term financing solutions for <strong>time-sensitive real estate situations</strong> — buying before you sell, stabilizing a vacant property, closing a 1031 exchange gap, winning an auction purchase, or transitioning to permanent financing. They bridge the gap between where you are and where you need to be.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            How long are bridge loan terms?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Bridge loans typically run <strong>6 to 24 months</strong>. Extensions are available on most programs. The loan is structured around your intended exit — sell, refinance, or stabilize — not a rigid repayment schedule.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            What is the maximum LTV on a bridge loan?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Bridge loans are typically available up to <strong>75% LTV</strong> based on current or stabilized value. Some programs may go higher depending on the asset, borrower strength, and exit strategy. Submit your scenario for a specific review.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            Are bridge loan payments interest-only?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes — most bridge loan programs are structured as <strong>interest-only</strong> during the bridge period. This preserves your cash flow while the property is being stabilized, renovated, or sold. No principal is due until payoff.</div></div>
+        </div>
+      </div>
+
+      <!-- PROCESS -->
+      <div class="faq-category" id="process">
+        <div class="faq-category-header">
+          <div class="faq-category-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <h2 class="faq-category-title">Process &amp; Timing</h2>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            How do I get started?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">The easiest way is to <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank">submit your deal online</a> or call us directly at <a href="tel:2156543075">(215) 654-3075</a>. Share the property address, loan amount needed, your timeline, and your exit strategy. The more detail you provide, the faster we can respond.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            How quickly will I hear back after submitting?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">We review every scenario and aim to respond with <strong>preliminary terms within 24–48 hours</strong>. For time-sensitive deals, call us directly and we can often turn around feedback the same day.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            What documents do I need to provide?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Requirements vary by loan type, but generally include: <strong>property address and details, purchase contract (if applicable), estimated value or appraisal, rent rolls or lease agreements (for DSCR), rehab scope and budget (for fix &amp; flip), and basic borrower information</strong>. We'll guide you through the full list once we review your scenario.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            How long does it take to close?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Typical closing timelines: <strong>Bridge &amp; Fix/Flip: 7–14 days</strong> from approval. <strong>DSCR Rental: 20–30 days</strong>. Closings can move faster when documentation is complete and there are no title issues. We work on your timeline — not a bank's.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            Do you charge upfront fees?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">There are no fees to submit your scenario or receive a term sheet. Standard closing costs and origination fees apply at closing and will be fully disclosed in your term sheet upfront — <strong>no surprises</strong>.</div></div>
+        </div>
+      </div>
+
+    </div><!-- end faq content -->
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <span class="eyebrow-white">Ready to Move?</span>
+      <h2>Submit Your Deal Today</h2>
+      <p>Get financing terms in 24–48 hours. No cost, no commitment to submit.</p>
+    </div>
+    <a class="btn secondary" href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Submit Your Deal →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-logo"><img src="https://cbizcapital.com/wp-content/uploads/2024/02/Group-1321316416.png" alt="CBiz Capital" style="height:34px;width:auto"></div>
+      <p class="footer-desc">Fast, flexible real estate financing for investors, brokers, developers, and property owners.</p>
+    </div>
+    <div>
+      <strong>Loan Programs</strong>
+      <a href="dscr-rental-loans.html">DSCR Rental Loans</a>
+      <a href="fix-and-flip.html">Fix &amp; Flip Loans</a>
+      <a href="bridge-loans.html">Bridge Loans</a>
+      <a href="recent-loan-closings.html">Recent Closings</a>
+      <a href="blogs.html">Blog</a>
+      <a href="faqs.html">FAQs</a>
+    </div>
+    <div>
+      <strong>Contact</strong>
+      <a href="tel:2156543075">(215) 654-3075</a>
+      <a href="mailto:info@cbizcapital.com">info@cbizcapital.com</a>
+      <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Submit Your Deal</a>
+    </div>
+  </div>
+  <div class="container footer-bottom"><p>&copy; 2025 CBiz Capital. All rights reserved. Not a commitment to lend.</p></div>
+</footer>
+
+<script>
+function toggleFAQ(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  // Open clicked if it wasn't open
+  if (!isOpen) item.classList.add('open');
+}
+
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.querySelectorAll('.faq-nav-item').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
