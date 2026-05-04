@@ -103,7 +103,7 @@ a{text-decoration:none;color:inherit}
 .nav-arrow{width:14px;height:14px;transition:transform .2s;flex-shrink:0}
 .nav>li.open .nav-arrow{transform:rotate(180deg)}
 .dropdown{position:absolute;top:100%;padding-top:8px;left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--border);border-radius:16px;padding:8px;min-width:240px;box-shadow:0 20px 50px rgba(6,27,58,.12),0 0 0 1px rgba(6,27,58,.03);opacity:0;visibility:hidden;transition:opacity .18s,transform .18s;transform:translateX(-50%) translateY(-6px);z-index:200}
-.nav>li.open .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.nav>li.open .dropdown,.nav>li:focus-within .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
 .dropdown a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:var(--navy);font-size:13px;font-weight:600;transition:background .15s;text-decoration:none}
 .dropdown a:hover{background:var(--light-purple);color:var(--primary)}
 .dropdown-icon{width:34px;height:34px;border-radius:8px;background:var(--light-purple);border:1px solid var(--purple-border);display:grid;place-items:center;flex-shrink:0;font-size:11px;font-weight:900;color:var(--primary)}
@@ -385,49 +385,59 @@ a{text-decoration:none;color:inherit}
   <div class="container footer-bottom" style="border-top:1px solid rgba(255,255,255,.07);margin-top:44px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><p>&copy; <span id="yr"></span> CBiz Capital. All rights reserved. Not a commitment to lend.</p></div>
 </footer>
 
+
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Dropdown
-  var trigger = document.querySelector(".services-trigger");
-  if (trigger) {
-    var li = trigger.parentElement;
-    var dropdown = li.querySelector(".dropdown");
-    trigger.addEventListener("click", function(e) {
-      e.preventDefault(); e.stopPropagation();
-      li.classList.toggle("open");
-      if (dropdown) dropdown.style.pointerEvents = li.classList.contains("open") ? "auto" : "none";
-    });
-    if (dropdown) dropdown.addEventListener("click", function(e) { e.stopPropagation(); });
-    document.addEventListener("click", function() {
-      li.classList.remove("open");
-      if (dropdown) dropdown.style.pointerEvents = "none";
-    });
-    document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape") { li.classList.remove("open"); if (dropdown) dropdown.style.pointerEvents = "none"; }
+(function(){
+  var trigger = document.querySelector('.services-trigger');
+  if(!trigger) return;
+  var li = trigger.parentElement;
+  var dd = li.querySelector('.dropdown');
+  if(!dd) return;
+
+  // Desktop: hover works via CSS focus-within + we add open on click too
+  trigger.addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    li.classList.toggle('open');
+  });
+
+  // Clicks inside dropdown navigate normally — don't close prematurely
+  dd.addEventListener('mousedown', function(e){ e.stopPropagation(); });
+  dd.addEventListener('click', function(e){ e.stopPropagation(); });
+
+  // Close when clicking outside
+  document.addEventListener('click', function(){
+    li.classList.remove('open');
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') li.classList.remove('open');
+  });
+
+  // Mobile nav toggle
+  var ham = document.getElementById('hamburger');
+  var mNav = document.getElementById('mobileNav');
+  if(ham && mNav){
+    ham.addEventListener('click', function(){
+      ham.classList.toggle('open');
+      mNav.classList.toggle('open');
+      document.body.style.overflow = mNav.classList.contains('open') ? 'hidden' : '';
     });
   }
-  // Mobile nav
-  var ham = document.getElementById("hamburger");
-  var mNav = document.getElementById("mobileNav");
-  if (ham && mNav) {
-    ham.addEventListener("click", function() {
-      ham.classList.toggle("open"); mNav.classList.toggle("open");
-      document.body.style.overflow = mNav.classList.contains("open") ? "hidden" : "";
-    });
-  }
-  // Scroll animations
-  document.documentElement.classList.add("js-loaded");
-  var els = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); } });
-    }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
-    els.forEach(function(el) { obs.observe(el); });
-  } else { els.forEach(function(el) { el.classList.add("visible"); }); }
-  // Year
-  var yr = document.getElementById("yr");
-  if (yr) yr.textContent = new Date().getFullYear();
-});
+
+  // Scroll reveal
+  document.documentElement.classList.add('js-loaded');
+  var els = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){ obs.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('visible'); }); }
+
+  // Auto year
+  var yr = document.getElementById('yr');
+  if(yr) yr.textContent = new Date().getFullYear();
+})();
 </script>
 </body>
 </html>
