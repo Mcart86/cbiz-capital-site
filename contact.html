@@ -126,6 +126,75 @@ a{text-decoration:none;color:inherit}
 .why-card::after{content:attr(data-num);position:absolute;right:-8px;bottom:-16px;font-family:'Manrope',sans-serif;font-size:100px;font-weight:900;color:rgba(79,70,229,.07);line-height:1;pointer-events:none;user-select:none;letter-spacing:-4px}
 .card-num{position:relative;overflow:hidden}
 .card-num::after{content:attr(data-num);position:absolute;right:-8px;top:-10px;font-family:'Manrope',sans-serif;font-size:100px;font-weight:900;color:rgba(79,70,229,.06);line-height:1;pointer-events:none;user-select:none;letter-spacing:-4px}
+
+/* ── Mobile Responsive ── */
+@media(max-width:768px){
+  /* Typography */
+  h1{font-size:clamp(36px,9vw,54px)!important;letter-spacing:-1px!important}
+  h2{font-size:clamp(26px,7vw,38px)!important;letter-spacing:-0.5px!important}
+  .section{padding:56px 0!important}
+
+  /* Hero */
+  .hero{padding:56px 0 40px!important}
+  .hero-inner{grid-template-columns:1fr!important;gap:36px!important}
+  .hero h1,.page-hero h1{font-size:clamp(38px,10vw,56px)!important}
+  .hero-actions{flex-direction:column!important;gap:10px!important}
+  .hero-actions .btn{width:100%!important;justify-content:center!important}
+  .calc-card,.deal-card,.scenario-card,.hero-card{margin-top:8px!important}
+
+  /* Proof strips */
+  .proof-inner{grid-template-columns:repeat(2,1fr)!important}
+  .proof-strip,.hero-proof-strip{border-radius:14px!important;margin:20px auto 48px!important}
+  .proof-item{padding:20px!important}
+  .proof-item strong{font-size:22px!important}
+
+  /* Grids */
+  .grid-3{grid-template-columns:1fr!important}
+  .grid-2{grid-template-columns:1fr!important}
+  .split{grid-template-columns:1fr!important;gap:36px!important}
+  .steps{grid-template-columns:1fr!important}
+  .loan-layout{grid-template-columns:1fr!important;gap:20px!important}
+  .loan-secondary-grid{grid-template-columns:1fr!important}
+  .why-grid{grid-template-columns:1fr!important}
+  .testimonial-grid{grid-template-columns:1fr!important}
+  .deal-grid{grid-template-columns:1fr!important}
+  .req-grid{grid-template-columns:1fr!important}
+
+  /* Footer */
+  .footer-grid{grid-template-columns:1fr!important;gap:32px!important}
+  .footer-bottom{flex-direction:column!important;text-align:center!important}
+
+  /* CTA band */
+  .cta-inner{flex-direction:column!important;align-items:flex-start!important;gap:24px!important}
+  .cta-inner .btn{width:100%!important;justify-content:center!important}
+
+  /* Testimonial CTA */
+  .testimonial-cta{flex-direction:column!important;gap:16px!important;text-align:center!important}
+  .testimonial-cta .btn{width:100%!important;justify-content:center!important}
+
+  /* Featured deal */
+  .featured-inner{grid-template-columns:1fr!important;gap:0!important}
+  .featured-image{min-height:220px!important;border-radius:16px 16px 0 0!important}
+  .featured-content{border-radius:0 0 16px 16px!important;padding:28px!important}
+
+  /* About hero */
+  .about-hero-inner{grid-template-columns:1fr!important;gap:32px!important}
+  .about-image{height:280px!important;border-radius:16px!important}
+
+  /* Contact */
+  .contact-grid{grid-template-columns:1fr!important}
+
+  /* Misc */
+  .hero-badges{gap:8px!important}
+  .container{width:calc(100% - 32px)!important}
+  .section-lead{font-size:15px!important}
+}
+
+@media(max-width:480px){
+  .proof-inner{grid-template-columns:repeat(2,1fr)!important}
+  .hero-badge{font-size:11px!important;padding:6px 10px!important}
+  .btn{font-size:14px!important;padding:12px 20px!important}
+}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
