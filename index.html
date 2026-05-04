@@ -31,7 +31,7 @@ a{text-decoration:none;color:inherit}
 .logo{font-size:22px;font-weight:900;letter-spacing:.08em;display:flex;align-items:center;gap:10px}
 .logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:grid;place-items:center;color:#fff;font-weight:900}
 
-.hero{background:radial-gradient(circle at 76% 28%,rgba(79,70,229,.12),transparent 34%),linear-gradient(180deg,#fff 0%,#F7F8FC 100%)}
+.home-hero{background:radial-gradient(circle at 76% 28%,rgba(79,70,229,.12),transparent 34%),linear-gradient(180deg,#fff 0%,#F7F8FC 100%)}
 .hero-inner{padding:90px 0;display:grid;grid-template-columns:.92fr 1.08fr;gap:72px;align-items:center}
 .hero-pill{display:inline-flex;padding:8px 14px;border-radius:999px;background:var(--light-purple);border:1px solid var(--purple-border);color:var(--primary);font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
 .hero h1{font-size:clamp(56px,7vw,92px);line-height:.95;letter-spacing:-2.5px;margin:0 0 28px}
@@ -341,7 +341,7 @@ a{text-decoration:none;color:inherit}
   .hero-inner-home{grid-template-columns:1fr!important}
 
   /* Service page heroes — ensure dark bg shows */
-  section.hero{background:linear-gradient(135deg,var(--navy) 0%,#0D2554 60%,var(--primary-dark) 100%)!important;padding:52px 0 40px!important}
+  section.hero:not(.home-hero){background:linear-gradient(135deg,var(--navy) 0%,#0D2554 60%,var(--primary-dark) 100%)!important;padding:52px 0 40px!important}
   section.hero *{max-width:100%!important}
   section.hero h1{font-size:clamp(36px,9vw,52px)!important}
   section.hero .hero-inner{gap:28px!important}
@@ -442,7 +442,7 @@ a{text-decoration:none;color:inherit}
   <a href="contact.html">Contact</a>
   <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener" class="mobile-cta">Apply Now →</a>
 </div>
-<section class="hero">
+<section class="home-hero" id="home-hero">
   <div class="container hero-inner">
     <div>
       <div class="hero-pill">Private Real Estate Lending</div>
