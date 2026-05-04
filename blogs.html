@@ -33,7 +33,7 @@ a{text-decoration:none;color:inherit}
 .page-hero p{font-size:18px;line-height:1.65;color:rgba(255,255,255,.75);max-width:560px}
 
 /* Blog Cards Grid */
-.blog-section{padding:80px 0}
+.blog-section{padding:64px 0}
 .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:80px}
 .blog-card{background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(6,27,58,.05);transition:all .22s ease;display:flex;flex-direction:column}
 .blog-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(6,27,58,.1);border-color:var(--purple-border)}
@@ -48,9 +48,9 @@ a{text-decoration:none;color:inherit}
 .blog-card:hover .read-more{gap:10px}
 
 /* Article Sections */
-.article{padding:80px 0;border-top:1px solid var(--border)}
+.article{padding:80px 0;border-top:1px solid var(--border);max-width:780px;margin:0 auto}
 .article:first-of-type{border-top:none}
-.article-inner{display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start}
+.article-inner{display:grid;grid-template-columns:1fr;gap:0;max-width:780px}
 .article-sidebar{}
 .article-img{width:100%;border-radius:18px;object-fit:cover;box-shadow:0 16px 44px rgba(6,27,58,.1);display:block;margin-bottom:24px}
 .article-img-secondary{width:100%;border-radius:14px;object-fit:cover;box-shadow:0 8px 24px rgba(6,27,58,.07);display:block;margin-top:20px}
@@ -226,11 +226,7 @@ h1,h2,h3,.hero h1,.page-hero h1,.hero-title-accent,.quote{font-family:'Manrope',
   <div class="container">
     <!-- ── POST 1 ── -->
     <article id="post-1" class="article">
-      <div class="article-inner">
-        <div class="article-sidebar">
-          <img class="article-img" src="https://cbizcapital.com/wp-content/uploads/2026/02/qtq80-tvociG-1024x678.jpeg" alt="2026 Housing Market" />
-          <img class="article-img-secondary" src="https://cbizcapital.com/wp-content/uploads/2026/02/qtq80-CwTszO-1024x683.jpeg" alt="Housing construction trends" />
-        </div>
+      <div class="article-inner" style="display:block">
         <div>
           <span class="article-tag">Market Insight</span>
           <h2>2026 Housing Market Overview – Insights from CBizCapital</h2>
@@ -283,11 +279,7 @@ h1,h2,h3,.hero h1,.page-hero h1,.hero-title-accent,.quote{font-family:'Manrope',
 
     <!-- ── POST 2 ── -->
     <article id="post-2" class="article">
-      <div class="article-inner">
-        <div class="article-sidebar">
-          <img class="article-img" src="https://cbizcapital.com/wp-content/uploads/2026/02/image.jpeg" alt="DSCR and Fix & Flip Loans" />
-          <img class="article-img-secondary" src="https://cbizcapital.com/wp-content/uploads/2026/02/qtq80-UxKLt1-1024x683.jpeg" alt="Real estate investment" />
-        </div>
+      <div class="article-inner" style="display:block">
         <div>
           <span class="article-tag">Financing Guide</span>
           <h2>Unlocking Opportunities: DSCR, Fix &amp; Flip, Construction, and Commercial Loans</h2>
@@ -333,11 +325,7 @@ h1,h2,h3,.hero h1,.page-hero h1,.hero-title-accent,.quote{font-family:'Manrope',
 
     <!-- ── POST 3 ── -->
     <article id="post-3" class="article">
-      <div class="article-inner">
-        <div class="article-sidebar">
-          <img class="article-img" src="https://cbizcapital.com/wp-content/uploads/2025/12/condo-exterior-1.jpg" alt="CBiz Capital Overview" />
-          <img class="article-img-secondary" src="https://cbizcapital.com/wp-content/uploads/2026/02/GoDaddy_-004-683x1024.jpg" alt="CBiz Capital team" style="max-height:340px" />
-        </div>
+      <div class="article-inner" style="display:block">
         <div>
           <span class="article-tag">About CBiz</span>
           <h2>Unlocking Financial Potential: An Overview of CBiz Capital</h2>
