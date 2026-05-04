@@ -385,5 +385,49 @@ a{text-decoration:none;color:inherit}
   <div class="container footer-bottom" style="border-top:1px solid rgba(255,255,255,.07);margin-top:44px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><p>&copy; <span id="yr"></span> CBiz Capital. All rights reserved. Not a commitment to lend.</p></div>
 </footer>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Dropdown
+  var trigger = document.querySelector(".services-trigger");
+  if (trigger) {
+    var li = trigger.parentElement;
+    var dropdown = li.querySelector(".dropdown");
+    trigger.addEventListener("click", function(e) {
+      e.preventDefault(); e.stopPropagation();
+      li.classList.toggle("open");
+      if (dropdown) dropdown.style.pointerEvents = li.classList.contains("open") ? "auto" : "none";
+    });
+    if (dropdown) dropdown.addEventListener("click", function(e) { e.stopPropagation(); });
+    document.addEventListener("click", function() {
+      li.classList.remove("open");
+      if (dropdown) dropdown.style.pointerEvents = "none";
+    });
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") { li.classList.remove("open"); if (dropdown) dropdown.style.pointerEvents = "none"; }
+    });
+  }
+  // Mobile nav
+  var ham = document.getElementById("hamburger");
+  var mNav = document.getElementById("mobileNav");
+  if (ham && mNav) {
+    ham.addEventListener("click", function() {
+      ham.classList.toggle("open"); mNav.classList.toggle("open");
+      document.body.style.overflow = mNav.classList.contains("open") ? "hidden" : "";
+    });
+  }
+  // Scroll animations
+  document.documentElement.classList.add("js-loaded");
+  var els = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+    els.forEach(function(el) { obs.observe(el); });
+  } else { els.forEach(function(el) { el.classList.add("visible"); }); }
+  // Year
+  var yr = document.getElementById("yr");
+  if (yr) yr.textContent = new Date().getFullYear();
+});
+</script>
 </body>
 </html>

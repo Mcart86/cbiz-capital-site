@@ -435,20 +435,24 @@ document.addEventListener('DOMContentLoaded', function() {
   var trigger = document.querySelector('.services-trigger');
   if (!trigger) return;
   var li = trigger.parentElement;
+  var dropdown = li.querySelector('.dropdown');
 
   trigger.addEventListener('click', function(e) {
     e.preventDefault();
+    e.stopPropagation();
     li.classList.toggle('open');
+    if (dropdown) dropdown.style.pointerEvents = li.classList.contains('open') ? 'auto' : 'none';
   });
 
-  document.addEventListener('click', function(e) {
-    if (!li.contains(e.target)) {
-      li.classList.remove('open');
-    }
+  if (dropdown) dropdown.addEventListener('click', function(e) { e.stopPropagation(); });
+
+  document.addEventListener('click', function() {
+    li.classList.remove('open');
+    if (dropdown) dropdown.style.pointerEvents = 'none';
   });
 
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') li.classList.remove('open');
+    if (e.key === 'Escape') { li.classList.remove('open'); if (dropdown) dropdown.style.pointerEvents = 'none'; }
   });
 });
 </script>

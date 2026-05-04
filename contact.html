@@ -231,12 +231,28 @@ a{text-decoration:none;color:inherit}
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 document.addEventListener('DOMContentLoaded', function() {
-  var trigger = document.querySelector('.services-trigger');
-  if (trigger) {
-    var li = trigger.parentElement;
-    trigger.addEventListener('click', function(e) { e.preventDefault(); li.classList.toggle('open'); });
-    document.addEventListener('click', function(e) { if (!li.contains(e.target)) li.classList.remove('open'); });
-  }
+var trigger = document.querySelector('.services-trigger');
+  if (!trigger) return;
+  var li = trigger.parentElement;
+  var dropdown = li.querySelector('.dropdown');
+
+  trigger.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    li.classList.toggle('open');
+    if (dropdown) dropdown.style.pointerEvents = li.classList.contains('open') ? 'auto' : 'none';
+  });
+
+  if (dropdown) dropdown.addEventListener('click', function(e) { e.stopPropagation(); });
+
+  document.addEventListener('click', function() {
+    li.classList.remove('open');
+    if (dropdown) dropdown.style.pointerEvents = 'none';
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { li.classList.remove('open'); if (dropdown) dropdown.style.pointerEvents = 'none'; }
+  });
   var ham = document.getElementById('hamburger');
   var mNav = document.getElementById('mobileNav');
   if (ham) ham.addEventListener('click', function() {
