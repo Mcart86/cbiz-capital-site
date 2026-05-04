@@ -140,7 +140,7 @@ a{text-decoration:none;color:inherit}
     <nav class="nav">
       <li><a href="index.html">Home</a></li>
       <li>
-        <a href="#" onclick="toggleServices(event)">Services <svg class="nav-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#" class="services-trigger">Services <svg class="nav-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <div class="dropdown">
           <a href="dscr-rental-loans.html"><span class="dropdown-icon">DS</span><span class="dropdown-text"><strong>DSCR Rental Loans</strong><span>Cash flow-based qualification</span></span></a>
           <a href="fix-and-flip.html"><span class="dropdown-icon">FF</span><span class="dropdown-text"><strong>Fix &amp; Flip Loans</strong><span>Fast capital for rehab projects</span></span></a>
@@ -359,21 +359,25 @@ a{text-decoration:none;color:inherit}
 </footer>
 
 <script>
-function toggleServices(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  const li = e.currentTarget.parentElement;
-  li.classList.toggle('open');
-}
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('li')) {
-    document.querySelectorAll('.nav>li.open').forEach(li => li.classList.remove('open'));
-  }
-});
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.nav>li.open').forEach(li => li.classList.remove('open'));
-  }
+document.addEventListener('DOMContentLoaded', function() {
+  var trigger = document.querySelector('.services-trigger');
+  if (!trigger) return;
+  var li = trigger.parentElement;
+
+  trigger.addEventListener('click', function(e) {
+    e.preventDefault();
+    li.classList.toggle('open');
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!li.contains(e.target)) {
+      li.classList.remove('open');
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') li.classList.remove('open');
+  });
 });
 </script>
 
