@@ -15,7 +15,7 @@ a{text-decoration:none;color:inherit}
 .btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,70,229,.38)}
 .btn.secondary{background:#fff;color:var(--navy);border-color:var(--border)}
 .btn.secondary:hover{transform:translateY(-2px);border-color:var(--primary)}
-.eyebrow{color:var(--primary);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 16px;display:block}
+.eyebrow{color:rgba(179,175,255,.9);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 16px;display:block}
 
 /* Header */
 .site-header{background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
@@ -41,9 +41,9 @@ a{text-decoration:none;color:inherit}
 @media(max-width:960px){.nav{display:none}}
 
 /* Page Hero */
-.page-hero{background:radial-gradient(ellipse at 70% 50%,rgba(79,70,229,.08),transparent 60%),linear-gradient(180deg,#fff 0%,var(--section) 100%);padding:72px 0 64px;border-bottom:1px solid var(--border)}
+.page-hero{background:linear-gradient(135deg,var(--navy) 0%,#0D2554 60%,var(--primary-dark) 100%);position:relative;overflow:hidden}.page-hero::after{content:"";position:absolute;right:-100px;top:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(79,70,229,.25),transparent 65%);pointer-events:none;z-index:0}.page-hero .container{position:relative;z-index:1;padding:72px 0 64px;border-bottom:1px solid rgba(255,255,255,.1)}
 .page-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.page-hero h1{font-size:clamp(40px,5vw,64px);line-height:.98;letter-spacing:-2px;margin:0 0 16px;font-weight:900}
+.page-hero h1{font-size:clamp(40px,5vw,64px);line-height:.98;letter-spacing:-2px;margin:0 0 16px;font-weight:900;color:#fff}
 .page-hero p{font-size:17px;line-height:1.7;color:#475569;max-width:480px}
 .hero-contact-card{background:#fff;border:1px solid var(--purple-border);border-radius:20px;padding:32px;box-shadow:0 16px 48px rgba(6,27,58,.08)}
 .hero-contact-card h3{font-size:20px;font-weight:800;margin:0 0 6px}

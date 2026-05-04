@@ -13,9 +13,9 @@ a{text-decoration:none;color:inherit}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;border:1.5px solid transparent;transition:all .2s ease;cursor:pointer}
 .btn.primary{color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-dark));box-shadow:0 8px 24px rgba(79,70,229,.3)}
 .btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,70,229,.38)}
-.btn.secondary{background:#fff;color:var(--navy);border-color:var(--border);box-shadow:0 2px 8px rgba(6,27,58,.06)}
+.btn.secondary{background:rgba(255,255,255,.95);color:var(--navy);border-color:transparent;box-shadow:0 4px 16px rgba(0,0,0,.2)}
 .btn.secondary:hover{transform:translateY(-2px);border-color:var(--primary)}
-.eyebrow{color:var(--primary);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 16px;display:block}
+.eyebrow{color:rgba(179,175,255,.9);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 16px;display:block}
 .site-header{background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
 .header-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-size:20px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
@@ -23,14 +23,14 @@ a{text-decoration:none;color:inherit}
 
 .nav a{color:var(--muted);transition:color .2s}
 .nav a:hover,.nav a.active{color:var(--navy);font-weight:700}
-.hero{background:radial-gradient(ellipse at 80% 20%,rgba(79,70,229,.1),transparent 50%),linear-gradient(180deg,#fff 0%,var(--section) 100%);overflow:hidden;padding:80px 0 0}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#0D2554 60%,var(--primary-dark) 100%);position:relative;overflow:hidden}.hero::after{content:"";position:absolute;right:-100px;top:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(79,70,229,.25),transparent 65%);pointer-events:none;z-index:0}.hero-inner{position:relative;z-index:1;overflow:hidden;padding:80px 0 0}
 .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding-bottom:80px}
-.hero-pill{display:inline-flex;padding:7px 14px;border-radius:999px;background:var(--light-purple);border:1px solid var(--purple-border);color:var(--primary);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
-h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin:0 0 24px;font-weight:900}
-.hero-title-accent{color:var(--primary)}
-.hero-sub{max-width:520px;font-size:18px;line-height:1.65;color:#475569;margin:0 0 28px}
+.hero-pill{display:inline-flex;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin:0 0 24px;font-weight:900;color:#fff}
+.hero-title-accent{color:rgba(179,175,255,.95)}
+.hero-sub{max-width:520px;font-size:18px;line-height:1.65;color:rgba(255,255,255,.75);margin:0 0 28px}
 .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
-.hero-badge{background:#fff;border:1px solid var(--purple-border);border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;color:var(--navy);box-shadow:0 2px 8px rgba(6,27,58,.06)}
+.hero-badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;color:rgba(255,255,255,.9);box-shadow:none}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
 .scenario-card{background:#fff;border:1px solid var(--purple-border);border-radius:22px;padding:36px;box-shadow:0 20px 60px rgba(6,27,58,.1),0 0 0 1px rgba(79,70,229,.06);position:relative;overflow:hidden}
 .scenario-card::before{content:"";position:absolute;right:-50px;top:-50px;width:160px;height:160px;background:radial-gradient(circle,rgba(79,70,229,.08),transparent 70%);border-radius:50%;pointer-events:none}
