@@ -44,7 +44,7 @@ a{text-decoration:none;color:inherit}
 .page-hero{background:linear-gradient(135deg,var(--navy) 0%,#0D2554 60%,var(--primary-dark) 100%);position:relative;overflow:hidden}.page-hero::after{content:"";position:absolute;right:-100px;top:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(79,70,229,.25),transparent 65%);pointer-events:none;z-index:0}.page-hero .container{position:relative;z-index:1;padding:72px 0 64px;border-bottom:1px solid rgba(255,255,255,.1)}
 .page-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .page-hero h1{font-size:clamp(40px,5vw,64px);line-height:.98;letter-spacing:-2px;margin:0 0 16px;font-weight:900;color:#fff}
-.page-hero p{font-size:17px;line-height:1.7;color:#475569;max-width:480px}
+.page-hero p{font-size:17px;line-height:1.7;color:rgba(255,255,255,.75);max-width:480px}
 .hero-contact-card{background:#fff;border:1px solid var(--purple-border);border-radius:20px;padding:32px;box-shadow:0 16px 48px rgba(6,27,58,.08)}
 .hero-contact-card h3{font-size:20px;font-weight:800;margin:0 0 6px}
 .hero-contact-card p{font-size:14px;color:var(--muted);margin:0 0 20px;line-height:1.6}
@@ -169,11 +169,11 @@ a{text-decoration:none;color:inherit}
     <!-- Sidebar Nav -->
     <div class="faq-sidebar">
       <div class="faq-sidebar-title">Jump to Section</div>
-      <button class="faq-nav-item active" onclick="scrollTo('general')">General</button>
-      <button class="faq-nav-item" onclick="scrollTo('dscr')">DSCR Loans</button>
-      <button class="faq-nav-item" onclick="scrollTo('fix-flip')">Fix &amp; Flip</button>
-      <button class="faq-nav-item" onclick="scrollTo('bridge')">Bridge Loans</button>
-      <button class="faq-nav-item" onclick="scrollTo('process')">Process &amp; Timing</button>
+      <button class="faq-nav-item active" onclick="jumpTo(event,'general')">General</button>
+      <button class="faq-nav-item" onclick="jumpTo(event,'dscr')">DSCR Loans</button>
+      <button class="faq-nav-item" onclick="jumpTo(event,'fix-flip')">Fix &amp; Flip</button>
+      <button class="faq-nav-item" onclick="jumpTo(event,'bridge')">Bridge Loans</button>
+      <button class="faq-nav-item" onclick="jumpTo(event,'process')">Process &amp; Timing</button>
       <div class="faq-nav-divider"></div>
       <button class="faq-nav-item" onclick="window.open('https://cbizcapital.commerciallendingservicesllc.com/','_blank')" style="color:var(--primary);font-weight:700">Submit Your Deal →</button>
     </div>
@@ -459,16 +459,18 @@ a{text-decoration:none;color:inherit}
 function toggleFAQ(el) {
   const item = el.parentElement;
   const isOpen = item.classList.contains('open');
-  // Close all
   document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-  // Open clicked if it wasn't open
   if (!isOpen) item.classList.add('open');
 }
 
-function scrollTo(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+function jumpTo(e, id) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  const offset = 96; // sticky header height
+  const top = target.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top: top, behavior: 'smooth' });
   document.querySelectorAll('.faq-nav-item').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
+  e.currentTarget.classList.add('active');
 }
 </script>
 
