@@ -68,14 +68,14 @@ a{text-decoration:none;color:inherit}
 .deal-details small{display:block;color:var(--muted);font-size:11px;font-weight:900;text-transform:uppercase;margin-bottom:6px}
 .deal-details strong{font-size:14px}
 .featured-content p{font-size:16px;line-height:1.7;color:#334155}
-.testimonials{text-align:center;background:linear-gradient(180deg,#fff 0%,#F7F8FC 100%);padding-bottom:64px}
+.testimonials{text-align:center;background:linear-gradient(135deg,var(--navy) 0%,#0D2554 60%,var(--primary-dark) 100%);padding-bottom:64px;position:relative;overflow:hidden}.testimonials::before{content:"";position:absolute;left:-80px;bottom:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(79,70,229,.2),transparent 65%);pointer-events:none}
 .testimonial-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;text-align:left;margin-top:42px}
-.testimonial-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:30px;position:relative;box-shadow:0 18px 40px rgba(6,27,58,.05)}
-.testimonial-card:before{content:"";position:absolute;top:0;left:24px;right:24px;height:4px;background:linear-gradient(90deg,var(--navy),var(--primary));border-radius:0 0 999px 999px}
-.stars{color:var(--primary);font-size:18px;letter-spacing:2px;margin-bottom:22px}
-.testimonial-card p{font-size:15px;line-height:1.7;color:#0B1F3A}
-.testimonial-card strong{display:block;margin-top:22px}
-.testimonial-cta{margin-top:36px;padding:28px 32px;background:#fff;border:1px solid var(--border);border-radius:16px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:0 4px 16px rgba(6,27,58,.04)}
+.testimonial-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:30px;position:relative;backdrop-filter:blur(10px)}
+.testimonial-card:before{content:"";position:absolute;top:0;left:24px;right:24px;height:3px;background:linear-gradient(90deg,rgba(79,70,229,.6),rgba(179,175,255,.8));border-radius:0 0 999px 999px}
+.stars{color:rgba(179,175,255,.9);font-size:18px;letter-spacing:2px;margin-bottom:22px}
+.testimonial-card p{font-size:15px;line-height:1.7;color:rgba(255,255,255,.85)}
+.testimonial-card strong{display:block;margin-top:22px;color:#fff}
+.testimonial-cta{margin-top:36px;padding:28px 32px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:16px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 .loan-layout{display:grid;grid-template-columns:1.15fr 1.35fr;gap:28px}
 .loan-feature-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#EEF0FF 0%,#D2D8FF 100%);border:1px solid var(--purple-border);border-radius:22px;padding:48px;box-shadow:0 26px 65px rgba(6,27,58,.12)}
 .loan-feature-card:after{content:"";position:absolute;right:-12px;bottom:-12px;width:130px;height:130px;background:rgba(79,70,229,.07);border-radius:50%}
@@ -103,7 +103,7 @@ a{text-decoration:none;color:inherit}
 .why-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:34px;box-shadow:0 14px 35px rgba(6,27,58,.04);transition:.25s}
 .why-card:hover{transform:translateY(-5px);box-shadow:0 18px 45px rgba(6,27,58,.10);border-color:var(--primary)}
 .why-number{display:grid;place-items:center;width:50px;height:50px;border-radius:14px;background:var(--light-purple);color:var(--primary);font-weight:900;margin-bottom:24px}
-.founder{background:var(--section)}
+.founder{background:linear-gradient(135deg,#F0F1FF 0%,#E4E7FF 100%)}
 .founder-inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:center}
 .founder img{width:100%;max-height:420px;object-fit:cover;border-radius:22px;box-shadow:0 24px 60px rgba(6,27,58,.12)}
 .quote{font-size:30px;line-height:1.45;font-weight:800;margin:0 0 24px}
@@ -273,9 +273,9 @@ a{text-decoration:none;color:inherit}
 </section>
 <section id="testimonials" class="section testimonials">
   <div class="container">
-    <p class="eyebrow">Client Feedback</p>
-    <h2>Trusted by Investors, Borrowers, and Partners</h2>
-    <p class="section-lead" style="margin-left:auto;margin-right:auto;">Real feedback from clients who rely on CBiz Capital for responsive guidance, flexible options, and reliable execution.</p>
+    <p class="eyebrow" style="color:rgba(200,196,255,.9)">Client Feedback</p>
+    <h2 style="color:#fff">Trusted by Investors, Borrowers, and Partners</h2>
+    <p class="section-lead" style="margin-left:auto;margin-right:auto;color:rgba(255,255,255,.7)">Real feedback from clients who rely on CBiz Capital for responsive guidance, flexible options, and reliable execution.</p>
     <div class="testimonial-grid">
       <div class="testimonial-card reveal"><div class="stars">★★★★★</div><p>“I had a great experience with this business. The team was professional, responsive, and easy to work with from start to finish.”</p><strong>Mikail Degirmenci</strong></div>
       <div class="testimonial-card reveal"><div class="stars">★★★★★</div><p>“Joe was great to work with. I had no idea what I was doing and he helped me gather all my information and was on top of me.”</p><strong>ara ishkhanian</strong></div>
@@ -316,7 +316,7 @@ a{text-decoration:none;color:inherit}
     </div>
   </div>
 </section>
-<section id="why" class="section">
+<section id="why" class="section" style="background:var(--light-purple)">
   <div class="container why-grid">
     <div>
       <p class="eyebrow">Why CBiz Capital</p>
