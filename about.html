@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Us | CBiz Capital</title>
+<style>
+:root{--navy:#061B3A;--primary:#4F46E5;--primary-dark:#3730A3;--light-purple:#EEF0FF;--purple-border:#D8DBFF;--section:#F7F8FC;--border:#E5EAF3;--muted:#5B6B82;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--navy);background:#fff;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,calc(100% - 48px));margin:0 auto}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;border:1.5px solid transparent;transition:all .2s ease}
+.btn.primary{color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-dark));box-shadow:0 8px 24px rgba(79,70,229,.3)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,70,229,.38)}
+.btn.secondary{background:#fff;color:var(--navy);border-color:var(--border)}
+.btn.secondary:hover{transform:translateY(-2px);border-color:var(--primary)}
+.eyebrow{color:var(--primary);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 16px;display:block}
+
+/* Header */
+.site-header{background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.header-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center}
+.nav{display:flex;gap:4px;align-items:center;font-size:14px;font-weight:600;list-style:none;padding:0;margin:0}
+.nav>li{position:relative;list-style:none}
+.nav>li>a{display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:8px;color:var(--muted);transition:all .2s;white-space:nowrap;font-weight:600}
+.nav>li>a:hover,.nav>li>a.active{color:var(--navy);background:var(--section)}
+.nav-arrow{width:14px;height:14px;transition:transform .2s;flex-shrink:0}
+.nav>li.open .nav-arrow{transform:rotate(180deg)}
+.dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(-6px);background:#fff;border:1px solid var(--border);border-radius:16px;padding:8px;margin-top:4px;min-width:240px;box-shadow:0 20px 50px rgba(6,27,58,.12);opacity:0;visibility:hidden;transition:opacity .18s,transform .18s;z-index:200}
+.nav>li.open .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.dropdown a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:var(--navy);font-size:13px;font-weight:600;transition:background .15s}
+.dropdown a:hover{background:var(--light-purple);color:var(--primary)}
+.dropdown-icon{width:34px;height:34px;border-radius:8px;background:var(--light-purple);border:1px solid var(--purple-border);display:grid;place-items:center;flex-shrink:0;font-size:11px;font-weight:900;color:var(--primary)}
+.dropdown-text strong{display:block;font-size:13px;font-weight:700;color:var(--navy);line-height:1.25}
+.dropdown-text span{display:block;font-size:11px;color:var(--muted);font-weight:500;margin-top:1px}
+.dropdown-divider{height:1px;background:var(--border);margin:6px 4px}
+.nav-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important;border-radius:9px!important;padding:9px 18px!important;margin-left:6px;font-weight:700!important;box-shadow:0 6px 18px rgba(79,70,229,.28)}
+.nav-cta:hover{transform:translateY(-1px);color:#fff!important}
+@media(max-width:960px){.nav{display:none}}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#0D2554 60%,var(--primary-dark) 100%);color:#fff;padding:96px 0 80px;overflow:hidden;position:relative}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(79,70,229,.25),transparent 65%);pointer-events:none}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative;z-index:1}
+.hero-pill{display:inline-flex;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+.hero h1{font-size:clamp(44px,5vw,72px);line-height:.96;letter-spacing:-2px;margin:0 0 22px;font-weight:900}
+.hero-accent{color:rgba(179,175,255,.9)}
+.hero-sub{font-size:18px;line-height:1.7;color:rgba(255,255,255,.75);margin:0 0 36px;max-width:500px}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
+.hero-stat{padding:22px 20px;background:rgba(255,255,255,.04);text-align:center}
+.hero-stat strong{display:block;font-size:28px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1}
+.hero-stat span{display:block;font-size:12px;color:rgba(255,255,255,.6);margin-top:5px;font-weight:500}
+.hero-img-wrap{position:relative}
+.hero-img{width:100%;border-radius:22px;object-fit:cover;height:460px;box-shadow:0 32px 80px rgba(0,0,0,.3);display:block}
+.hero-img-badge{position:absolute;bottom:24px;left:24px;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-radius:14px;padding:16px 20px;box-shadow:0 12px 32px rgba(0,0,0,.2)}
+.hero-img-badge strong{display:block;font-size:16px;font-weight:800;color:var(--navy)}
+.hero-img-badge span{font-size:13px;color:var(--muted);font-weight:500}
+
+/* Story Section */
+.story{padding:88px 0}
+.story-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story h2{font-size:clamp(32px,3.5vw,48px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;margin:0 0 22px}
+.story p{font-size:16px;line-height:1.8;color:#475569;margin:0 0 18px}
+.story p:last-of-type{margin-bottom:28px}
+.story-img{width:100%;border-radius:22px;object-fit:cover;height:500px;box-shadow:0 24px 64px rgba(6,27,58,.1);display:block}
+
+/* Values */
+.values{background:var(--section);padding:88px 0}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.value-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:36px;box-shadow:0 4px 16px rgba(6,27,58,.04);transition:all .22s}
+.value-card:hover{transform:translateY(-5px);box-shadow:0 16px 44px rgba(6,27,58,.1);border-color:var(--purple-border)}
+.value-icon{width:48px;height:48px;border-radius:14px;background:var(--light-purple);border:1px solid var(--purple-border);display:grid;place-items:center;color:var(--primary);margin-bottom:22px}
+.value-card h3{font-size:20px;font-weight:800;letter-spacing:-.3px;margin:0 0 10px}
+.value-card p{font-size:15px;line-height:1.7;color:#475569}
+
+/* Joe section */
+.joe{padding:88px 0}
+.joe-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.joe-img-stack{position:relative}
+.joe-img{width:100%;border-radius:22px;object-fit:cover;object-position:top;height:560px;box-shadow:0 24px 64px rgba(6,27,58,.12);display:block}
+.joe-credential{position:absolute;bottom:28px;right:-24px;background:#fff;border:1px solid var(--purple-border);border-radius:18px;padding:20px 24px;box-shadow:0 16px 48px rgba(6,27,58,.12);min-width:200px}
+.joe-credential h4{font-size:16px;font-weight:800;margin:0 0 4px}
+.joe-credential span{font-size:13px;color:var(--muted);font-weight:500}
+.joe-credential-tag{display:inline-flex;margin-top:10px;background:var(--light-purple);color:var(--primary);font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;border:1px solid var(--purple-border)}
+.joe h2{font-size:clamp(32px,3.5vw,48px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;margin:0 0 20px}
+.joe-lead{font-size:18px;line-height:1.7;color:#334155;margin:0 0 20px;font-weight:500}
+.joe p{font-size:16px;line-height:1.8;color:#475569;margin:0 0 16px}
+.joe-quote{background:linear-gradient(135deg,var(--light-purple),#DDE0FF);border:1px solid var(--purple-border);border-radius:18px;padding:28px 32px;margin:28px 0;position:relative}
+.joe-quote::before{content:'"';position:absolute;top:-10px;left:24px;font-size:72px;color:var(--primary);opacity:.2;font-family:Georgia,serif;line-height:1}
+.joe-quote p{font-size:17px;line-height:1.7;color:var(--navy);font-weight:600;font-style:italic;margin:0}
+
+/* Track Record */
+.track{background:linear-gradient(135deg,var(--navy) 0%,#0D2554 50%,var(--primary-dark) 100%);padding:88px 0;color:#fff}
+.track-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.track h2{font-size:clamp(32px,3.5vw,48px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;margin:0 0 20px}
+.track-lead{font-size:17px;line-height:1.7;color:rgba(255,255,255,.75);margin:0 0 32px}
+.track-list{list-style:none;padding:0;margin:0}
+.track-list li{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:15px;color:rgba(255,255,255,.8);line-height:1.5}
+.track-list li:last-child{border-bottom:none}
+.track-check{width:22px;height:22px;border-radius:6px;background:rgba(79,70,229,.4);border:1px solid rgba(79,70,229,.6);display:grid;place-items:center;flex-shrink:0;margin-top:1px}
+.track-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.track-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px 24px;text-align:center}
+.track-stat strong{display:block;font-size:32px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1.1}
+.track-stat span{display:block;font-size:13px;color:rgba(255,255,255,.6);margin-top:6px;font-weight:500}
+
+/* CTA */
+.cta-band{background:var(--section);border-top:1px solid var(--border);padding:80px 0}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:40px}
+.cta-inner h2{font-size:clamp(28px,3vw,42px);line-height:1.1;margin:0 0 10px;font-weight:900;letter-spacing:-1px}
+.cta-inner p{color:var(--muted);font-size:17px}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+
+/* Footer */
+.site-footer{background:#040f20;color:#fff;padding:60px 0 36px}
+.footer-grid{display:grid;grid-template-columns:1.6fr .7fr .7fr;gap:64px}
+.footer-grid strong{display:block;font-size:11px;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.12em}
+.footer-grid a,.footer-grid p{color:rgba(255,255,255,.6);display:block;margin:9px 0;font-size:14px;transition:color .2s}
+.footer-grid a:hover{color:#fff}
+.footer-logo{font-size:18px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.footer-desc{font-size:14px;color:rgba(255,255,255,.45);line-height:1.65;max-width:280px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);margin-top:44px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3)}
+
+@media(max-width:960px){
+  .hero-inner,.story-inner,.joe-inner,.track-inner,.cta-inner{grid-template-columns:1fr}
+  .values-grid{grid-template-columns:1fr}
+  .track-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-stats{grid-template-columns:repeat(3,1fr)}
+  .joe-credential{right:0;bottom:-20px}
+  .cta-actions{width:100%}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html"><img src="https://cbizcapital.com/wp-content/uploads/2024/02/Group-1321316416.png" alt="CBiz Capital" style="height:38px;width:auto"></a>
+    <nav class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#" onclick="toggleServices(event)">Services <svg class="nav-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown">
+          <a href="dscr-rental-loans.html"><span class="dropdown-icon">DS</span><span class="dropdown-text"><strong>DSCR Rental Loans</strong><span>Cash flow-based qualification</span></span></a>
+          <a href="fix-and-flip.html"><span class="dropdown-icon">FF</span><span class="dropdown-text"><strong>Fix &amp; Flip Loans</strong><span>Fast capital for rehab projects</span></span></a>
+          <a href="bridge-loans.html"><span class="dropdown-icon">BR</span><span class="dropdown-text"><strong>Bridge Loans</strong><span>Short-term timing solutions</span></span></a>
+          <div class="dropdown-divider"></div>
+          <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener" style="justify-content:center;font-weight:700;color:var(--primary);font-size:13px">Submit Your Deal →</a>
+        </div>
+      </li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="recent-loan-closings.html">Recent Closings</a></li>
+      <li><a href="blogs.html">Blog</a></li>
+      <li><a href="faqs.html">FAQs</a></li>
+      <li><a class="nav-cta" href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Submit Deal →</a></li>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-pill">About CBiz Capital</div>
+      <h1>Built on <span class="hero-accent">35+ Years</span> of Real Estate Finance</h1>
+      <p class="hero-sub">Our principals have been actively involved in residential and commercial real estate finance since 1986 — bringing deep market knowledge, institutional experience, and a personal approach to every deal.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>1986</strong><span>Founded</span></div>
+        <div class="hero-stat"><strong>35+</strong><span>Years Experience</span></div>
+        <div class="hero-stat"><strong>PA &amp; NJ</strong><span>Home Markets</span></div>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img class="hero-img" src="https://cbizcapital.com/wp-content/uploads/2025/07/Group-1321316418-2.png" alt="CBiz Capital team" />
+      <div class="hero-img-badge">
+        <strong>Joe Mesi</strong>
+        <span>Principal, CBiz Capital</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="container story-inner">
+    <div>
+      <span class="eyebrow">Our Story</span>
+      <h2>Deep Roots in Real Estate Finance</h2>
+      <p>CBiz Capital was built on a foundation of genuine expertise — not just deal volume. Our principals have been actively working in real estate finance, institutional lending, private money, construction, and development since 1986, giving us a perspective on the market that only comes from decades of hands-on experience.</p>
+      <p>We understand that every deal is different. Market conditions change. Timelines compress. Properties have unique challenges. Our job is to understand the full picture — not fit your deal into a box — and structure financing that actually works for the investor in front of us.</p>
+      <p>From single-family rentals to multifamily portfolios, fix-and-flip rehabs to time-sensitive bridge scenarios, we bring the same level of attention and expertise to every transaction.</p>
+      <a class="btn primary" href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Submit Your Deal →</a>
+    </div>
+    <img class="story-img" src="https://cbizcapital.com/wp-content/uploads/2025/07/Group-1321316418-3.png" alt="CBiz Capital team meeting" />
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="container">
+    <span class="eyebrow">How We Work</span>
+    <h2 style="font-size:clamp(32px,3.5vw,48px);font-weight:900;letter-spacing:-1.5px;line-height:1.08;margin:0 0 8px">What Sets Us Apart</h2>
+    <p style="font-size:17px;color:var(--muted);line-height:1.7;max-width:600px">We don't just move capital — we guide investors through the process with expertise, transparency, and genuine care for the outcome.</p>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>35+ Years of Experience</h3>
+        <p>Our principals have been active in real estate finance since 1986 — through multiple market cycles, rate environments, and economic shifts. That depth of experience protects our clients.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Speed Without Compromise</h3>
+        <p>We review scenarios and respond within 24–48 hours. Fast doesn't mean careless — it means we've done enough deals to move with confidence and precision.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Personalized Attention</h3>
+        <p>You're not a ticket number. Every client works directly with our team and receives hands-on guidance from scenario review through closing.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3>Flexible Structures</h3>
+        <p>We match capital to your strategy. Whether you need a DSCR rental loan, bridge financing, or a fix-and-flip structure, we tailor terms around your deal — not the other way around.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Institutional Knowledge</h3>
+        <p>Our background spans institutional lending, private money, construction, and development. We understand how deals are structured at every level of the capital stack.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Integrity on Every Deal</h3>
+        <p>We're upfront about what we can do and clear when a deal isn't a fit. No surprises, no wasted time. We earn long-term relationships by being honest from the start.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOE MESI -->
+<section class="joe">
+  <div class="container joe-inner">
+    <div class="joe-img-stack">
+      <img class="joe-img" src="joe-mesi.jpg" alt="Joe Mesi — Principal, CBiz Capital" />
+      <div class="joe-credential">
+        <h4>Joe Mesi</h4>
+        <span>Principal, CBiz Capital</span>
+        <div class="joe-credential-tag">Active since 1986</div>
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow">Meet the Principal</span>
+      <h2>Joe Mesi</h2>
+      <p class="joe-lead">With a career spanning nearly four decades in real estate finance, Joe Mesi has built CBiz Capital into a trusted lending partner for investors, brokers, and developers across the region.</p>
+      <p>Joe's background covers institutional lending, private money, construction financing, and real estate development — giving him a 360-degree view of what it takes to get a deal done. He's not just a lender reviewing a file; he's an operator who understands what's on the line.</p>
+      <p>Clients consistently describe Joe as responsive, knowledgeable, and genuinely invested in their success. He personally oversees every deal that comes through CBiz Capital, ensuring the same level of attention and expertise regardless of loan size or complexity.</p>
+      <div class="joe-quote">
+        <p>"Every deal is different. Our job is to understand the full picture and structure financing that actually works — not force you into a box."</p>
+      </div>
+      <a class="btn primary" href="tel:2156543075">Call Joe: (215) 654-3075 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRACK RECORD -->
+<section class="track">
+  <div class="container track-inner">
+    <div>
+      <span class="eyebrow" style="color:rgba(255,255,255,.6)">Track Record</span>
+      <h2>Built for Investors, Proven in the Market</h2>
+      <p class="track-lead">CBiz Capital has funded deals across Pennsylvania, New Jersey, and beyond — from single rentals to multifamily portfolios and complex bridge scenarios.</p>
+      <ul class="track-list">
+        <li>
+          <div class="track-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          DSCR rental loans for single-family and portfolio investors
+        </li>
+        <li>
+          <div class="track-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Fix &amp; flip financing from acquisition through rehab draw
+        </li>
+        <li>
+          <div class="track-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Bridge loans for time-sensitive acquisitions and 1031 gaps
+        </li>
+        <li>
+          <div class="track-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Cash-out refinances on stabilized rental portfolios
+        </li>
+        <li>
+          <div class="track-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Multifamily and warrantable condo purchase financing
+        </li>
+        <li>
+          <div class="track-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          LLC-held investment property structures
+        </li>
+      </ul>
+    </div>
+    <div class="track-grid">
+      <div class="track-stat"><strong>35+</strong><span>Years in Real Estate Finance</span></div>
+      <div class="track-stat"><strong>24–48h</strong><span>Term Turnaround</span></div>
+      <div class="track-stat"><strong>$4M+</strong><span>Recently Closed</span></div>
+      <div class="track-stat"><strong>PA &amp; NJ</strong><span>Core Markets + Nationwide</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <span class="eyebrow">Work With Us</span>
+      <h2>Ready to Work With an Experienced Team?</h2>
+      <p>Submit your deal or call Joe directly. We respond fast.</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn primary" href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Submit Your Deal →</a>
+      <a class="btn secondary" href="tel:2156543075">(215) 654-3075</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-logo"><img src="https://cbizcapital.com/wp-content/uploads/2024/02/Group-1321316416.png" alt="CBiz Capital" style="height:34px;width:auto"></div>
+      <p class="footer-desc">Fast, flexible real estate financing for investors, brokers, developers, and property owners.</p>
+    </div>
+    <div>
+      <strong>Loan Programs</strong>
+      <a href="dscr-rental-loans.html">DSCR Rental Loans</a>
+      <a href="fix-and-flip.html">Fix &amp; Flip Loans</a>
+      <a href="bridge-loans.html">Bridge Loans</a>
+      <a href="recent-loan-closings.html">Recent Closings</a>
+      <a href="blogs.html">Blog</a>
+      <a href="faqs.html">FAQs</a>
+    </div>
+    <div>
+      <strong>Contact</strong>
+      <a href="tel:2156543075">(215) 654-3075</a>
+      <a href="mailto:info@cbizcapital.com">info@cbizcapital.com</a>
+      <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Submit Your Deal</a>
+    </div>
+  </div>
+  <div class="container footer-bottom"><p>&copy; 2025 CBiz Capital. All rights reserved. Not a commitment to lend.</p></div>
+</footer>
+
+<script>
+function toggleServices(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  const li = e.currentTarget.parentElement;
+  li.classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('li')) {
+    document.querySelectorAll('.nav>li.open').forEach(li => li.classList.remove('open'));
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.nav>li.open').forEach(li => li.classList.remove('open'));
+  }
+});
+</script>
+
+</body>
+</html>
