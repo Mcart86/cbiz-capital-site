@@ -145,11 +145,11 @@ a{text-decoration:none;color:inherit}
 .mobile-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important;text-align:center!important;margin-top:12px;border-radius:12px!important;padding:16px!important}
 @media(max-width:960px){.nav{display:none!important}.hamburger{display:flex}}
 
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:none}
-.reveal-delay-1{transition-delay:.1s}
-.reveal-delay-2{transition-delay:.2s}
-.reveal-delay-3{transition-delay:.3s}
+.js-loaded .reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.js-loaded .reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.08s}
+.reveal-delay-2{transition-delay:.16s}
+.reveal-delay-3{transition-delay:.24s}
 </style>
 <meta name="description" content="CBiz Capital is built on 35+ years of real estate finance experience. Meet Joe Mesi and the team behind your deal." />
 <meta property="og:title" content="About CBiz Capital | 35+ Years of Real Estate Finance" />
@@ -415,12 +415,19 @@ if (ham && mNav) {
     document.body.style.overflow = mNav.classList.contains('open') ? 'hidden' : '';
   });
 }
-// Scroll animations
+// Scroll animations - safe progressive enhancement
+document.documentElement.classList.add('js-loaded');
 var revealEls = document.querySelectorAll('.reveal');
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.12 });
-revealEls.forEach(function(el) { observer.observe(el); });
+if ('IntersectionObserver' in window) {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(function(el) { observer.observe(el); });
+} else {
+  revealEls.forEach(function(el) { el.classList.add('visible'); });
+}
 // Auto copyright year
 var yr = document.getElementById('yr');
 if (yr) yr.textContent = new Date().getFullYear();
