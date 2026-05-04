@@ -201,6 +201,55 @@ a{text-decoration:none;color:inherit}
   .hero-badge{font-size:11px!important;padding:6px 10px!important}
   .btn{font-size:14px!important;padding:12px 20px!important}
 }
+
+/* ── Additional Mobile Fixes ── */
+@media(max-width:768px){
+
+  /* Why cards — force single column */
+  .why-grid{grid-template-columns:1fr!important;gap:16px!important}
+  .why-card{padding:24px!important}
+
+  /* Joe founder quote section — stack photo above text */
+  .founder-inner{grid-template-columns:1fr!important;gap:24px!important}
+  .founder-photo{width:120px!important;height:120px!important;border-radius:50%!important;margin:0 auto!important}
+  .founder-quote{font-size:18px!important;line-height:1.5!important;text-align:center!important}
+  .founder-name{text-align:center!important}
+  .quote-section .split{grid-template-columns:1fr!important;text-align:center!important}
+  blockquote{font-size:18px!important;line-height:1.6!important}
+
+  /* Use case cards — single column, no overflow */
+  .use-case-grid{grid-template-columns:1fr!important;gap:16px!important;overflow:hidden!important}
+  .use-cases-grid{grid-template-columns:1fr!important;gap:16px!important}
+  .grid-2{grid-template-columns:1fr!important;gap:16px!important}
+
+  /* DSCR calculator section — stack */
+  .calc-section .split{grid-template-columns:1fr!important;gap:28px!important}
+  .calc-panel{padding:24px!important}
+
+  /* Prevent ANY horizontal overflow sitewide */
+  body,html{overflow-x:hidden!important;max-width:100vw!important}
+  section,div,.container{max-width:100%!important;box-sizing:border-box!important}
+
+  /* Joe section image + quote fix */
+  .joe-section .split,.founder .split{grid-template-columns:1fr!important;gap:24px!important}
+  .joe-img,.founder img{width:100%!important;max-width:200px!important;margin:0 auto!important;display:block!important;border-radius:16px!important}
+  .founder-content{text-align:center!important}
+  
+  /* Testimonial cards single column */
+  .testimonial-grid{grid-template-columns:1fr!important;gap:16px!important}
+  
+  /* Featured deal stack */
+  .featured-inner{grid-template-columns:1fr!important}
+  .deal-meta{grid-template-columns:1fr 1fr!important}
+
+  /* Loan layout on homepage */
+  .loan-layout{grid-template-columns:1fr!important}
+  .loan-secondary-grid{grid-template-columns:1fr 1fr!important;gap:14px!important}
+
+  /* Card padding tighter on mobile */
+  .card{padding:22px!important}
+  .step-card{padding:22px!important}
+}
 </style>
 <meta name="description" content="Market insights, financing guides, and real estate investing strategies from the team at CBiz Capital." />
 <meta property="og:title" content="Blog | CBiz Capital Real Estate Finance Insights" />
