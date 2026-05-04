@@ -132,6 +132,14 @@ h1{font-family:'Manrope',sans-serif;font-size:clamp(44px,5vw,76px);line-height:.
 .js-loaded .reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
 .js-loaded .reveal.visible{opacity:1;transform:none}
 @media(max-width:960px){.hero-inner,.split,.footer-grid{grid-template-columns:1fr}.grid-3,.steps,.proof-inner{grid-template-columns:1fr}.cta-inner{flex-direction:column;align-items:flex-start}.section{padding:64px 0}.hero{padding:64px 0 48px}}
+
+/* Ghost numbers behind cards */
+.step-card{position:relative;overflow:hidden}
+.step-card::after{content:attr(data-num);position:absolute;right:-8px;top:-10px;font-family:'Manrope',sans-serif;font-size:100px;font-weight:900;color:rgba(79,70,229,.06);line-height:1;pointer-events:none;user-select:none;letter-spacing:-4px}
+.why-card{position:relative;overflow:hidden}
+.why-card::after{content:attr(data-num);position:absolute;right:-8px;bottom:-16px;font-family:'Manrope',sans-serif;font-size:100px;font-weight:900;color:rgba(79,70,229,.07);line-height:1;pointer-events:none;user-select:none;letter-spacing:-4px}
+.card-num{position:relative;overflow:hidden}
+.card-num::after{content:attr(data-num);position:absolute;right:-8px;top:-10px;font-family:'Manrope',sans-serif;font-size:100px;font-weight:900;color:rgba(79,70,229,.06);line-height:1;pointer-events:none;user-select:none;letter-spacing:-4px}
 </style>
 </head>
 <body>
@@ -301,17 +309,17 @@ h1{font-family:'Manrope',sans-serif;font-size:clamp(44px,5vw,76px);line-height:.
     <h2>Get Covered in 3 Steps</h2>
     <p class="section-lead">Fast, straightforward coverage so you can focus on the project — not the paperwork.</p>
     <div class="steps">
-      <div class="step-card reveal">
+      <div class="step-card reveal" data-num="01">
         <div class="step-num">01</div>
         <h3>Tell Us About Your Project</h3>
         <p>Share the property address, project type, construction budget, and timeline. We'll review and respond quickly.</p>
       </div>
-      <div class="step-card reveal">
+      <div class="step-card reveal" data-num="02">
         <div class="step-num">02</div>
         <h3>Receive a Tailored Quote</h3>
         <p>We structure coverage around your specific project — not a generic one-size policy. Review terms and ask questions.</p>
       </div>
-      <div class="step-card reveal">
+      <div class="step-card reveal" data-num="03">
         <div class="step-num">03</div>
         <h3>Get Covered &amp; Build</h3>
         <p>Coverage in place before your first draw or closing. You build with confidence knowing your investment is protected.</p>

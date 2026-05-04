@@ -132,6 +132,14 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
 .mobile-section-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding:14px 16px 6px;margin-top:6px;display:block}
 .mobile-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important;text-align:center!important;margin-top:10px;border-radius:12px!important;padding:16px!important}
 @media(max-width:960px){.nav{display:none!important}.hamburger{display:flex}}
+
+/* Ghost numbers behind cards */
+.step-card{position:relative;overflow:hidden}
+.step-card::after{content:attr(data-num);position:absolute;right:-8px;top:-10px;font-family:'Manrope',sans-serif;font-size:100px;font-weight:900;color:rgba(79,70,229,.06);line-height:1;pointer-events:none;user-select:none;letter-spacing:-4px}
+.why-card{position:relative;overflow:hidden}
+.why-card::after{content:attr(data-num);position:absolute;right:-8px;bottom:-16px;font-family:'Manrope',sans-serif;font-size:100px;font-weight:900;color:rgba(79,70,229,.07);line-height:1;pointer-events:none;user-select:none;letter-spacing:-4px}
+.card-num{position:relative;overflow:hidden}
+.card-num::after{content:attr(data-num);position:absolute;right:-8px;top:-10px;font-family:'Manrope',sans-serif;font-size:100px;font-weight:900;color:rgba(79,70,229,.06);line-height:1;pointer-events:none;user-select:none;letter-spacing:-4px}
 </style>
 <meta name="description" content="Fast capital for rehab investors. Fix & flip loans with draw schedules, up to 85% LTC, and 7–14 day closings. Apply today." />
 <meta property="og:title" content="Fix & Flip Loans | CBiz Capital" />
