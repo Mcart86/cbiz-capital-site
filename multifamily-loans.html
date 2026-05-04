@@ -274,6 +274,45 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
   .card{padding:22px!important}
   .step-card{padding:22px!important}
 }
+
+/* ── Mobile Fix Pass 2 ── */
+@media(max-width:768px){
+  /* Fix header gap — sticky header + hero spacing */
+  .site-header{position:sticky;top:0;z-index:100}
+  .hero{padding-top:48px!important}
+
+  /* Loan program cards — force single column */
+  .loan-secondary-grid{grid-template-columns:1fr!important;gap:14px!important}
+  .loan-program-card{width:100%!important}
+  a.loan-program-card{width:100%!important;display:block!important}
+
+  /* Featured deal meta — stack pills */
+  .deal-meta-grid,.deal-meta{grid-template-columns:1fr!important;gap:10px!important}
+  .deal-meta-item{width:100%!important}
+  .featured-amount{font-size:clamp(28px,8vw,44px)!important}
+
+  /* Why section cards — single column */
+  .why-grid,.why-cards{grid-template-columns:1fr!important;gap:16px!important}
+  
+  /* Proof strip 2x2 */
+  .proof-inner,.hero-proof-inner{grid-template-columns:repeat(2,1fr)!important}
+
+  /* Fix any remaining 2-col grids */
+  [class*="grid-2"],[class*="two-col"]{grid-template-columns:1fr!important}
+  
+  /* Prevent text overflow on deal amount */
+  .featured-content *{word-break:break-word!important}
+  
+  /* Fix the hamburger position — make sure it's in the header flow */
+  .header-inner{position:relative!important}
+  .hamburger{position:relative!important;z-index:10!important}
+}
+
+@media(max-width:768px){
+  .deal-details{grid-template-columns:1fr!important}
+  .featured-content{padding:24px!important}
+  .featured-content h3{font-size:clamp(28px,8vw,42px)!important}
+}
 </style>
 <meta name="description" content="Financing for 5–24 unit apartment buildings. DSCR-based qualification, up to 70% LTV, purchase and refinance. Apply with CBiz Capital." />
 <meta property="og:title" content="Small Balance Multifamily Loans | CBiz Capital" />
