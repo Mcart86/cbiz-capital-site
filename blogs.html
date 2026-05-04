@@ -349,6 +349,47 @@ a{text-decoration:none;color:inherit}
     grid-template-columns:1fr!important;
   }
 }
+
+/* ── About Page Mobile ── */
+@media(max-width:768px){
+  /* Track record section - stack */
+  .track-inner{grid-template-columns:1fr!important;gap:36px!important}
+  .track-grid{grid-template-columns:repeat(2,1fr)!important;gap:12px!important}
+  .track-stat{padding:20px!important}
+  .track-stat strong{font-size:28px!important}
+
+  /* Joe section - full width, no overflow */
+  .joe{padding:56px 0!important}
+  .joe .container{width:calc(100% - 32px)!important}
+  .joe-lead{font-size:16px!important}
+  .joe-quote{padding:20px!important;font-size:16px!important}
+  .joe-quote p{font-size:16px!important;line-height:1.6!important}
+
+  /* About hero - stack image below */
+  .about-hero-inner{grid-template-columns:1fr!important;gap:0!important}
+  .about-image{height:260px!important;border-radius:0 0 16px 16px!important}
+  .about-hero-content{order:1!important;padding:40px 0 24px!important}
+  .about-image-wrap{order:2!important}
+
+  /* Story section */
+  .story-inner,.story .container .split{grid-template-columns:1fr!important;gap:24px!important}
+
+  /* Values grid - already single col but ensure */  
+  .values-grid{grid-template-columns:1fr!important;gap:16px!important}
+  .value-card{padding:24px!important}
+
+  /* Stats strip on about */
+  .about-stats{grid-template-columns:repeat(2,1fr)!important}
+
+  /* Homepage featured deal overflow fix */
+  .featured-inner{grid-template-columns:1fr!important;overflow:hidden!important}
+  .featured-card{overflow:hidden!important;max-width:100%!important}
+  .deal-details{grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .deal-details div{padding:10px!important;font-size:13px!important}
+
+  /* Homepage stat bar - show all 4 in 2x2 */
+  .hero-proof-inner{grid-template-columns:repeat(2,1fr)!important}
+}
 </style>
 <meta name="description" content="Market insights, financing guides, and real estate investing strategies from the team at CBiz Capital." />
 <meta property="og:title" content="Blog | CBiz Capital Real Estate Finance Insights" />
