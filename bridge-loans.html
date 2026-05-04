@@ -302,6 +302,35 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
   .featured-content{padding:24px!important}
   .featured-content h3{font-size:clamp(28px,8vw,42px)!important}
 }
+
+/* ── Hero Mobile Fix ── */
+@media(max-width:768px){
+  /* Header — keep hamburger inline */
+  .header-inner{flex-wrap:nowrap!important;gap:0!important}
+  .hamburger{margin-left:auto!important;flex-shrink:0!important}
+
+  /* Homepage hero */
+  .hero-headline{font-size:clamp(36px,10vw,52px)!important}
+  .hero-image-wrap,.hero-visual{display:none!important}
+  .hero-content{width:100%!important;max-width:100%!important}
+  .hero-inner-home{grid-template-columns:1fr!important}
+
+  /* Service page heroes — ensure dark bg shows */
+  section.hero{background:linear-gradient(135deg,var(--navy) 0%,#0D2554 60%,var(--primary-dark) 100%)!important;padding:52px 0 40px!important}
+  section.hero *{max-width:100%!important}
+  section.hero h1{font-size:clamp(36px,9vw,52px)!important}
+  section.hero .hero-inner{gap:28px!important}
+  section.hero .calc-card,
+  section.hero .deal-card,
+  section.hero .scenario-card,
+  section.hero .hero-card{
+    margin-top:0!important;
+    padding:24px!important;
+  }
+  section.hero .hero-card-row,
+  .scenario-row{display:flex!important;justify-content:space-between!important;padding:10px 0!important;border-bottom:1px solid var(--border)!important;font-size:14px!important}
+  .scenario-result{border-radius:12px!important;padding:16px!important}
+}
 </style>
 <meta name="description" content="Short-term bridge financing for time-sensitive deals. Close in 5–10 days. Flexible exit strategies. CBiz Capital bridges the gap." />
 <meta property="og:title" content="Bridge Loans | CBiz Capital" />
@@ -339,10 +368,8 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
       <li><a href="contact.html">Contact</a></li>
       <li><a class="nav-cta" href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Apply Now →</a></li>
     </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
 </header>
 <div class="mobile-nav" id="mobileNav">
   <a href="index.html">Home</a>
