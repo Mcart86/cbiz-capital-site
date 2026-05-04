@@ -88,97 +88,19 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
 .cta-inner h2{font-size:clamp(32px,3.5vw,46px);line-height:1.1;margin:0 0 12px;font-weight:900;letter-spacing:-1px}
 .cta-inner p{color:rgba(255,255,255,.72);font-size:17px;line-height:1.6}
 .eyebrow-white{color:rgba(255,255,255,.6);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px;display:block}
-.site-footer{background:#040f20;color:#fff;padding:60px 0 36px}
-.footer-grid{display:grid;grid-template-columns:1.4fr .6fr .6fr .6fr;gap:48px}
-.footer-grid strong{display:block;font-size:11px;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.12em}
-.footer-grid a,.footer-grid p{color:rgba(255,255,255,.6);display:block;margin:9px 0;font-size:14px;transition:color .2s}
+.site-footer{background:#040f20;color:#fff;padding:64px 0 36px}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px}
+.footer-grid strong{display:block;font-size:11px;font-weight:700;margin-bottom:14px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.14em}
+.footer-grid a{color:rgba(255,255,255,.6);display:block;margin:8px 0;font-size:14px;transition:color .2s;text-decoration:none}
 .footer-grid a:hover{color:#fff}
-.footer-logo{font-size:18px;font-weight:900;letter-spacing:.06em;display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.footer-desc{font-size:14px;color:rgba(255,255,255,.45);line-height:1.65;max-width:280px}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.07);margin-top:44px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3)}
-@media(max-width:960px){.hero-inner,.split,.footer-grid{grid-template-columns:1fr}.grid-3,.proof-inner,.req-grid,.use-cases{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.cta-inner{flex-direction:column;align-items:flex-start}.section{padding:64px 0}.hero{padding:60px 0 0}}
-
-/* Dropdown Nav */
-.nav{display:flex;gap:4px;align-items:center;font-size:14px;font-weight:600;list-style:none;padding:0;margin:0}
-.nav>li{position:relative;list-style:none}
-.nav>li>a{display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:8px;color:var(--muted);transition:all .2s;white-space:nowrap;font-weight:600}
-.nav>li>a:hover,.nav>li>a.active{color:var(--navy);background:var(--section)}
-.nav-arrow{width:14px;height:14px;transition:transform .2s;flex-shrink:0}
-.nav>li.open .nav-arrow{transform:rotate(180deg)}
-.dropdown{position:absolute;top:100%;padding-top:8px;left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--border);border-radius:16px;padding:8px;min-width:240px;box-shadow:0 20px 50px rgba(6,27,58,.12),0 0 0 1px rgba(6,27,58,.03);opacity:0;visibility:hidden;transition:opacity .18s,transform .18s;transform:translateX(-50%) translateY(-6px);z-index:200}
-.nav>li.open .dropdown,.nav>li:focus-within .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-.dropdown a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:var(--navy);font-size:13px;font-weight:600;transition:background .15s;text-decoration:none}
-.dropdown a:hover{background:var(--light-purple);color:var(--primary)}
-.dropdown-icon{width:34px;height:34px;border-radius:8px;background:var(--light-purple);border:1px solid var(--purple-border);display:grid;place-items:center;flex-shrink:0;font-size:11px;font-weight:900;color:var(--primary)}
-.dropdown-text strong{display:block;font-size:13px;font-weight:700;color:var(--navy);line-height:1.25}
-.dropdown-text span{display:block;font-size:11px;color:var(--muted);font-weight:500;margin-top:1px}
-.dropdown-divider{height:1px;background:var(--border);margin:6px 4px}
-.nav-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important;border-radius:9px!important;padding:9px 18px!important;margin-left:6px;font-weight:700!important;box-shadow:0 6px 18px rgba(79,70,229,.28)}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(79,70,229,.36)!important;background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important}
-@media(max-width:960px){.nav{display:none}}
-
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;margin-left:8px}
-.hamburger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-nav{display:none;position:fixed;inset:72px 0 0;background:#fff;z-index:99;padding:24px;overflow-y:auto;border-top:1px solid var(--border);flex-direction:column;gap:4px}
-.mobile-nav.open{display:flex}
-.mobile-nav a{display:block;padding:14px 16px;border-radius:10px;font-size:16px;font-weight:600;color:var(--navy);transition:background .15s;text-decoration:none}
-.mobile-nav a:hover{background:var(--section)}
-.mobile-section-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding:16px 16px 8px;margin-top:8px}
-.mobile-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important;text-align:center!important;margin-top:12px;border-radius:12px!important;padding:16px!important}
-@media(max-width:960px){.nav{display:none!important}.hamburger{display:flex}}
-
-.js-loaded .reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
-.js-loaded .reveal.visible{opacity:1;transform:none}
-.reveal-delay-1{transition-delay:.08s}
-.reveal-delay-2{transition-delay:.16s}
-.reveal-delay-3{transition-delay:.24s}
-
-.footer-social{margin-top:28px;padding-top:28px;border-top:1px solid rgba(255,255,255,.08)}
-.footer-social-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-bottom:14px}
-.footer-social-icons{display:flex;gap:10px}
-.footer-social-icons a{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:grid;place-items:center;color:rgba(255,255,255,.55);transition:all .2s;text-decoration:none}
+.footer-grid p{color:rgba(255,255,255,.6);display:block;margin:8px 0;font-size:14px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);margin-top:48px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-social{margin-top:24px}
+.footer-social-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-bottom:12px}
+.footer-social-icons{display:flex;gap:8px}
+.footer-social-icons a{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:grid;place-items:center;color:rgba(255,255,255,.55);transition:all .2s;text-decoration:none}
 .footer-social-icons a:hover{background:var(--primary);border-color:var(--primary);color:#fff;transform:translateY(-2px)}
-.footer-social-icons svg{width:16px;height:16px}
-
-/* Premium font stack */
-body{font-family:'DM Sans',Inter,-apple-system,sans-serif}
-h1,h2,h3,.hero h1,.page-hero h1,.hero-title-accent,.quote{font-family:'Manrope',Inter,sans-serif}
-.logo{font-family:'Manrope',Inter,sans-serif}
-
-/* Animated hero mesh */
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%,rgba(79,70,229,.18) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(55,48,163,.25) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(109,99,255,.08) 0%,transparent 70%);animation:meshShift 8s ease-in-out infinite alternate;pointer-events:none;z-index:0}
-@keyframes meshShift{0%{opacity:.7;transform:scale(1)}100%{opacity:1;transform:scale(1.04)}}
-.hero-inner,.hero .container{position:relative;z-index:1}
-
-/* Card hover glow */
-.loan-program-card:hover,.card:hover,.why-card:hover,.value-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 20px 50px rgba(79,70,229,.15),0 0 0 1px rgba(79,70,229,.12)!important;border-color:rgba(79,70,229,.3)!important}
-.loan-feature-card:hover{box-shadow:0 30px 70px rgba(79,70,229,.2)!important}
-.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--primary),rgba(109,99,255,.8));width:0%;z-index:9999;transition:width .1s linear}
-
-/* Hero entrance animations */
-@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes slideRight{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
-.hero-pill,.hero-pill-inner{animation:fadeUp .5s ease both}
-.hero h1,h1.hero-title{animation:fadeUp .6s .1s ease both}
-.hero-sub,.hero-subheadline{animation:fadeUp .6s .2s ease both}
-.hero-badges,.hero-proof-badges{animation:fadeUp .6s .3s ease both}
-.hero-actions{animation:fadeUp .6s .4s ease both}
-.calc-card,.deal-card,.scenario-card{animation:fadeUp .7s .3s ease both}
-/* Stat bar entrance */
-.proof-strip,.hero-proof-strip{animation:fadeUp .7s .5s ease both}
-/* Section headings */
-.section h2,.page-hero h1{animation:fadeUp .6s ease both}
-/* Stagger reveal cards */
-.grid-3 .card:nth-child(1),.steps .step-card:nth-child(1){transition-delay:.05s!important}
-.grid-3 .card:nth-child(2),.steps .step-card:nth-child(2){transition-delay:.15s!important}
-.grid-3 .card:nth-child(3),.steps .step-card:nth-child(3){transition-delay:.25s!important}
-.grid-3 .card:nth-child(4){transition-delay:.1s!important}
-.grid-3 .card:nth-child(5){transition-delay:.2s!important}
-.grid-3 .card:nth-child(6){transition-delay:.3s!important}
+.footer-social-icons svg{width:15px;height:15px}
 </style>
 <meta name="description" content="Short-term bridge financing for time-sensitive deals. Close in 5–10 days. Flexible exit strategies. CBiz Capital bridges the gap." />
 <meta property="og:title" content="Bridge Loans | CBiz Capital" />
@@ -426,28 +348,18 @@ h1,h2,h3,.hero h1,.page-hero h1,.hero-title-accent,.quote{font-family:'Manrope',
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <div class="footer-logo"><img src="https://cbizcapital.com/wp-content/uploads/2024/02/Group-1321316416.png" alt="CBiz Capital" style="height:44px;width:auto;filter:brightness(0) invert(1)"></div>
-      <p class="footer-desc">Fast, flexible real estate financing for investors, brokers, developers, and property owners.</p>
-    <div class="footer-social">
-      <p class="footer-social-label">Follow Us</p>
-      <div class="footer-social-icons">
-        <a href="https://www.facebook.com/profile.php?id=100090539796870" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/cbizcapital" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/company/cbizcapital" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@cbizcapital" target="_blank" rel="noopener" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.75a4.85 4.85 0 01-1.02-.06z"/></svg>
-        </a>
-        <a href="https://www.google.com/maps/search/CBiz+Capital+Philadelphia" target="_blank" rel="noopener" aria-label="Google">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        </a>
+      <div class="logo" style="margin-bottom:16px"><img src="https://cbizcapital.com/wp-content/uploads/2024/02/Group-1321316416.png" alt="CBiz Capital" style="height:44px;width:auto;filter:brightness(0) invert(1)"></div>
+      <p style="color:rgba(255,255,255,.55);font-size:14px;line-height:1.65;max-width:280px">Fast, flexible real estate financing for investors, brokers, developers, and property owners.</p>
+      <div class="footer-social">
+        <p class="footer-social-label">Follow Us</p>
+        <div class="footer-social-icons">
+          <a href="https://www.facebook.com/profile.php?id=100090539796870" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/cbizcapital" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/company/cbizcapital" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="https://www.tiktok.com/@cbizcapital" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.75a4.85 4.85 0 01-1.02-.06z"/></svg></a>
+          <a href="https://www.google.com/maps/search/CBiz+Capital+Philadelphia" target="_blank" rel="noopener" aria-label="Google"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+        </div>
       </div>
-    </div>
     </div>
     <div>
       <strong>Loan Programs</strong>
@@ -458,10 +370,18 @@ h1,h2,h3,.hero h1,.page-hero h1,.hero-title-accent,.quote{font-family:'Manrope',
       <a href="multifamily-loans.html">Small Balance Multifamily</a>
     </div>
     <div>
+      <strong>Company</strong>
+      <a href="about.html">About</a>
+      <a href="recent-loan-closings.html">Recent Closings</a>
+      <a href="blogs.html">Blog</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
       <strong>Contact</strong>
       <a href="tel:2156543075">(215) 654-3075</a>
       <a href="mailto:info@cbizcapital.com">info@cbizcapital.com</a>
-      <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Apply Now</a>
+      <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Apply Now →</a>
     </div>
   </div>
   <div class="container footer-bottom" style="border-top:1px solid rgba(255,255,255,.07);margin-top:44px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><p>&copy; <span id="yr"></span> CBiz Capital. All rights reserved. Not a commitment to lend.</p></div>
