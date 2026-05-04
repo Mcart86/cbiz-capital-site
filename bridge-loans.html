@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<link rel="icon" href="https://cbizcapital.com/wp-content/uploads/2024/02/Group-1321316416.png" type="image/png" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Bridge Loans | CBiz Capital</title>
 <style>
@@ -115,7 +116,30 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
 .nav-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important;border-radius:9px!important;padding:9px 18px!important;margin-left:6px;font-weight:700!important;box-shadow:0 6px 18px rgba(79,70,229,.28)}
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(79,70,229,.36)!important;background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important}
 @media(max-width:960px){.nav{display:none}}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;margin-left:8px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav{display:none;position:fixed;inset:72px 0 0;background:#fff;z-index:99;padding:24px;overflow-y:auto;border-top:1px solid var(--border);flex-direction:column;gap:4px}
+.mobile-nav.open{display:flex}
+.mobile-nav a{display:block;padding:14px 16px;border-radius:10px;font-size:16px;font-weight:600;color:var(--navy);transition:background .15s;text-decoration:none}
+.mobile-nav a:hover{background:var(--section)}
+.mobile-section-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding:16px 16px 8px;margin-top:8px}
+.mobile-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important;text-align:center!important;margin-top:12px;border-radius:12px!important;padding:16px!important}
+@media(max-width:960px){.nav{display:none!important}.hamburger{display:flex}}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
 </style>
+<meta name="description" content="Short-term bridge financing for time-sensitive deals. Close in 5–10 days. Flexible exit strategies. CBiz Capital bridges the gap." />
+<meta property="og:title" content="Bridge Loans | CBiz Capital" />
+<meta property="og:description" content="Short-term bridge financing for time-sensitive deals. Close in 5–10 days. Flexible exit strategies. CBiz Capital bridges the gap." />
+<meta property="og:type" content="website" />
 </head>
 <body>
 
@@ -143,7 +167,26 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
       <li><a class="nav-cta" href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Apply Now →</a></li>
     </nav>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <div class="mobile-section-title">Services</div>
+  <a href="dscr-rental-loans.html">DSCR Rental Loans</a>
+  <a href="fix-and-flip.html">Fix &amp; Flip Loans</a>
+  <a href="bridge-loans.html">Bridge Loans</a>
+  <a href="asset-based-lending.html">Asset-Based Lending</a>
+  <a href="multifamily-loans.html">Small Balance Multifamily</a>
+  <div class="mobile-section-title">Company</div>
+  <a href="about.html">About</a>
+  <a href="recent-loan-closings.html">Recent Closings</a>
+  <a href="blogs.html">Blog</a>
+  <a href="faqs.html">FAQs</a>
+  <a href="contact.html">Contact</a>
+  <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener" class="mobile-cta">Apply Now →</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -224,12 +267,12 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
     <h2>Flexible Capital, Reliable Execution</h2>
     <p class="section-lead">Bridge financing built for investors who operate in situations where speed, structure, and certainty matter most.</p>
     <div class="grid-3">
-      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>Speed to Close</h3><p>Close in as few as 5–10 days. When a window opens, we make sure you can move through it.</p></div>
-      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><h3>Flexible Exit Paths</h3><p>Sell, refinance, or stabilize. Bridge loans are structured around your intended exit — not a rigid repayment box.</p></div>
-      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Asset-Based Underwriting</h3><p>Underwritten on the property's value and opportunity — not solely on conventional income documentation.</p></div>
-      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Interest-Only Options</h3><p>Preserve cash flow during the bridge period with interest-only payment structures on most programs.</p></div>
-      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h3>No Long-Term Lock-In</h3><p>Bridge loans are short-term by design. No long commitments — just the capital you need, when you need it.</p></div>
-      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Clear Communication</h3><p>We keep you informed at every step. No surprises, no delays from our side of the table.</p></div>
+      <div class="card reveal"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>Speed to Close</h3><p>Close in as few as 5–10 days. When a window opens, we make sure you can move through it.</p></div>
+      <div class="card reveal"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><h3>Flexible Exit Paths</h3><p>Sell, refinance, or stabilize. Bridge loans are structured around your intended exit — not a rigid repayment box.</p></div>
+      <div class="card reveal"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Asset-Based Underwriting</h3><p>Underwritten on the property's value and opportunity — not solely on conventional income documentation.</p></div>
+      <div class="card reveal"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Interest-Only Options</h3><p>Preserve cash flow during the bridge period with interest-only payment structures on most programs.</p></div>
+      <div class="card reveal"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h3>No Long-Term Lock-In</h3><p>Bridge loans are short-term by design. No long commitments — just the capital you need, when you need it.</p></div>
+      <div class="card reveal"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Clear Communication</h3><p>We keep you informed at every step. No surprises, no delays from our side of the table.</p></div>
     </div>
   </div>
 </section>
@@ -294,9 +337,9 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
     <h2>Simple. Fast. Reliable.</h2>
     <p class="section-lead">A streamlined process designed for investors who need to move without friction.</p>
     <div class="steps">
-      <div class="step-card" data-step="01"><div class="step-num"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><h3>Apply Now</h3><p>Share the property details, loan need, and your intended exit strategy. Be specific.</p></div>
-      <div class="step-card" data-step="02"><div class="step-num"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><h3>Receive Term Sheet</h3><p>We review and respond with bridge loan terms within 24 hours. No vague commitments.</p></div>
-      <div class="step-card" data-step="03"><div class="step-num"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Close &amp; Execute</h3><p>Move to close in days. Capital delivered so you can execute on your timeline.</p></div>
+      <div class="step-card reveal" data-step="01"><div class="step-num"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><h3>Apply Now</h3><p>Share the property details, loan need, and your intended exit strategy. Be specific.</p></div>
+      <div class="step-card reveal" data-step="02"><div class="step-num"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><h3>Receive Term Sheet</h3><p>We review and respond with bridge loan terms within 24 hours. No vague commitments.</p></div>
+      <div class="step-card reveal" data-step="03"><div class="step-num"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Close &amp; Execute</h3><p>Move to close in days. Capital delivered so you can execute on your timeline.</p></div>
     </div>
   </div>
 </section>
@@ -308,12 +351,12 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
     <h2>General Requirements</h2>
     <p class="section-lead">Typical bridge loan parameters. Every scenario is unique — submit yours for a specific review.</p>
     <div class="req-grid">
-      <div class="req-card"><h4>Loan Amounts</h4><p>$150K – $5M+</p><span>Residential and commercial bridge</span></div>
-      <div class="req-card"><h4>Loan-to-Value</h4><p>Up to 75% LTV</p><span>Based on current or stabilized value</span></div>
-      <div class="req-card"><h4>Loan Term</h4><p>6 – 24 Months</p><span>Extensions available on most programs</span></div>
-      <div class="req-card"><h4>Property Types</h4><p>Residential &amp; Commercial</p><span>SFR, multi-unit, mixed-use, light commercial</span></div>
-      <div class="req-card"><h4>Payments</h4><p>Interest-Only</p><span>Monthly payments during bridge period</span></div>
-      <div class="req-card"><h4>Credit Score</h4><p>620+ Minimum</p><span>Asset and deal strength heavily weighted</span></div>
+      <div class="req-card reveal"><h4>Loan Amounts</h4><p>$150K – $5M+</p><span>Residential and commercial bridge</span></div>
+      <div class="req-card reveal"><h4>Loan-to-Value</h4><p>Up to 75% LTV</p><span>Based on current or stabilized value</span></div>
+      <div class="req-card reveal"><h4>Loan Term</h4><p>6 – 24 Months</p><span>Extensions available on most programs</span></div>
+      <div class="req-card reveal"><h4>Property Types</h4><p>Residential &amp; Commercial</p><span>SFR, multi-unit, mixed-use, light commercial</span></div>
+      <div class="req-card reveal"><h4>Payments</h4><p>Interest-Only</p><span>Monthly payments during bridge period</span></div>
+      <div class="req-card reveal"><h4>Credit Score</h4><p>620+ Minimum</p><span>Asset and deal strength heavily weighted</span></div>
     </div>
   </div>
 </section>
@@ -354,7 +397,7 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
       <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Apply Now</a>
     </div>
   </div>
-  <div class="container footer-bottom"><p>&copy; 2025 CBiz Capital. All rights reserved. Not a commitment to lend.</p></div>
+  <div class="container footer-bottom" style="border-top:1px solid rgba(255,255,255,.07);margin-top:44px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><p>&copy; <span id="yr"></span> CBiz Capital. All rights reserved. Not a commitment to lend.</p></div>
 </footer>
 
 </body>

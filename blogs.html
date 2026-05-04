@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<link rel="icon" href="https://cbizcapital.com/wp-content/uploads/2024/02/Group-1321316416.png" type="image/png" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Blog | CBiz Capital</title>
 <style>
@@ -112,7 +113,30 @@ a{text-decoration:none;color:inherit}
 .nav-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important;border-radius:9px!important;padding:9px 18px!important;margin-left:6px;font-weight:700!important;box-shadow:0 6px 18px rgba(79,70,229,.28)}
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(79,70,229,.36)!important;background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important}
 @media(max-width:960px){.nav{display:none}}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;margin-left:8px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav{display:none;position:fixed;inset:72px 0 0;background:#fff;z-index:99;padding:24px;overflow-y:auto;border-top:1px solid var(--border);flex-direction:column;gap:4px}
+.mobile-nav.open{display:flex}
+.mobile-nav a{display:block;padding:14px 16px;border-radius:10px;font-size:16px;font-weight:600;color:var(--navy);transition:background .15s;text-decoration:none}
+.mobile-nav a:hover{background:var(--section)}
+.mobile-section-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding:16px 16px 8px;margin-top:8px}
+.mobile-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:#fff!important;text-align:center!important;margin-top:12px;border-radius:12px!important;padding:16px!important}
+@media(max-width:960px){.nav{display:none!important}.hamburger{display:flex}}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
 </style>
+<meta name="description" content="Market insights, financing guides, and real estate investing strategies from the team at CBiz Capital." />
+<meta property="og:title" content="Blog | CBiz Capital Real Estate Finance Insights" />
+<meta property="og:description" content="Market insights, financing guides, and real estate investing strategies from the team at CBiz Capital." />
+<meta property="og:type" content="website" />
 </head>
 <body>
 
@@ -140,7 +164,26 @@ a{text-decoration:none;color:inherit}
       <li><a class="nav-cta" href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Apply Now →</a></li>
     </nav>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <div class="mobile-section-title">Services</div>
+  <a href="dscr-rental-loans.html">DSCR Rental Loans</a>
+  <a href="fix-and-flip.html">Fix &amp; Flip Loans</a>
+  <a href="bridge-loans.html">Bridge Loans</a>
+  <a href="asset-based-lending.html">Asset-Based Lending</a>
+  <a href="multifamily-loans.html">Small Balance Multifamily</a>
+  <div class="mobile-section-title">Company</div>
+  <a href="about.html">About</a>
+  <a href="recent-loan-closings.html">Recent Closings</a>
+  <a href="blogs.html">Blog</a>
+  <a href="faqs.html">FAQs</a>
+  <a href="contact.html">Contact</a>
+  <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener" class="mobile-cta">Apply Now →</a>
+</div>
 
 <!-- PAGE HERO -->
 <section class="page-hero">
@@ -339,7 +382,7 @@ a{text-decoration:none;color:inherit}
       <a href="https://cbizcapital.commerciallendingservicesllc.com/" target="_blank" rel="noopener">Apply Now</a>
     </div>
   </div>
-  <div class="container footer-bottom"><p>&copy; 2025 CBiz Capital. All rights reserved. Not a commitment to lend.</p></div>
+  <div class="container footer-bottom" style="border-top:1px solid rgba(255,255,255,.07);margin-top:44px;padding-top:24px;font-size:12px;color:rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><p>&copy; <span id="yr"></span> CBiz Capital. All rights reserved. Not a commitment to lend.</p></div>
 </footer>
 
 </body>
