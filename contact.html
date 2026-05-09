@@ -392,6 +392,26 @@ a{text-decoration:none;color:inherit}
   .hero-proof-item strong{font-size:20px!important;white-space:normal!important}
   .hero-proof-item span{font-size:12px!important}
 }
+
+/* Contact Form */
+.contact-form{background:#fff;border:1px solid var(--border);border-radius:22px;padding:40px;box-shadow:0 8px 32px rgba(6,27,58,.06)}
+.contact-form h3{font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;margin:0 0 6px;letter-spacing:-.3px;color:var(--navy)}
+.contact-form .form-sub{font-size:14px;color:var(--muted);margin:0 0 28px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.form-group label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--navy);background:#fff;transition:border-color .2s,box-shadow .2s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(79,70,229,.1)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235B6B82' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.form-submit{width:100%;padding:15px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border:none;border-radius:11px;font-family:'Manrope',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 6px 20px rgba(79,70,229,.3);margin-top:8px}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(79,70,229,.4)}
+.form-submit:disabled{opacity:.7;cursor:not-allowed;transform:none}
+.form-success{display:none;text-align:center;padding:40px 20px}
+.form-success .check{width:56px;height:56px;border-radius:50%;background:var(--light-purple);border:2px solid var(--purple-border);display:grid;place-items:center;margin:0 auto 16px;color:var(--primary)}
+.form-success h4{font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;margin:0 0 8px;color:var(--navy)}
+.form-success p{font-size:15px;color:var(--muted)}
+@media(max-width:768px){.form-row{grid-template-columns:1fr!important}}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -492,8 +512,56 @@ a{text-decoration:none;color:inherit}
       <div><div class="contact-label">Markets</div><div class="contact-value">Pennsylvania, New Jersey &amp; Nationwide</div></div>
     </div>
   </div>
-  <div class="map-wrap">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d195418.33989209867!2d-75.28440084179688!3d39.95258400000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6b7d8d4b54beb%3A0x89f514d88784e63b!2sPhiladelphia%2C%20PA!5e0!3m2!1sen!2sus!4v1714000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <div class="contact-form" id="contactFormWrap">
+    <h3>Submit Your Scenario</h3>
+    <p class="form-sub">We respond within 24–48 hours. No commitment required.</p>
+    <form id="contactForm" action="https://formspree.io/f/xdabwwkq" method="POST">
+      <input type="hidden" name="_subject" value="New CBiz Capital Inquiry">
+      <input type="hidden" name="_next" value="">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="John" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Smith" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="john@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="(215) 555-0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="loanType">Loan Type</label>
+        <select id="loanType" name="loanType" required>
+          <option value="" disabled selected>Select a loan program</option>
+          <option>DSCR Rental Loan</option>
+          <option>Fix &amp; Flip</option>
+          <option>Bridge Loan</option>
+          <option>Asset-Based Lending</option>
+          <option>Small Balance Multifamily</option>
+          <option>Builders Risk Insurance</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Tell Us About Your Deal</label>
+        <textarea id="message" name="message" placeholder="Property address, loan amount, timeline..."></textarea>
+      </div>
+      <button type="submit" class="form-submit" id="formSubmit">Send Message →</button>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <div class="check"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h4>Message Sent!</h4>
+      <p>Thanks for reaching out. Joe will be in touch within 24–48 hours.</p>
+    </div>
   </div>
 </div>
 
@@ -664,6 +732,36 @@ var trigger = document.querySelector('.services-trigger');
   // Auto year
   var yr=document.getElementById('yr');
   if(yr) yr.textContent=new Date().getFullYear();
+
+  // Contact form submission
+  var contactForm = document.getElementById('contactForm');
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = document.getElementById('formSubmit');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      
+      fetch('https://formspree.io/f/xdabwwkq', {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(res){
+        if(res.ok){
+          contactForm.style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Send Message →';
+          alert('Something went wrong. Please try again or call us at (215) 654-3075.');
+        }
+      }).catch(function(){
+        btn.disabled = false;
+        btn.textContent = 'Send Message →';
+        alert('Something went wrong. Please try again or call us at (215) 654-3075.');
+      });
+    });
+  }
 })();
 </script>
 </body>
