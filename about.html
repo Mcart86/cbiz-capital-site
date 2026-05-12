@@ -855,148 +855,122 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
+
 <!-- CBiz Feedback Widget -->
 <style>
-#cbfb-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:99999;background:#4F46E5;color:#fff;writing-mode:vertical-rl;padding:14px 10px;font:700 12px/1 'DM Sans',sans-serif;letter-spacing:.08em;cursor:pointer;border-radius:8px 0 0 8px;box-shadow:-3px 0 16px rgba(79,70,229,.3);transition:background .2s;user-select:none;border:none}
-#cbfb-tab:hover,#cbfb-tab.active{background:#3730A3}
-#cbfb-banner{display:none;position:fixed;top:0;left:0;right:0;z-index:99998;background:#3730A3;color:#fff;text-align:center;padding:10px;font:600 13px 'DM Sans',sans-serif;pointer-events:none}
-.cbfb-hl{outline:3px solid #4F46E5!important;outline-offset:3px!important;cursor:crosshair!important}
-#cbfb-modal{display:none;position:fixed;z-index:99999;background:#fff;border-radius:16px;padding:22px;width:320px;box-shadow:0 12px 40px rgba(0,0,0,.18);border:1px solid #E5EAF3;font-family:'DM Sans',sans-serif}
-#cbfb-modal h3{font:700 15px/1 'Manrope',sans-serif;color:#061B3A;margin:0 0 4px}
-#cbfb-modal .cbfb-el{font-size:11px;color:#5B6B82;margin:0 0 14px;word-break:break-word;border-left:3px solid #EEF0FF;padding-left:8px}
-#cbfb-modal textarea{width:100%;height:90px;border:1.5px solid #E5EAF3;border-radius:8px;padding:10px;font:14px 'DM Sans',sans-serif;color:#061B3A;resize:vertical;outline:none;box-sizing:border-box;transition:border-color .2s}
-#cbfb-modal textarea:focus{border-color:#4F46E5}
-#cbfb-modal .cbfb-actions{display:flex;gap:8px;margin-top:10px}
-#cbfb-modal .cbfb-send{flex:1;background:#4F46E5;color:#fff;border:none;padding:10px;border-radius:8px;font:700 13px 'DM Sans',sans-serif;cursor:pointer}
-#cbfb-modal .cbfb-send:hover{background:#3730A3}
-#cbfb-modal .cbfb-cancel{background:#F7F8FC;color:#5B6B82;border:1px solid #E5EAF3;padding:10px 14px;border-radius:8px;font:600 13px 'DM Sans',sans-serif;cursor:pointer}
+#cbfb-btn{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);z-index:2147483640;background:#4F46E5;color:#fff;border:none;padding:14px 28px;border-radius:50px;font:700 15px/1 system-ui,sans-serif;cursor:pointer;box-shadow:0 6px 24px rgba(79,70,229,.5);letter-spacing:.02em;transition:background .2s,transform .15s}
+#cbfb-btn:hover{background:#3730A3;transform:translateX(-50%) translateY(-2px)}
+#cbfb-overlay{display:none;position:fixed;inset:0;z-index:2147483641;background:rgba(79,70,229,.08);cursor:crosshair}
+#cbfb-tip{display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:2147483645;background:#3730A3;color:#fff;padding:10px 22px;border-radius:50px;font:600 13px/1 system-ui,sans-serif;pointer-events:none;white-space:nowrap}
+.cbfb-hl{outline:3px solid #4F46E5!important;outline-offset:3px!important}
+#cbfb-modal{display:none;position:fixed;z-index:2147483646;background:#fff;border-radius:16px;padding:24px;width:320px;box-shadow:0 16px 48px rgba(0,0,0,.2);border:1px solid #E5EAF3}
+#cbfb-modal h3{font:700 16px/1 system-ui,sans-serif;color:#061B3A;margin:0 0 6px}
+#cbfb-el{font-size:11px;color:#5B6B82;margin:0 0 14px;padding:6px 10px;background:#F7F8FC;border-radius:6px;word-break:break-word}
+#cbfb-txt{width:100%;height:100px;border:1.5px solid #E5EAF3;border-radius:8px;padding:10px;font:14px system-ui,sans-serif;color:#061B3A;resize:vertical;outline:none;box-sizing:border-box}
+#cbfb-txt:focus{border-color:#4F46E5}
+#cbfb-row{display:flex;gap:8px;margin-top:12px}
+#cbfb-send{flex:1;background:#4F46E5;color:#fff;border:none;padding:11px;border-radius:8px;font:700 14px system-ui,sans-serif;cursor:pointer}
+#cbfb-send:hover{background:#3730A3}
+#cbfb-cancel{background:#F7F8FC;color:#5B6B82;border:1px solid #E5EAF3;padding:11px 16px;border-radius:8px;font:600 13px system-ui,sans-serif;cursor:pointer}
 </style>
 
-<button id="cbfb-tab">Feedback</button>
-<div id="cbfb-banner">Click any element on the page to leave feedback &mdash; Press Esc to cancel</div>
+<button id="cbfb-btn">&#128172; Leave Feedback</button>
+<div id="cbfb-overlay"></div>
+<div id="cbfb-tip">Click anything on the page &mdash; press Esc to cancel</div>
 <div id="cbfb-modal">
-  <h3>Leave Feedback</h3>
-  <p class="cbfb-el" id="cbfb-el-desc"></p>
+  <h3>&#128172; Leave Feedback</h3>
+  <p id="cbfb-el"></p>
   <textarea id="cbfb-txt" placeholder="What would you like to change?"></textarea>
-  <div class="cbfb-actions">
-    <button class="cbfb-send" id="cbfb-send">Send</button>
-    <button class="cbfb-cancel" id="cbfb-cancel">Cancel</button>
+  <div id="cbfb-row">
+    <button id="cbfb-send">Send</button>
+    <button id="cbfb-cancel">Cancel</button>
   </div>
 </div>
 
 <script>
 (function(){
-  var tab=document.getElementById('cbfb-tab');
-  var banner=document.getElementById('cbfb-banner');
+  var btn=document.getElementById('cbfb-btn');
+  var overlay=document.getElementById('cbfb-overlay');
+  var tip=document.getElementById('cbfb-tip');
   var modal=document.getElementById('cbfb-modal');
-  var elDesc=document.getElementById('cbfb-el-desc');
+  var elP=document.getElementById('cbfb-el');
   var txt=document.getElementById('cbfb-txt');
+  var lastHl=null;
   var picking=false;
-  var currentEl=null;
 
-  function startPicking(){
+  function startPick(){
     picking=true;
-    tab.classList.add('active');
-    tab.textContent='Cancel';
-    banner.style.display='block';
-    document.body.style.cursor='crosshair';
+    btn.style.display='none';
+    overlay.style.display='block';
+    tip.style.display='block';
   }
 
-  function stopPicking(){
+  function stopPick(){
     picking=false;
-    tab.classList.remove('active');
-    tab.textContent='Feedback';
-    banner.style.display='none';
-    document.body.style.cursor='';
-    if(currentEl){currentEl.classList.remove('cbfb-hl');currentEl=null;}
+    btn.style.display='';
+    overlay.style.display='none';
+    tip.style.display='none';
+    if(lastHl){lastHl.classList.remove('cbfb-hl');lastHl=null;}
   }
 
   function closeModal(){
     modal.style.display='none';
     txt.value='';
-    var btn=document.getElementById('cbfb-send');
-    btn.textContent='Send';btn.disabled=false;
+    stopPick();
   }
 
-  tab.onclick=function(){
-    if(picking){stopPicking();return;}
-    if(modal.style.display==='block'){closeModal();}
-    startPicking();
-  };
+  btn.addEventListener('click',function(e){e.stopPropagation();startPick();});
+  document.getElementById('cbfb-cancel').addEventListener('click',closeModal);
 
-  document.addEventListener('keydown',function(e){
-    if(e.key==='Escape'){stopPicking();closeModal();}
-  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal();}});
 
-  document.addEventListener('mouseover',function(e){
+  document.addEventListener('mousemove',function(e){
     if(!picking)return;
-    if(e.target===tab||e.target===banner)return;
-    if(currentEl&&currentEl!==e.target)currentEl.classList.remove('cbfb-hl');
-    currentEl=e.target;
-    currentEl.classList.add('cbfb-hl');
-  });
-
-  document.addEventListener('mouseout',function(e){
-    if(!picking)return;
-    e.target.classList.remove('cbfb-hl');
+    var el=document.elementFromPoint(e.clientX,e.clientY);
+    if(!el||el===overlay||el===tip)return;
+    if(lastHl&&lastHl!==el)lastHl.classList.remove('cbfb-hl');
+    lastHl=el;
+    el.classList.add('cbfb-hl');
   });
 
   document.addEventListener('click',function(e){
     if(!picking)return;
-    if(e.target===tab)return;
-    e.preventDefault();
-    e.stopPropagation();
-
-    var el=e.target;
+    e.preventDefault();e.stopPropagation();
+    var el=document.elementFromPoint(e.clientX,e.clientY);
+    if(!el||el===overlay)return;
     el.classList.remove('cbfb-hl');
-    stopPicking();
+    lastHl=null;
+    overlay.style.display='none';
+    tip.style.display='none';
 
     var desc=el.tagName.toLowerCase();
-    var label=el.getAttribute('aria-label')||el.getAttribute('placeholder')||el.getAttribute('alt')||'';
-    var content=(label||el.textContent||'').trim().substring(0,80);
-    if(content)desc+=': "'+content+'"';
-
-    elDesc.textContent=desc;
+    var content=(el.getAttribute('alt')||el.getAttribute('placeholder')||el.getAttribute('aria-label')||el.textContent||'').trim().replace(/\s+/g,' ').substring(0,80);
+    if(content)desc+=' — "'+content+'"';
+    elP.textContent=desc;
 
     var mx=Math.min(e.clientX+16,window.innerWidth-340);
-    var my=Math.min(e.clientY+16,window.innerHeight-280);
+    var my=Math.min(e.clientY+16,window.innerHeight-300);
     modal.style.left=mx+'px';
     modal.style.top=my+'px';
     modal.style.display='block';
     txt.focus();
   },true);
 
-  document.getElementById('cbfb-cancel').onclick=closeModal;
-
-  document.getElementById('cbfb-send').onclick=function(){
+  document.getElementById('cbfb-send').addEventListener('click',function(){
     var val=txt.value.trim();
     if(!val)return;
-    var btn=this;
-    btn.textContent='Sending…';btn.disabled=true;
+    var self=this;
+    self.textContent='Sending…';self.disabled=true;
     fetch('https://formspree.io/f/xdabwwkq',{
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({
-        _subject:'[Feedback] '+window.location.pathname,
-        Page:window.location.href,
-        Element:elDesc.textContent,
-        Feedback:val
-      })
+      body:JSON.stringify({_subject:'[Feedback] '+window.location.pathname,Page:window.location.href,Element:elP.textContent,Feedback:val})
     }).then(function(){
-      modal.innerHTML='<div style="text-align:center;padding:8px"><div style="font-size:32px;margin-bottom:8px">&#10003;</div><p style="font:700 14px Manrope,sans-serif;color:#061B3A;margin:0 0 4px">Sent!</p><p style="font-size:13px;color:#5B6B82;margin:0">We'll make the update shortly.</p></div>';
-      setTimeout(function(){
-        modal.style.display='none';
-        modal.innerHTML='<h3>Leave Feedback</h3><p class="cbfb-el" id="cbfb-el-desc"></p><textarea id="cbfb-txt" placeholder="What would you like to change?"></textarea><div class="cbfb-actions"><button class="cbfb-send" id="cbfb-send">Send</button><button class="cbfb-cancel" id="cbfb-cancel">Cancel</button></div>';
-        document.getElementById('cbfb-cancel').onclick=closeModal;
-        document.getElementById('cbfb-send').onclick=arguments.callee;
-        elDesc=document.getElementById('cbfb-el-desc');
-        txt=document.getElementById('cbfb-txt');
-      },2500);
-    }).catch(function(){
-      btn.textContent='Send';btn.disabled=false;
-      alert('Error sending. Please try again.');
-    });
-  };
+      modal.innerHTML='<div style="text-align:center;padding:12px 0"><div style="font-size:40px;margin-bottom:10px">&#9989;</div><p style="font:700 15px system-ui,sans-serif;color:#061B3A;margin:0 0 4px">Sent!</p><p style="font-size:13px;color:#5B6B82;margin:0">We'll review and make the update.</p></div>';
+      setTimeout(function(){closeModal();},2500);
+    }).catch(function(){self.textContent='Send';self.disabled=false;alert('Error. Try again.');});
+  });
 })();
 </script>
 <!-- End CBiz Feedback Widget -->
