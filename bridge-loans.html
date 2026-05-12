@@ -785,85 +785,147 @@ h1{font-size:clamp(48px,5.5vw,80px);line-height:.96;letter-spacing:-2.5px;margin
 })();
 </script>
 
+
+
 <!-- CBiz Feedback Widget -->
 <style>
-#cbiz-fb-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:99999;background:#4F46E5;color:#fff;writing-mode:vertical-rl;text-orientation:mixed;padding:14px 10px;font:700 12px/1 'DM Sans',sans-serif;letter-spacing:.08em;cursor:pointer;border-radius:8px 0 0 8px;box-shadow:-3px 0 16px rgba(79,70,229,.3);transition:background .2s;user-select:none}
-#cbiz-fb-tab:hover{background:#3730A3}
-#cbiz-fb-panel{position:fixed;right:-380px;top:50%;transform:translateY(-50%);z-index:99998;width:340px;background:#fff;border-radius:16px 0 0 16px;box-shadow:-8px 0 40px rgba(0,0,0,.15);padding:24px;transition:right .3s cubic-bezier(.4,0,.2,1);border:1px solid #E5EAF3;border-right:none}
-#cbiz-fb-panel.open{right:0}
-#cbiz-fb-panel h3{font:700 16px/1 'Manrope',sans-serif;color:#061B3A;margin:0 0 4px}
-#cbiz-fb-panel p{font-size:12px;color:#5B6B82;margin:0 0 16px}
-#cbiz-fb-panel label{display:block;font-size:12px;font-weight:600;color:#061B3A;margin-bottom:5px}
-#cbiz-fb-panel select,#cbiz-fb-panel textarea{width:100%;border:1.5px solid #E5EAF3;border-radius:8px;padding:9px 11px;font:14px 'DM Sans',sans-serif;color:#061B3A;outline:none;box-sizing:border-box;transition:border-color .2s}
-#cbiz-fb-panel select:focus,#cbiz-fb-panel textarea:focus{border-color:#4F46E5}
-#cbiz-fb-panel textarea{height:100px;resize:vertical;margin-bottom:12px}
-#cbiz-fb-panel select{margin-bottom:12px}
-#cbiz-fb-send{width:100%;background:#4F46E5;color:#fff;border:none;padding:11px;border-radius:8px;font:700 14px 'DM Sans',sans-serif;cursor:pointer;transition:background .2s}
-#cbiz-fb-send:hover{background:#3730A3}
-#cbiz-fb-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;color:#5B6B82;cursor:pointer;line-height:1}
-#cbiz-fb-success{display:none;text-align:center;padding:16px 0}
-#cbiz-fb-success div{font-size:36px;margin-bottom:8px}
-#cbiz-fb-success p{font-size:14px;color:#5B6B82;margin:0}
+#cbfb-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:99999;background:#4F46E5;color:#fff;writing-mode:vertical-rl;padding:14px 10px;font:700 12px/1 'DM Sans',sans-serif;letter-spacing:.08em;cursor:pointer;border-radius:8px 0 0 8px;box-shadow:-3px 0 16px rgba(79,70,229,.3);transition:background .2s;user-select:none;border:none}
+#cbfb-tab:hover,#cbfb-tab.active{background:#3730A3}
+#cbfb-banner{display:none;position:fixed;top:0;left:0;right:0;z-index:99998;background:#3730A3;color:#fff;text-align:center;padding:10px;font:600 13px 'DM Sans',sans-serif;pointer-events:none}
+.cbfb-hl{outline:3px solid #4F46E5!important;outline-offset:3px!important;cursor:crosshair!important}
+#cbfb-modal{display:none;position:fixed;z-index:99999;background:#fff;border-radius:16px;padding:22px;width:320px;box-shadow:0 12px 40px rgba(0,0,0,.18);border:1px solid #E5EAF3;font-family:'DM Sans',sans-serif}
+#cbfb-modal h3{font:700 15px/1 'Manrope',sans-serif;color:#061B3A;margin:0 0 4px}
+#cbfb-modal .cbfb-el{font-size:11px;color:#5B6B82;margin:0 0 14px;word-break:break-word;border-left:3px solid #EEF0FF;padding-left:8px}
+#cbfb-modal textarea{width:100%;height:90px;border:1.5px solid #E5EAF3;border-radius:8px;padding:10px;font:14px 'DM Sans',sans-serif;color:#061B3A;resize:vertical;outline:none;box-sizing:border-box;transition:border-color .2s}
+#cbfb-modal textarea:focus{border-color:#4F46E5}
+#cbfb-modal .cbfb-actions{display:flex;gap:8px;margin-top:10px}
+#cbfb-modal .cbfb-send{flex:1;background:#4F46E5;color:#fff;border:none;padding:10px;border-radius:8px;font:700 13px 'DM Sans',sans-serif;cursor:pointer}
+#cbfb-modal .cbfb-send:hover{background:#3730A3}
+#cbfb-modal .cbfb-cancel{background:#F7F8FC;color:#5B6B82;border:1px solid #E5EAF3;padding:10px 14px;border-radius:8px;font:600 13px 'DM Sans',sans-serif;cursor:pointer}
 </style>
-<div id="cbiz-fb-tab">Feedback</div>
-<div id="cbiz-fb-panel">
-  <button id="cbiz-fb-close" onclick="document.getElementById('cbiz-fb-panel').classList.remove('open')">&times;</button>
+
+<button id="cbfb-tab">Feedback</button>
+<div id="cbfb-banner">Click any element on the page to leave feedback &mdash; Press Esc to cancel</div>
+<div id="cbfb-modal">
   <h3>Leave Feedback</h3>
-  <p id="cbiz-fb-page-label">Page: <span id="cbiz-fb-pagename"></span></p>
-  <div id="cbiz-fb-form">
-    <label>Type of feedback</label>
-    <select id="cbiz-fb-type">
-      <option value="Content change">Content change</option>
-      <option value="Design issue">Design issue</option>
-      <option value="Wrong information">Wrong information</option>
-      <option value="Add something">Add something</option>
-      <option value="Other">Other</option>
-    </select>
-    <label>Your feedback</label>
-    <textarea id="cbiz-fb-text" placeholder="Describe what you'd like changed or added..."></textarea>
-    <button id="cbiz-fb-send">Send Feedback</button>
-  </div>
-  <div id="cbiz-fb-success">
-    <div>&#10003;</div>
-    <p><strong>Got it!</strong><br>We'll make the update shortly.</p>
+  <p class="cbfb-el" id="cbfb-el-desc"></p>
+  <textarea id="cbfb-txt" placeholder="What would you like to change?"></textarea>
+  <div class="cbfb-actions">
+    <button class="cbfb-send" id="cbfb-send">Send</button>
+    <button class="cbfb-cancel" id="cbfb-cancel">Cancel</button>
   </div>
 </div>
+
 <script>
 (function(){
-  var tab=document.getElementById('cbiz-fb-tab');
-  var panel=document.getElementById('cbiz-fb-panel');
-  var pagename=document.getElementById('cbiz-fb-pagename');
-  pagename.textContent=window.location.pathname||'/';
-  tab.onclick=function(){panel.classList.toggle('open');};
-  document.getElementById('cbiz-fb-send').onclick=function(){
-    var txt=document.getElementById('cbiz-fb-text').value.trim();
-    var type=document.getElementById('cbiz-fb-type').value;
-    if(!txt)return;
-    var btn=document.getElementById('cbiz-fb-send');
+  var tab=document.getElementById('cbfb-tab');
+  var banner=document.getElementById('cbfb-banner');
+  var modal=document.getElementById('cbfb-modal');
+  var elDesc=document.getElementById('cbfb-el-desc');
+  var txt=document.getElementById('cbfb-txt');
+  var picking=false;
+  var currentEl=null;
+
+  function startPicking(){
+    picking=true;
+    tab.classList.add('active');
+    tab.textContent='Cancel';
+    banner.style.display='block';
+    document.body.style.cursor='crosshair';
+  }
+
+  function stopPicking(){
+    picking=false;
+    tab.classList.remove('active');
+    tab.textContent='Feedback';
+    banner.style.display='none';
+    document.body.style.cursor='';
+    if(currentEl){currentEl.classList.remove('cbfb-hl');currentEl=null;}
+  }
+
+  function closeModal(){
+    modal.style.display='none';
+    txt.value='';
+    var btn=document.getElementById('cbfb-send');
+    btn.textContent='Send';btn.disabled=false;
+  }
+
+  tab.onclick=function(){
+    if(picking){stopPicking();return;}
+    if(modal.style.display==='block'){closeModal();}
+    startPicking();
+  };
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){stopPicking();closeModal();}
+  });
+
+  document.addEventListener('mouseover',function(e){
+    if(!picking)return;
+    if(e.target===tab||e.target===banner)return;
+    if(currentEl&&currentEl!==e.target)currentEl.classList.remove('cbfb-hl');
+    currentEl=e.target;
+    currentEl.classList.add('cbfb-hl');
+  });
+
+  document.addEventListener('mouseout',function(e){
+    if(!picking)return;
+    e.target.classList.remove('cbfb-hl');
+  });
+
+  document.addEventListener('click',function(e){
+    if(!picking)return;
+    if(e.target===tab)return;
+    e.preventDefault();
+    e.stopPropagation();
+
+    var el=e.target;
+    el.classList.remove('cbfb-hl');
+    stopPicking();
+
+    var desc=el.tagName.toLowerCase();
+    var label=el.getAttribute('aria-label')||el.getAttribute('placeholder')||el.getAttribute('alt')||'';
+    var content=(label||el.textContent||'').trim().substring(0,80);
+    if(content)desc+=': "'+content+'"';
+
+    elDesc.textContent=desc;
+
+    var mx=Math.min(e.clientX+16,window.innerWidth-340);
+    var my=Math.min(e.clientY+16,window.innerHeight-280);
+    modal.style.left=mx+'px';
+    modal.style.top=my+'px';
+    modal.style.display='block';
+    txt.focus();
+  },true);
+
+  document.getElementById('cbfb-cancel').onclick=closeModal;
+
+  document.getElementById('cbfb-send').onclick=function(){
+    var val=txt.value.trim();
+    if(!val)return;
+    var btn=this;
     btn.textContent='Sending…';btn.disabled=true;
     fetch('https://formspree.io/f/xdabwwkq',{
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
       body:JSON.stringify({
-        _subject:'[Site Feedback] '+window.location.pathname,
+        _subject:'[Feedback] '+window.location.pathname,
         Page:window.location.href,
-        Type:type,
-        Feedback:txt
+        Element:elDesc.textContent,
+        Feedback:val
       })
     }).then(function(){
-      document.getElementById('cbiz-fb-form').style.display='none';
-      document.getElementById('cbiz-fb-success').style.display='block';
+      modal.innerHTML='<div style="text-align:center;padding:8px"><div style="font-size:32px;margin-bottom:8px">&#10003;</div><p style="font:700 14px Manrope,sans-serif;color:#061B3A;margin:0 0 4px">Sent!</p><p style="font-size:13px;color:#5B6B82;margin:0">We'll make the update shortly.</p></div>';
       setTimeout(function(){
-        panel.classList.remove('open');
-        setTimeout(function(){
-          document.getElementById('cbiz-fb-form').style.display='block';
-          document.getElementById('cbiz-fb-success').style.display='none';
-          document.getElementById('cbiz-fb-text').value='';
-          btn.textContent='Send Feedback';btn.disabled=false;
-        },400);
+        modal.style.display='none';
+        modal.innerHTML='<h3>Leave Feedback</h3><p class="cbfb-el" id="cbfb-el-desc"></p><textarea id="cbfb-txt" placeholder="What would you like to change?"></textarea><div class="cbfb-actions"><button class="cbfb-send" id="cbfb-send">Send</button><button class="cbfb-cancel" id="cbfb-cancel">Cancel</button></div>';
+        document.getElementById('cbfb-cancel').onclick=closeModal;
+        document.getElementById('cbfb-send').onclick=arguments.callee;
+        elDesc=document.getElementById('cbfb-el-desc');
+        txt=document.getElementById('cbfb-txt');
       },2500);
     }).catch(function(){
-      btn.textContent='Send Feedback';btn.disabled=false;
+      btn.textContent='Send';btn.disabled=false;
       alert('Error sending. Please try again.');
     });
   };
