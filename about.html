@@ -852,5 +852,92 @@ document.addEventListener('DOMContentLoaded', function() {
   if(yr) yr.textContent=new Date().getFullYear();
 })();
 </script>
+
+<!-- CBiz Feedback Widget -->
+<style>
+#cbiz-fb-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:99999;background:#4F46E5;color:#fff;writing-mode:vertical-rl;text-orientation:mixed;padding:14px 10px;font:700 12px/1 'DM Sans',sans-serif;letter-spacing:.08em;cursor:pointer;border-radius:8px 0 0 8px;box-shadow:-3px 0 16px rgba(79,70,229,.3);transition:background .2s;user-select:none}
+#cbiz-fb-tab:hover{background:#3730A3}
+#cbiz-fb-panel{position:fixed;right:-380px;top:50%;transform:translateY(-50%);z-index:99998;width:340px;background:#fff;border-radius:16px 0 0 16px;box-shadow:-8px 0 40px rgba(0,0,0,.15);padding:24px;transition:right .3s cubic-bezier(.4,0,.2,1);border:1px solid #E5EAF3;border-right:none}
+#cbiz-fb-panel.open{right:0}
+#cbiz-fb-panel h3{font:700 16px/1 'Manrope',sans-serif;color:#061B3A;margin:0 0 4px}
+#cbiz-fb-panel p{font-size:12px;color:#5B6B82;margin:0 0 16px}
+#cbiz-fb-panel label{display:block;font-size:12px;font-weight:600;color:#061B3A;margin-bottom:5px}
+#cbiz-fb-panel select,#cbiz-fb-panel textarea{width:100%;border:1.5px solid #E5EAF3;border-radius:8px;padding:9px 11px;font:14px 'DM Sans',sans-serif;color:#061B3A;outline:none;box-sizing:border-box;transition:border-color .2s}
+#cbiz-fb-panel select:focus,#cbiz-fb-panel textarea:focus{border-color:#4F46E5}
+#cbiz-fb-panel textarea{height:100px;resize:vertical;margin-bottom:12px}
+#cbiz-fb-panel select{margin-bottom:12px}
+#cbiz-fb-send{width:100%;background:#4F46E5;color:#fff;border:none;padding:11px;border-radius:8px;font:700 14px 'DM Sans',sans-serif;cursor:pointer;transition:background .2s}
+#cbiz-fb-send:hover{background:#3730A3}
+#cbiz-fb-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;color:#5B6B82;cursor:pointer;line-height:1}
+#cbiz-fb-success{display:none;text-align:center;padding:16px 0}
+#cbiz-fb-success div{font-size:36px;margin-bottom:8px}
+#cbiz-fb-success p{font-size:14px;color:#5B6B82;margin:0}
+</style>
+<div id="cbiz-fb-tab">Feedback</div>
+<div id="cbiz-fb-panel">
+  <button id="cbiz-fb-close" onclick="document.getElementById('cbiz-fb-panel').classList.remove('open')">&times;</button>
+  <h3>Leave Feedback</h3>
+  <p id="cbiz-fb-page-label">Page: <span id="cbiz-fb-pagename"></span></p>
+  <div id="cbiz-fb-form">
+    <label>Type of feedback</label>
+    <select id="cbiz-fb-type">
+      <option value="Content change">Content change</option>
+      <option value="Design issue">Design issue</option>
+      <option value="Wrong information">Wrong information</option>
+      <option value="Add something">Add something</option>
+      <option value="Other">Other</option>
+    </select>
+    <label>Your feedback</label>
+    <textarea id="cbiz-fb-text" placeholder="Describe what you'd like changed or added..."></textarea>
+    <button id="cbiz-fb-send">Send Feedback</button>
+  </div>
+  <div id="cbiz-fb-success">
+    <div>&#10003;</div>
+    <p><strong>Got it!</strong><br>We'll make the update shortly.</p>
+  </div>
+</div>
+<script>
+(function(){
+  var tab=document.getElementById('cbiz-fb-tab');
+  var panel=document.getElementById('cbiz-fb-panel');
+  var pagename=document.getElementById('cbiz-fb-pagename');
+  pagename.textContent=window.location.pathname||'/';
+  tab.onclick=function(){panel.classList.toggle('open');};
+  document.getElementById('cbiz-fb-send').onclick=function(){
+    var txt=document.getElementById('cbiz-fb-text').value.trim();
+    var type=document.getElementById('cbiz-fb-type').value;
+    if(!txt)return;
+    var btn=document.getElementById('cbiz-fb-send');
+    btn.textContent='Sending…';btn.disabled=true;
+    fetch('https://formspree.io/f/xdabwwkq',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        _subject:'[Site Feedback] '+window.location.pathname,
+        Page:window.location.href,
+        Type:type,
+        Feedback:txt
+      })
+    }).then(function(){
+      document.getElementById('cbiz-fb-form').style.display='none';
+      document.getElementById('cbiz-fb-success').style.display='block';
+      setTimeout(function(){
+        panel.classList.remove('open');
+        setTimeout(function(){
+          document.getElementById('cbiz-fb-form').style.display='block';
+          document.getElementById('cbiz-fb-success').style.display='none';
+          document.getElementById('cbiz-fb-text').value='';
+          btn.textContent='Send Feedback';btn.disabled=false;
+        },400);
+      },2500);
+    }).catch(function(){
+      btn.textContent='Send Feedback';btn.disabled=false;
+      alert('Error sending. Please try again.');
+    });
+  };
+})();
+</script>
+<!-- End CBiz Feedback Widget -->
+
 </body>
 </html>
