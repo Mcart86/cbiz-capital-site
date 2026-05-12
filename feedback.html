@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CBiz Feedback Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Manrope',sans-serif;background:#F7F8FC;color:#061B3A;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:3rem 1.25rem}
+.card{background:#fff;border-radius:16px;border:1px solid #E5EAF3;padding:2rem;width:100%;max-width:560px;margin-bottom:1.25rem}
+.badge{display:inline-block;background:#EEF0FF;color:#4F46E5;font-size:11px;font-weight:700;letter-spacing:.05em;padding:4px 12px;border-radius:50px;margin-bottom:1rem;text-transform:uppercase}
+h1{font-size:28px;font-weight:800;line-height:1.2;margin-bottom:.5rem}
+.sub{font-size:15px;color:#5B6B82;line-height:1.6;margin-bottom:1.5rem}
+.step{display:flex;gap:14px;align-items:flex-start;margin-bottom:1rem}
+.step-num{width:28px;height:28px;border-radius:50%;background:#EEF0FF;color:#4F46E5;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-text{font-size:14px;color:#5B6B82;line-height:1.6}
+.step-text strong{color:#061B3A}
+.bm-box{background:#F7F8FC;border:2px dashed #D8DBFF;border-radius:12px;padding:1.5rem;text-align:center;margin:1.25rem 0}
+.bm-box p{font-size:13px;color:#5B6B82;margin-bottom:1rem}
+.bm-link{display:inline-block;background:#4F46E5;color:#fff;padding:11px 24px;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;cursor:grab;box-shadow:0 4px 16px rgba(79,70,229,.3);transition:transform .15s,box-shadow .15s}
+.bm-link:active{cursor:grabbing}
+.bm-link:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(79,70,229,.4)}
+.arrow{font-size:12px;color:#5B6B82;margin-top:.75rem}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:1rem}
+.flow-step{background:#F7F8FC;border-radius:10px;padding:12px 10px;text-align:center;border:1px solid #E5EAF3}
+.flow-step .icon{font-size:22px;margin-bottom:6px}
+.flow-step p{font-size:11px;color:#5B6B82;line-height:1.4}
+.flow-step strong{display:block;font-size:12px;color:#061B3A;margin-bottom:2px}
+footer{font-size:12px;color:#5B6B82;margin-top:1.5rem;text-align:center}
+@media(max-width:480px){.flow{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<div style="width:100%;max-width:560px;margin-bottom:1.75rem;text-align:center">
+  <div class="badge">CBiz Capital</div>
+  <h1>Site Feedback Tool</h1>
+  <p class="sub">Click any element on the site and leave a note. We'll take it from there.</p>
+</div>
+
+<div class="card">
+  <p style="font-size:13px;font-weight:700;color:#4F46E5;margin-bottom:1.25rem;text-transform:uppercase;letter-spacing:.05em">One-time setup</p>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-text"><strong>Show your bookmarks bar</strong><br>In Chrome: View &rarr; Show Bookmarks Bar (or Cmd+Shift+B)</div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-text"><strong>Drag this button to your bookmarks bar</strong></div>
+  </div>
+
+  <div class="bm-box">
+    <p>Drag to your bookmarks bar &darr;</p>
+    <a class="bm-link" href="javascript:(function(){if(document.getElementById('cbiz-fb')){document.getElementById('cbiz-fb').remove();var x=document.getElementById('cbiz-fb-css');if(x)x.remove();return;}var s=document.createElement('style');s.id='cbiz-fb-css';s.innerHTML='.cbiz-hl{outline:3px solid #4F46E5!important;outline-offset:2px!important;cursor:crosshair!important;}';document.head.appendChild(s);var bar=document.createElement('div');bar.id='cbiz-fb';bar.style.cssText='position:fixed!important;bottom:24px!important;right:24px!important;z-index:2147483647!important;background:#4F46E5!important;color:#fff!important;padding:11px 20px!important;border-radius:50px!important;font:600 13px/1 system-ui,sans-serif!important;cursor:pointer!important;box-shadow:0 4px 20px rgba(79,70,229,.4)!important;user-select:none!important;';bar.textContent='+ Leave Feedback';document.body.appendChild(bar);var on=false,modal=null;bar.onclick=function(){on=!on;bar.textContent=on?'Click any element…':'+ Leave Feedback';bar.style.background=on?'#3730A3':'#4F46E5';};document.addEventListener('mouseover',function(e){if(on&&e.target!==bar&&!modal)e.target.classList.add('cbiz-hl');});document.addEventListener('mouseout',function(e){e.target.classList.remove('cbiz-hl');});document.addEventListener('click',function(e){if(!on)return;if(e.target===bar||modal)return;e.preventDefault();e.stopPropagation();e.target.classList.remove('cbiz-hl');var el=e.target,desc=el.tagName.toLowerCase();if(el.textContent.trim())desc+=' — "'+el.textContent.trim().substring(0,80)+'"';var mx=Math.min(e.clientX+12,window.innerWidth-360),my=Math.min(e.clientY+12,window.innerHeight-300);var m=document.createElement('div');m.style.cssText='position:fixed!important;top:'+my+'px!important;left:'+mx+'px!important;z-index:2147483646!important;background:#fff!important;border-radius:14px!important;padding:20px!important;width:340px!important;box-shadow:0 12px 40px rgba(0,0,0,.18)!important;font-family:system-ui,sans-serif!important;border:1px solid #e5e7eb!important;';m.innerHTML='<div style="font-weight:700;font-size:14px;color:#111;margin-bottom:6px">Leave Feedback</div><div style="font-size:11px;color:#888;margin-bottom:12px;word-break:break-word">'+desc+'</div><textarea id="cbiz-txt" placeholder="What would you like to change?" style="width:100%;height:90px;border:1.5px solid #e5e7eb;border-radius:8px;padding:10px;font-size:13px;resize:vertical;box-sizing:border-box;font-family:inherit;outline:none"></textarea><div style="display:flex;gap:8px;margin-top:10px"><button id="cbiz-send" style="flex:1;background:#4F46E5;color:#fff;border:none;padding:9px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600">Send</button><button id="cbiz-cancel" style="background:#f3f4f6;color:#333;border:none;padding:9px 14px;border-radius:8px;cursor:pointer;font-size:13px">Cancel</button></div>';document.body.appendChild(m);modal=m;setTimeout(function(){document.getElementById('cbiz-txt').focus();},50);document.getElementById('cbiz-cancel').onclick=function(){m.remove();modal=null;};document.getElementById('cbiz-send').onclick=function(){var txt=document.getElementById('cbiz-txt').value.trim();if(!txt)return;var btn=document.getElementById('cbiz-send');btn.textContent='Sending…';btn.disabled=true;fetch('https://formspree.io/f/xdabwwkq',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'[Site Feedback] '+window.location.pathname,Page:window.location.href,Element:desc,Feedback:txt})}).then(function(){m.innerHTML='<div style="text-align:center;padding:10px"><div style="font-size:28px;margin-bottom:8px">✅</div><div style="font-weight:700;color:#111;margin-bottom:4px">Feedback sent!</div><div style="font-size:13px;color:#666">We’ll review and make the update shortly.</div></div>';setTimeout(function(){m.remove();modal=null;},2500);}).catch(function(){btn.textContent='Send';btn.disabled=false;alert('Error sending. Please try again.');});};},true);})();">&nbsp;&#128172;&nbsp; CBiz Feedback &nbsp;</a>
+    <p class="arrow">Hold and drag up to the bookmarks bar</p>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-text"><strong>You're done.</strong> Visit any page on the site and click the bookmark to start leaving feedback.</div>
+  </div>
+</div>
+
+<div class="card">
+  <p style="font-size:13px;font-weight:700;color:#4F46E5;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.05em">How it works</p>
+  <div class="flow">
+    <div class="flow-step"><div class="icon">&#128172;</div><strong>Click bookmark</strong><p>Purple button appears on the page</p></div>
+    <div class="flow-step"><div class="icon">&#128073;</div><strong>Click anything</strong><p>Elements highlight as you hover</p></div>
+    <div class="flow-step"><div class="icon">&#9997;&#65039;</div><strong>Type feedback</strong><p>Describe what you'd like changed</p></div>
+    <div class="flow-step"><div class="icon">&#128140;</div><strong>We get it</strong><p>Arrives in our inbox instantly</p></div>
+  </div>
+</div>
+
+<footer>CBiz Capital &mdash; Internal Tool &mdash; <a href="/" style="color:#4F46E5;text-decoration:none">Back to site</a></footer>
+
+</body>
+</html>
