@@ -418,6 +418,25 @@ a{text-decoration:none;color:inherit}
 
 
 footer img{filter:brightness(0) invert(1)!important;}
+
+/* ── FAQ Mobile Fixes ── */
+@media(max-width:768px){
+  /* Hero — stack columns */
+  .page-hero-inner{grid-template-columns:1fr!important;gap:28px!important}
+  .page-hero .container{padding:48px 0 40px!important}
+  .hero-contact-card{padding:24px!important;width:100%!important}
+  .page-hero h1{font-size:clamp(34px,9vw,48px)!important;letter-spacing:-1px!important}
+
+  /* FAQ layout — hide sidebar, full width content */
+  .faq-layout{grid-template-columns:1fr!important;gap:24px!important}
+  .faq-sidebar{display:none!important}
+
+  /* Accordion */
+  .faq-question{font-size:14px!important;padding:16px!important}
+  .faq-answer-inner{font-size:14px!important;padding:0 16px 16px!important}
+  .faq-category-title{font-size:18px!important}
+  .faq-item{border-radius:12px!important;margin-bottom:8px!important}
+}
 </style>
 <meta name="description" content="Answers to common questions about DSCR loans, fix & flip, bridge loans, and how CBiz Capital works." />
 <meta property="og:title" content="FAQs | CBiz Capital Loan Programs & Process" />
