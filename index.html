@@ -581,6 +581,12 @@ footer img{filter:brightness(0) invert(1)!important;}
 
 /* Scroll progress bar */
 #scrollProgress{background:linear-gradient(90deg,var(--primary),#818cf8);height:3px;position:fixed;top:0;left:0;z-index:9999;width:0%;transition:width .1s linear}
+
+/* ── Dropdown z-index fix ── */
+.site-header{z-index:9999!important}
+.dropdown{z-index:99999!important;pointer-events:auto!important}
+.nav>li.open .dropdown{pointer-events:auto!important}
+.nav>li.open .dropdown a{pointer-events:auto!important;cursor:pointer!important}
 </style>
 <meta name="description" content="Fast, flexible private real estate financing. DSCR loans, fix & flip, bridge loans, and multifamily. Terms in 24–48 hours. Serving PA, NJ & nationwide." />
 <meta property="og:title" content="CBiz Capital | Private Real Estate Lender — most states" />
