@@ -459,9 +459,13 @@ footer img{filter:brightness(0) invert(1)!important;}
   .container{overflow-x:hidden!important}
   img{max-width:100%!important;height:auto!important}
 
-  /* Hero visual stack — hide on mobile */
-  .hero-visual-stack{display:none!important}
+  /* Hero — single column, show deal card below */
   .hero-inner{grid-template-columns:1fr!important}
+  .hero-visual-stack{min-height:320px!important;margin-top:24px!important}
+  .hero-visual-image{position:relative!important;inset:auto!important;width:100%!important;height:220px!important;border-radius:16px!important}
+  .hero-visual-shape{display:none!important}
+  .hero-floating-card{position:relative!important;bottom:auto!important;left:auto!important;margin-top:16px!important;min-width:unset!important;width:100%!important;border-radius:14px!important;padding:20px!important}
+  .hero-floating-card h3{font-size:28px!important}
 
   /* Proof strip */
   .proof-inner{grid-template-columns:repeat(2,1fr)!important}
