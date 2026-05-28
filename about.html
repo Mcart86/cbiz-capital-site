@@ -808,15 +808,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Mobile nav
-  var ham=document.getElementById('hamburger'), mNav=document.getElementById('mobileNav');
-  if(ham && mNav){
-    ham.addEventListener('click', function(){
-      ham.classList.toggle('open');
-      mNav.classList.toggle('open');
-      document.body.style.overflow = mNav.classList.contains('open') ? 'hidden' : '';
-    });
-  }
+
 
   // Scroll reveal
   document.documentElement.classList.add('js-loaded');
