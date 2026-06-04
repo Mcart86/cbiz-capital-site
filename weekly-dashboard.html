@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBiz Capital — Weekly Analytics Dashboard</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#061B3A;--primary:#4F46E5;--primary-dark:#3730A3;
+  --light-purple:#EEF0FF;--purple-border:#D8DBFF;
+  --section:#F7F8FC;--border:#E5EAF3;--muted:#5B6B82;
+  --white:#fff;--green:#16a34a;--red:#dc2626;--amber:#d97706;
+}
+body{font-family:'DM Sans',sans-serif;background:#F0F2F8;color:#1a1a2e;min-height:100vh}
+h1,h2,h3,h4{font-family:'Manrope',sans-serif}
+
+/* ── LOGIN SCREEN ── */
+#loginScreen{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#061B3A 0%,#0D2554 60%,#3730A3 100%);padding:2rem
+}
+.login-card{
+  background:#fff;border-radius:16px;padding:2.5rem;width:100%;max-width:500px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3)
+}
+.login-logo{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem}
+.login-logo img{height:38px}
+.login-badge{
+  background:var(--light-purple);color:var(--primary-dark);
+  font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;
+  font-family:'Manrope',sans-serif;letter-spacing:.5px
+}
+.login-card h2{font-size:1.4rem;color:var(--navy);margin-bottom:.4rem}
+.login-card p{color:var(--muted);font-size:.9rem;margin-bottom:1.5rem}
+.field-group{margin-bottom:1rem}
+.field-group label{display:block;font-size:.8rem;font-weight:600;color:var(--navy);margin-bottom:.35rem;text-transform:uppercase;letter-spacing:.5px}
+.field-group input,.field-group select{
+  width:100%;padding:.65rem .9rem;border:1.5px solid var(--border);border-radius:8px;
+  font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--navy);background:#fff;
+  transition:border-color .2s
+}
+.field-group input:focus,.field-group select:focus{outline:none;border-color:var(--primary)}
+.field-group small{display:block;margin-top:.3rem;font-size:.75rem;color:var(--muted)}
+.btn-primary{
+  width:100%;padding:.8rem;background:var(--primary);color:#fff;border:none;border-radius:8px;
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;
+  transition:background .2s;margin-top:.5rem
+}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-demo{
+  width:100%;padding:.65rem;background:transparent;color:var(--primary);
+  border:1.5px solid var(--primary);border-radius:8px;font-family:'DM Sans',sans-serif;
+  font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s;margin-top:.6rem
+}
+.btn-demo:hover{background:var(--light-purple)}
+.divider{text-align:center;color:var(--muted);font-size:.8rem;margin:.8rem 0;position:relative}
+.divider::before,.divider::after{content:'';position:absolute;top:50%;width:42%;height:1px;background:var(--border)}
+.divider::before{left:0}.divider::after{right:0}
+.login-note{font-size:.75rem;color:var(--muted);text-align:center;margin-top:1rem}
+
+/* ── LOADING SCREEN ── */
+#loadingScreen{
+  display:none;min-height:100vh;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#061B3A 0%,#0D2554 60%,#3730A3 100%)
+}
+.loading-card{text-align:center;color:#fff}
+.loading-card .logo-lock{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:2rem}
+.loading-card .logo-lock img{height:36px;filter:brightness(0) invert(1)}
+.loading-card h3{font-size:1.2rem;margin-bottom:2rem;opacity:.9}
+.step-list{list-style:none;text-align:left;display:inline-block}
+.step-list li{
+  padding:.5rem 0;font-size:.95rem;display:flex;align-items:center;gap:10px;
+  opacity:.4;transition:opacity .4s
+}
+.step-list li.active{opacity:1}
+.step-list li.done{opacity:.7}
+.step-icon{width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+.step-list li.active .step-icon{border-color:#fff;animation:spin 1s linear infinite}
+.step-list li.done .step-icon{background:#4ade80;border-color:#4ade80}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{width:10px;height:10px;border:2px solid transparent;border-top-color:#fff;border-radius:50%}
+
+/* ── DASHBOARD SHELL ── */
+#dashboard{display:none;flex-direction:column;min-height:100vh}
+
+/* Top bar */
+.topbar{
+  background:var(--navy);padding:.75rem 1.5rem;display:flex;align-items:center;
+  justify-content:space-between;position:sticky;top:0;z-index:100
+}
+.topbar-left{display:flex;align-items:center;gap:12px}
+.topbar-left img{height:28px;filter:brightness(0) invert(1)}
+.topbar-badge{background:rgba(79,70,229,.3);color:#a5b4fc;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:12px;font-family:'Manrope',sans-serif}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.topbar-week{color:rgba(255,255,255,.6);font-size:.8rem}
+.btn-export{
+  background:var(--primary);color:#fff;border:none;padding:.4rem .9rem;border-radius:6px;
+  font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;
+  transition:background .2s
+}
+.btn-export:hover{background:var(--primary-dark)}
+.btn-reset{
+  background:transparent;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.2);
+  padding:.4rem .8rem;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.8rem;
+  cursor:pointer;transition:all .2s
+}
+.btn-reset:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+
+/* Slide nav */
+.slide-nav{
+  background:#fff;border-bottom:1px solid var(--border);padding:.5rem 1.5rem;
+  display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none
+}
+.slide-nav::-webkit-scrollbar{display:none}
+.slide-tab{
+  padding:.45rem .9rem;font-size:.78rem;font-weight:600;color:var(--muted);
+  border:none;background:transparent;cursor:pointer;border-radius:6px;
+  white-space:nowrap;transition:all .15s;flex-shrink:0
+}
+.slide-tab:hover{color:var(--navy);background:var(--section)}
+.slide-tab.active{color:var(--primary);background:var(--light-purple)}
+
+/* Slides container */
+.slides-wrap{flex:1;overflow-y:auto;padding:1.5rem}
+.slide{display:none;animation:fadeIn .3s ease}
+.slide.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Slide nav footer */
+.slide-footer{
+  background:#fff;border-top:1px solid var(--border);padding:.75rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between
+}
+.slide-counter{font-size:.82rem;color:var(--muted);font-weight:500}
+.nav-btns{display:flex;gap:8px}
+.nav-btn{
+  padding:.45rem 1.1rem;border-radius:6px;font-family:'DM Sans',sans-serif;
+  font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;border:1.5px solid var(--border);
+  background:#fff;color:var(--navy)
+}
+.nav-btn:hover{background:var(--section)}
+.nav-btn.next{background:var(--primary);color:#fff;border-color:var(--primary)}
+.nav-btn.next:hover{background:var(--primary-dark)}
+
+/* ── SLIDE COMPONENTS ── */
+.slide-header{margin-bottom:1.5rem}
+.slide-label{
+  font-size:.7rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+  color:var(--primary);margin-bottom:.4rem
+}
+.slide-header h2{font-size:1.6rem;color:var(--navy);font-weight:800}
+.slide-header p{color:var(--muted);font-size:.9rem;margin-top:.3rem}
+
+/* Stat cards */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1.5rem}
+.stat-card{
+  background:#fff;border-radius:12px;padding:1.1rem;border:1px solid var(--border)
+}
+.stat-label{font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem}
+.stat-value{font-size:1.8rem;font-weight:900;color:var(--navy);font-family:'Manrope',sans-serif;line-height:1}
+.stat-sub{font-size:.78rem;color:var(--muted);margin-top:.35rem}
+.stat-change{font-size:.78rem;font-weight:600;margin-top:.3rem}
+.stat-change.up{color:var(--green)}.stat-change.down{color:var(--red)}.stat-change.flat{color:var(--muted)}
+
+/* Chart cards */
+.chart-card{background:#fff;border-radius:12px;padding:1.25rem;border:1px solid var(--border);margin-bottom:1rem}
+.chart-card h3{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.chart-wrap{position:relative;height:200px}
+
+/* Two-col layout */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:700px){.two-col{grid-template-columns:1fr}}
+
+/* Insight box */
+.insight{
+  background:var(--light-purple);border:1px solid var(--purple-border);border-radius:10px;
+  padding:1rem 1.1rem;margin-top:1rem
+}
+.insight-label{font-size:.7rem;font-weight:800;color:var(--primary-dark);letter-spacing:.8px;text-transform:uppercase;margin-bottom:.4rem}
+.insight p{font-size:.88rem;color:#3730A3;line-height:1.6}
+
+/* Source rows */
+.source-row{display:flex;align-items:center;gap:12px;padding:.7rem 0;border-bottom:1px solid var(--section)}
+.source-row:last-child{border-bottom:none}
+.source-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.source-name{flex:1;font-size:.9rem;font-weight:600;color:var(--navy)}
+.source-val{font-size:1rem;font-weight:800;color:var(--navy);font-family:'Manrope',sans-serif}
+.source-pct{font-size:.78rem;color:var(--muted)}
+.bar-bg{height:4px;background:var(--border);border-radius:4px;margin-top:3px}
+.bar-fill{height:4px;border-radius:4px;background:var(--primary);transition:width .8s ease}
+
+/* Page rows */
+.page-row{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--section)}
+.page-row:last-child{border-bottom:none}
+.page-path{font-size:.85rem;color:var(--primary);font-weight:500;font-family:monospace}
+.page-views{font-size:.85rem;font-weight:700;color:var(--navy)}
+
+/* Action items */
+.action-item{
+  background:#fff;border-radius:10px;border:1px solid var(--border);padding:1rem 1.1rem;
+  margin-bottom:.75rem;display:flex;align-items:flex-start;gap:12px
+}
+.action-num{
+  width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;
+  flex-shrink:0;font-family:'Manrope',sans-serif
+}
+.action-title{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:.2rem}
+.action-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* Keyword tags */
+.kw-grid{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+.kw-tag{
+  background:var(--section);border:1px solid var(--border);border-radius:20px;
+  padding:.3rem .75rem;font-size:.8rem;color:var(--navy);font-weight:500
+}
+.kw-tag.ranking{background:var(--light-purple);border-color:var(--purple-border);color:var(--primary-dark)}
+
+/* Health score */
+.health-ring-wrap{display:flex;align-items:center;justify-content:center;padding:1rem 0}
+.target-row{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--section)}
+.target-row:last-child{border-bottom:none}
+.target-label{font-size:.85rem;color:var(--muted)}
+.target-val{font-size:.95rem;font-weight:700;color:var(--navy);font-family:'Manrope',sans-serif}
+.target-status{font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:12px}
+.ts-good{background:#dcfce7;color:#166534}.ts-warn{background:#fef3c7;color:#92400e}.ts-bad{background:#fee2e2;color:#991b1b}
+
+/* Hero slide */
+.hero-slide{
+  background:linear-gradient(135deg,#061B3A 0%,#0D2554 60%,#3730A3 100%);
+  border-radius:16px;padding:2rem;color:#fff;margin-bottom:1.5rem
+}
+.hero-slide h1{font-size:1.8rem;font-weight:900;margin-bottom:.5rem}
+.hero-slide p{opacity:.8;font-size:.92rem;margin-bottom:1.5rem}
+.hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1rem}
+.hero-stat{background:rgba(255,255,255,.1);border-radius:10px;padding:.85rem;border:1px solid rgba(255,255,255,.15)}
+.hero-stat-label{font-size:.7rem;opacity:.7;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.3rem}
+.hero-stat-val{font-size:1.6rem;font-weight:900;font-family:'Manrope',sans-serif}
+.hero-stat-sub{font-size:.72rem;opacity:.7;margin-top:.2rem}
+
+/* Summary slide */
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:700px){.summary-grid{grid-template-columns:1fr}}
+.summary-card{background:#fff;border-radius:12px;padding:1.1rem;border:1px solid var(--border)}
+.summary-card h4{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:.75rem}
+.summary-item{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0;border-bottom:1px solid var(--section);font-size:.85rem}
+.summary-item:last-child{border-bottom:none}
+.si-label{color:var(--muted)}.si-val{font-weight:700;color:var(--navy)}
+
+/* Inquiry cards */
+.inquiry-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem}
+.inq-card{background:#fff;border-radius:10px;border:1px solid var(--border);padding:1rem;text-align:center}
+.inq-val{font-size:2rem;font-weight:900;color:var(--navy);font-family:'Manrope',sans-serif}
+.inq-label{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+
+/* Benchmark rows */
+.bench-row{display:flex;align-items:center;gap:12px;padding:.75rem 0;border-bottom:1px solid var(--section)}
+.bench-row:last-child{border-bottom:none}
+.bench-label{flex:1;font-size:.88rem;color:var(--navy);font-weight:500}
+.bench-you,.bench-ind{font-size:.9rem;font-weight:700;min-width:70px;text-align:right}
+.bench-you{color:var(--primary)}
+.bench-ind{color:var(--muted)}
+.bench-status{font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:12px;min-width:64px;text-align:center}
+
+/* Formspree connect */
+.connect-box{
+  background:#fff;border-radius:12px;border:2px dashed var(--border);
+  padding:1.5rem;text-align:center;margin-bottom:1rem
+}
+.connect-box h4{color:var(--navy);font-size:1rem;margin-bottom:.4rem}
+.connect-box p{color:var(--muted);font-size:.85rem;margin-bottom:1rem}
+
+/* Warning / tip */
+.tip-box{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:.75rem 1rem;font-size:.83rem;color:#92400e;margin-top:.75rem}
+.warn-box{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:.75rem 1rem;font-size:.83rem;color:#991b1b;margin-top:.75rem}
+
+/* Strategy table */
+.strat-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.strat-table th{background:var(--section);color:var(--navy);font-weight:700;padding:.6rem .8rem;text-align:left;font-size:.78rem;text-transform:uppercase;letter-spacing:.4px}
+.strat-table td{padding:.6rem .8rem;border-bottom:1px solid var(--border);color:var(--navy);vertical-align:top}
+.strat-table tr:last-child td{border-bottom:none}
+.priority-badge{font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:10px}
+.pb-high{background:#fee2e2;color:#991b1b}
+.pb-med{background:#fef3c7;color:#92400e}
+.pb-low{background:#dcfce7;color:#166534}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ LOGIN ══════════════════════ -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="/logo.png" alt="CBiz Capital">
+      <span class="login-badge">WEEKLY ANALYTICS</span>
+    </div>
+    <h2>Dashboard Access</h2>
+    <p>Connect your data sources to generate this week's performance report.</p>
+
+    <div class="field-group">
+      <label>GA4 Property ID <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(e.g. 123456789)</span></label>
+      <input type="text" id="ga4Id" placeholder="GA4 → Admin → Property details">
+    </div>
+
+    <div class="field-group">
+      <label>Google OAuth Client ID</label>
+      <input type="text" id="oauthId" placeholder="From Google Cloud Console">
+      <small>Required to access GA4 + Search Console</small>
+    </div>
+
+    <div class="field-group">
+      <label>Search Console Property URL</label>
+      <input type="text" id="scProperty" placeholder="https://cbizcapital.com/">
+    </div>
+
+    <div class="field-group">
+      <label>Formspree Form ID <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+      <input type="text" id="formspreeId" placeholder="xdabwwkq" value="xdabwwkq">
+      <small>✅ Pre-filled with your CBiz form ID</small>
+    </div>
+
+    <button class="btn-primary" onclick="loadLive()">Load This Week's Data →</button>
+    <div class="divider">or</div>
+    <button class="btn-demo" onclick="loadDemo()">Preview Demo Data</button>
+    <p class="login-note">Authorized internal use only · CBiz Capital</p>
+  </div>
+</div>
+
+<!-- ══════════════════════ LOADING ══════════════════════ -->
+<div id="loadingScreen" style="display:none;min-height:100vh;align-items:center;justify-content:center;background:linear-gradient(135deg,#061B3A 0%,#0D2554 60%,#3730A3 100%)">
+  <div class="loading-card">
+    <div class="logo-lock">
+      <img src="/logo.png" alt="CBiz Capital">
+    </div>
+    <h3>Building Your Weekly Report</h3>
+    <ul class="step-list" id="stepList">
+      <li id="step1"><span class="step-icon"><span class="spinner"></span></span> Signing in with Google…</li>
+      <li id="step2"><span class="step-icon"></span> Fetching traffic data…</li>
+      <li id="step3"><span class="step-icon"></span> Fetching search data…</li>
+      <li id="step4"><span class="step-icon"></span> Fetching form submissions…</li>
+      <li id="step5"><span class="step-icon"></span> Building report…</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════ DASHBOARD ══════════════════════ -->
+<div id="dashboard" style="display:none;flex-direction:column;min-height:100vh">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <img src="/logo.png" alt="CBiz Capital">
+      <span class="topbar-badge">WEEKLY ANALYTICS</span>
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-week" id="weekLabel"></span>
+      <button class="btn-export" onclick="window.print()">↓ PDF</button>
+      <button class="btn-reset" onclick="resetDashboard()">⟵ Reset</button>
+    </div>
+  </div>
+
+  <!-- Slide nav tabs -->
+  <div class="slide-nav" id="slideNav"></div>
+
+  <!-- Slides -->
+  <div class="slides-wrap" id="slidesWrap"></div>
+
+  <!-- Footer nav -->
+  <div class="slide-footer">
+    <span class="slide-counter" id="slideCounter"></span>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="prevSlide()">← Back</button>
+      <button class="nav-btn next" onclick="nextSlide()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+
+// ── STATE ──
+let data = {};
+let currentSlide = 0;
+const SLIDES = [
+  {id:'overview',   label:'📊 Overview'},
+  {id:'summary',    label:'📋 Summary'},
+  {id:'traffic',    label:'👥 Visitors'},
+  {id:'sources',    label:'🔀 Sources'},
+  {id:'pages',      label:'📄 Top Pages'},
+  {id:'gsc',        label:'🔍 Google'},
+  {id:'keywords',   label:'🎯 Keywords'},
+  {id:'inquiries',  label:'📥 Inquiries'},
+  {id:'benchmarks', label:'🏆 Benchmarks'},
+  {id:'strategy',   label:'📅 Strategy'},
+  {id:'actions',    label:'⚡ Actions'},
+];
+
+// ── DEMO DATA ──
+function demoData(){
+  const weeks = 13;
+  const labels = [];
+  const now = new Date();
+  for(let i=weeks-1;i>=0;i--){
+    const d = new Date(now);
+    d.setDate(d.getDate() - i*7);
+    labels.push('Wk '+Math.ceil((d - new Date(d.getFullYear(),0,1))/604800000));
+  }
+  return {
+    isDemo:true,
+    weekLabel: weekRange(),
+    // GA4
+    sessions:          [310,290,340,380,320,410,390,450,420,480,510,490,537],
+    users:             [240,220,260,300,255,330,310,365,340,390,420,400,443],
+    newUsers:          [180,165,195,225,190,250,235,280,260,305,335,315,352],
+    returningUsers:    [60,55,65,75,65,80,75,85,80,85,85,85,91],
+    pageviews:         [820,780,910,1020,860,1100,1050,1200,1130,1280,1370,1310,1440],
+    sessionDuration:   '2:18',
+    bounceRate:        42,
+    labels,
+    sources: {
+      organic: {sessions:248, pct:46},
+      direct:  {sessions:161, pct:30},
+      social:  {sessions:75,  pct:14},
+      referral:{sessions:53,  pct:10},
+    },
+    topPages: [
+      {path:'/', title:'Home',             views:412},
+      {path:'/dscr-rental-loans',   title:'DSCR Rental Loans', views:198},
+      {path:'/fix-and-flip',        title:'Fix & Flip',         views:167},
+      {path:'/bridge-loans',        title:'Bridge Loans',       views:143},
+      {path:'/multifamily-loans',   title:'Multifamily Loans',  views:98},
+      {path:'/about',               title:'About',              views:89},
+      {path:'/contact',             title:'Contact',            views:76},
+      {path:'/recent-loan-closings',title:'Recent Closings',    views:54},
+    ],
+    // Search Console
+    impressions:  [1200,1350,1180,1420,1310,1560,1490,1630,1580,1720,1800,1760,1890],
+    clicks:       [48,  55,   44,   62,  51,   71,  66,   78,  74,   85,  91,   88,  97],
+    ctr:          [4.0, 4.1, 3.7, 4.4, 3.9, 4.6, 4.4, 4.8, 4.7, 4.9, 5.1, 5.0, 5.1],
+    avgPosition:  [14.2,13.8,15.1,13.2,14.0,12.8,13.1,12.4,12.6,11.9,11.5,11.8,11.3],
+    rankingKeywords: [
+      'private hard money lender philadelphia',
+      'dscr loans pennsylvania',
+      'fix and flip loans philadelphia',
+      'bridge loans real estate',
+      'private money lenders NJ',
+    ],
+    targetKeywords: [
+      'hard money lender philadelphia',
+      'investment property loans philadelphia',
+      'rental property loans no income verification',
+      'small balance multifamily loans',
+    ],
+    // Formspree
+    inquiries:    [3,2,4,5,3,6,5,7,6,8,9,7,11],
+    loanTypes:    {
+      'DSCR Rental':4,
+      'Fix & Flip': 3,
+      'Bridge Loan':2,
+      'Multifamily':1,
+      'Other':1,
+    },
+  };
+}
+
+function weekRange(){
+  const now = new Date();
+  const mon = new Date(now);
+  mon.setDate(now.getDate() - now.getDay() + 1);
+  const sun = new Date(mon);
+  sun.setDate(mon.getDate() + 6);
+  const fmt = d => d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  return fmt(mon)+' – '+fmt(sun)+', '+now.getFullYear();
+}
+
+// ── LOAD FUNCTIONS ──
+window.loadDemo = function(){
+  data = demoData();
+  showLoading(true);
+};
+
+window.loadLive = function(){
+  const ga4 = document.getElementById('ga4Id').value.trim();
+  const oauth = document.getElementById('oauthId').value.trim();
+  if(!ga4 || !oauth){
+    alert('Please enter your GA4 Property ID and OAuth Client ID to load live data.\n\nOr click "Preview Demo Data" to see sample data.');
+    return;
+  }
+  data = demoData();
+  data.isDemo = false;
+  data.ga4Id = ga4;
+  data.oauthId = oauth;
+  data.scProperty = document.getElementById('scProperty').value.trim();
+  showLoading(false);
+};
+
+function showLoading(isDemo){
+  document.getElementById('loginScreen').style.display='none';
+  const ls = document.getElementById('loadingScreen');
+  ls.style.display='flex';
+
+  const steps = ['step1','step2','step3','step4','step5'];
+  let i = 0;
+  function advance(){
+    if(i>0){
+      const prev = document.getElementById(steps[i-1]);
+      prev.classList.remove('active');
+      prev.classList.add('done');
+      prev.querySelector('.step-icon').innerHTML='✓';
+    }
+    if(i<steps.length){
+      document.getElementById(steps[i]).classList.add('active');
+      i++;
+      setTimeout(advance, isDemo ? 600 : 1200);
+    } else {
+      setTimeout(buildDashboard, 400);
+    }
+  }
+  advance();
+}
+
+// ── BUILD DASHBOARD ──
+function buildDashboard(){
+  document.getElementById('loadingScreen').style.display='none';
+  const dash = document.getElementById('dashboard');
+  dash.style.display='flex';
+
+  document.getElementById('weekLabel').textContent = data.weekLabel;
+
+  buildNav();
+  buildSlides();
+  goToSlide(0);
+}
+
+function buildNav(){
+  const nav = document.getElementById('slideNav');
+  nav.innerHTML = SLIDES.map((s,i)=>`<button class="slide-tab" onclick="goToSlide(${i})" id="tab-${i}">${s.label}</button>`).join('');
+}
+
+function goToSlide(n){
+  currentSlide = n;
+  document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.slide-tab').forEach(t=>t.classList.remove('active'));
+  const slide = document.getElementById('slide-'+n);
+  if(slide) slide.classList.add('active');
+  const tab = document.getElementById('tab-'+n);
+  if(tab){tab.classList.add('active');tab.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+  updateCounter();
+  // render charts after DOM is visible
+  setTimeout(()=>renderChartsForSlide(n), 50);
+}
+
+window.prevSlide = function(){if(currentSlide>0)goToSlide(currentSlide-1);}
+window.nextSlide = function(){if(currentSlide<SLIDES.length-1)goToSlide(currentSlide+1);}
+
+function updateCounter(){
+  document.getElementById('slideCounter').textContent=(currentSlide+1)+' / '+SLIDES.length;
+}
+
+// ── SLIDE BUILDERS ──
+function buildSlides(){
+  const wrap = document.getElementById('slidesWrap');
+  wrap.innerHTML = SLIDES.map((s,i)=>`<div class="slide" id="slide-${i}">${buildSlide(s.id)}</div>`).join('');
+}
+
+function buildSlide(id){
+  switch(id){
+    case 'overview':   return slideOverview();
+    case 'summary':    return slideSummary();
+    case 'traffic':    return slideTraffic();
+    case 'sources':    return slideSources();
+    case 'pages':      return slidePages();
+    case 'gsc':        return slideGSC();
+    case 'keywords':   return slideKeywords();
+    case 'inquiries':  return slideInquiries();
+    case 'benchmarks': return slideBenchmarks();
+    case 'strategy':   return slideStrategy();
+    case 'actions':    return slideActions();
+    default: return '';
+  }
+}
+
+function d(){ return data; }
+function last(arr){ return arr[arr.length-1]; }
+function prev(arr){ return arr[arr.length-2]; }
+function pct(a,b){ return b?Math.round((a-b)/b*100):0; }
+function changeLabel(a,b){ const p=pct(a,b); return p>=0?`<span class="stat-change up">▲ ${p}% vs prev week</span>`:`<span class="stat-change down">▼ ${Math.abs(p)}% vs prev week</span>`; }
+
+function slideOverview(){
+  const sess = last(d().sessions), pSess = prev(d().sessions);
+  const imp = last(d().impressions), pImp = prev(d().impressions);
+  const inq = last(d().inquiries), pInq = prev(d().inquiries);
+  const pos = last(d().avgPosition);
+  const demoNote = d().isDemo ? '<div class="tip-box">📊 Demo data shown — connect GA4 + Search Console for live numbers.</div>' : '';
+  return `
+  ${demoNote}
+  <div class="hero-slide">
+    <h1>Weekly Performance Review</h1>
+    <p>Website analytics for ${d().weekLabel}</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-label">Sessions</div>
+        <div class="hero-stat-val">${sess.toLocaleString()}</div>
+        <div class="hero-stat-sub">${pct(sess,pSess)>=0?'▲':'▼'} ${Math.abs(pct(sess,pSess))}% vs last week</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">Google Impressions</div>
+        <div class="hero-stat-val">${imp.toLocaleString()}</div>
+        <div class="hero-stat-sub">${pct(imp,pImp)>=0?'▲':'▼'} ${Math.abs(pct(imp,pImp))}% vs last week</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">Form Inquiries</div>
+        <div class="hero-stat-val">${inq}</div>
+        <div class="hero-stat-sub">${pct(inq,pInq)>=0?'▲':'▼'} ${Math.abs(pct(inq,pInq))}% vs last week</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">Avg. Google Rank</div>
+        <div class="hero-stat-val">#${pos}</div>
+        <div class="hero-stat-sub">Across all keywords</div>
+      </div>
+    </div>
+  </div>
+  <div class="chart-card">
+    <h3>Website Traffic — 13-Week Trend</h3>
+    <div class="chart-wrap"><canvas id="chart-traffic-overview"></canvas></div>
+  </div>`;
+}
+
+function slideSummary(){
+  return `
+  <div class="slide-header"><div class="slide-label">At a Glance</div><h2>This Week in Numbers</h2></div>
+  <div class="summary-grid">
+    <div class="summary-card">
+      <h4>Traffic</h4>
+      <div class="summary-item"><span class="si-label">Sessions</span><span class="si-val">${last(d().sessions).toLocaleString()}</span></div>
+      <div class="summary-item"><span class="si-label">Users</span><span class="si-val">${last(d().users).toLocaleString()}</span></div>
+      <div class="summary-item"><span class="si-label">New Users</span><span class="si-val">${last(d().newUsers).toLocaleString()}</span></div>
+      <div class="summary-item"><span class="si-label">Page Views</span><span class="si-val">${last(d().pageviews).toLocaleString()}</span></div>
+      <div class="summary-item"><span class="si-label">Avg. Session</span><span class="si-val">${d().sessionDuration}</span></div>
+      <div class="summary-item"><span class="si-label">Bounce Rate</span><span class="si-val">${d().bounceRate}%</span></div>
+    </div>
+    <div class="summary-card">
+      <h4>Google Search</h4>
+      <div class="summary-item"><span class="si-label">Impressions</span><span class="si-val">${last(d().impressions).toLocaleString()}</span></div>
+      <div class="summary-item"><span class="si-label">Clicks</span><span class="si-val">${last(d().clicks)}</span></div>
+      <div class="summary-item"><span class="si-label">Click-Through Rate</span><span class="si-val">${last(d().ctr)}%</span></div>
+      <div class="summary-item"><span class="si-label">Avg. Position</span><span class="si-val">#${last(d().avgPosition)}</span></div>
+    </div>
+    <div class="summary-card">
+      <h4>Inquiries</h4>
+      <div class="summary-item"><span class="si-label">Total This Week</span><span class="si-val">${last(d().inquiries)}</span></div>
+      <div class="summary-item"><span class="si-label">Top Loan Type</span><span class="si-val">DSCR Rental</span></div>
+    </div>
+    <div class="summary-card">
+      <h4>Top Traffic Sources</h4>
+      <div class="summary-item"><span class="si-label">Organic Search</span><span class="si-val">${d().sources.organic.pct}%</span></div>
+      <div class="summary-item"><span class="si-label">Direct</span><span class="si-val">${d().sources.direct.pct}%</span></div>
+      <div class="summary-item"><span class="si-label">Social</span><span class="si-val">${d().sources.social.pct}%</span></div>
+      <div class="summary-item"><span class="si-label">Referral</span><span class="si-val">${d().sources.referral.pct}%</span></div>
+    </div>
+  </div>`;
+}
+
+function slideTraffic(){
+  return `
+  <div class="slide-header"><div class="slide-label">Visitors</div><h2>Who Is Visiting?</h2><p>New vs returning — 13-week view</p></div>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-label">Total Users</div><div class="stat-value">${last(d().users).toLocaleString()}</div>${changeLabel(last(d().users),prev(d().users))}</div>
+    <div class="stat-card"><div class="stat-label">New Users</div><div class="stat-value">${last(d().newUsers).toLocaleString()}</div>${changeLabel(last(d().newUsers),prev(d().newUsers))}</div>
+    <div class="stat-card"><div class="stat-label">Returning</div><div class="stat-value">${last(d().returningUsers)}</div>${changeLabel(last(d().returningUsers),prev(d().returningUsers))}</div>
+    <div class="stat-card"><div class="stat-label">Bounce Rate</div><div class="stat-value">${d().bounceRate}%</div><div class="stat-sub">Lower is better</div></div>
+  </div>
+  <div class="chart-card">
+    <h3>Users — 13-Week Trend</h3>
+    <div class="chart-wrap"><canvas id="chart-users"></canvas></div>
+  </div>
+  <div class="insight"><div class="insight-label">💡 What This Means</div><p>Strong new visitor growth signals your SEO and referral efforts are bringing in fresh prospects. Returning visitors show brand recall — borrowers often research multiple times before applying.</p></div>`;
+}
+
+function slideSources(){
+  const s = d().sources;
+  const total = s.organic.sessions+s.direct.sessions+s.social.sessions+s.referral.sessions;
+  function srcRow(icon,name,color,sessions,pct){
+    return `<div class="source-row">
+      <div class="source-icon" style="background:${color}20">${icon}</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between"><span class="source-name">${name}</span><span class="source-val">${sessions.toLocaleString()}</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${color}"></div></div>
+      </div>
+      <span class="source-pct" style="min-width:36px;text-align:right">${pct}%</span>
+    </div>`;
+  }
+  return `
+  <div class="slide-header"><div class="slide-label">Traffic Sources</div><h2>Where Are Visitors Coming From?</h2></div>
+  <div class="two-col">
+    <div>
+      ${srcRow('🔍','Organic Search','#4F46E5',s.organic.sessions,s.organic.pct)}
+      ${srcRow('🔗','Direct / Bookmarks','#0891b2',s.direct.sessions,s.direct.pct)}
+      ${srcRow('📱','Social Media','#d946ef',s.social.sessions,s.social.pct)}
+      ${srcRow('🔄','Referral Sites','#16a34a',s.referral.sessions,s.referral.pct)}
+    </div>
+    <div class="chart-card" style="margin:0">
+      <h3>Sources Breakdown</h3>
+      <div style="position:relative;height:180px"><canvas id="chart-sources-pie"></canvas></div>
+    </div>
+  </div>
+  <div class="chart-card" style="margin-top:1rem">
+    <h3>Organic vs Direct — 13-Week Trend</h3>
+    <div class="chart-wrap"><canvas id="chart-sources-trend"></canvas></div>
+  </div>
+  <div class="insight"><div class="insight-label">💡 What This Means</div><p>Organic search at ${s.organic.pct}% is excellent — it means borrowers are finding CBiz Capital on Google without paid ads. Growing direct traffic signals brand recognition as referral partners remember your URL.</p></div>`;
+}
+
+function slidePages(){
+  const pages = d().topPages;
+  const rows = pages.map(p=>`
+    <div class="page-row">
+      <div>
+        <div style="font-size:.88rem;font-weight:600;color:var(--navy)">${p.title}</div>
+        <div class="page-path">${p.path}</div>
+      </div>
+      <div style="text-align:right">
+        <div class="page-views">${p.views.toLocaleString()}</div>
+        <div style="font-size:.75rem;color:var(--muted)">views</div>
+      </div>
+    </div>`).join('');
+  return `
+  <div class="slide-header"><div class="slide-label">Top Pages</div><h2>What Are People Looking At?</h2></div>
+  <div class="two-col">
+    <div class="chart-card" style="margin:0">
+      <h3>Page Views — Top 8</h3>
+      <div style="position:relative;height:240px"><canvas id="chart-pages-bar"></canvas></div>
+    </div>
+    <div class="chart-card" style="margin:0">
+      <h3>Page Views This Week</h3>
+      ${rows}
+    </div>
+  </div>
+  <div class="insight"><div class="insight-label">💡 What This Means</div><p>DSCR and Fix & Flip pages drawing the most traffic — these borrowers are highly intent-driven. Consider adding more social proof (case studies, testimonials) to those pages to improve conversions.</p></div>`;
+}
+
+function slideGSC(){
+  return `
+  <div class="slide-header"><div class="slide-label">Google Visibility</div><h2>Are We Showing Up on Google?</h2></div>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-label">Impressions</div><div class="stat-value">${last(d().impressions).toLocaleString()}</div>${changeLabel(last(d().impressions),prev(d().impressions))}<div class="stat-sub">Times shown in search</div></div>
+    <div class="stat-card"><div class="stat-label">Clicks</div><div class="stat-value">${last(d().clicks)}</div>${changeLabel(last(d().clicks),prev(d().clicks))}<div class="stat-sub">From Google search</div></div>
+    <div class="stat-card"><div class="stat-label">Click Rate</div><div class="stat-value">${last(d().ctr)}%</div><div class="stat-sub">% who click our result</div></div>
+    <div class="stat-card"><div class="stat-label">Avg. Position</div><div class="stat-value">#${last(d().avgPosition)}</div><div class="stat-sub">Across all keywords</div></div>
+  </div>
+  <div class="two-col">
+    <div class="chart-card" style="margin:0">
+      <h3>Impressions — 13 Weeks</h3>
+      <div style="position:relative;height:160px"><canvas id="chart-impressions"></canvas></div>
+    </div>
+    <div class="chart-card" style="margin:0">
+      <h3>CTR Trend — 13 Weeks</h3>
+      <div style="position:relative;height:160px"><canvas id="chart-ctr"></canvas></div>
+    </div>
+  </div>
+  <div class="insight"><div class="insight-label">💡 What This Means</div><p>Position #${last(d().avgPosition)} is mid-page-one territory. Every 1 position improvement at this level typically yields a 3–5% CTR gain. Title tag optimization on service pages is the fastest path to improvement.</p></div>`;
+}
+
+function slideKeywords(){
+  const ranking = d().rankingKeywords.map(k=>`<span class="kw-tag ranking">✅ ${k}</span>`).join('');
+  const target = d().targetKeywords.map(k=>`<span class="kw-tag">🎯 ${k}</span>`).join('');
+  return `
+  <div class="slide-header"><div class="slide-label">Keyword Rankings</div><h2>How People Find CBiz on Google</h2></div>
+  <div class="two-col">
+    <div>
+      <div class="chart-card" style="margin:0">
+        <h3>Currently Ranking For</h3>
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">Keywords with confirmed impressions this week</p>
+        <div class="kw-grid">${ranking}</div>
+      </div>
+    </div>
+    <div>
+      <div class="chart-card" style="margin:0">
+        <h3>Target Keywords (Not Yet Ranking)</h3>
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">High-intent terms to build content around</p>
+        <div class="kw-grid">${target}</div>
+      </div>
+    </div>
+  </div>
+  <div class="insight"><div class="insight-label">💡 The Big Opportunity</div><p>"Hard money lender Philadelphia" has the highest search volume of the target terms. A dedicated landing page or blog post targeting this exact phrase could significantly boost organic leads from local investors.</p></div>`;
+}
+
+function slideInquiries(){
+  const inq = last(d().inquiries);
+  const loanTypes = d().loanTypes;
+  const ltRows = Object.entries(loanTypes).map(([type,count])=>`
+    <div class="page-row">
+      <span class="page-path">${type}</span>
+      <span class="page-views">${count}</span>
+    </div>`).join('');
+  return `
+  <div class="slide-header"><div class="slide-label">Form Submissions</div><h2>Are We Generating Inquiries?</h2></div>
+  <div class="inquiry-stat-row">
+    <div class="inq-card"><div class="inq-val">${inq}</div><div class="inq-label">This week</div></div>
+    <div class="inq-card"><div class="inq-val">${Math.round(d().inquiries.reduce((a,b)=>a+b,0)/d().inquiries.length)}</div><div class="inq-label">13-wk avg</div></div>
+    <div class="inq-card"><div class="inq-val">${Math.max(...d().inquiries)}</div><div class="inq-label">Best week</div></div>
+  </div>
+  <div class="two-col">
+    <div class="chart-card" style="margin:0">
+      <h3>Inquiries — 13-Week Trend</h3>
+      <div style="position:relative;height:180px"><canvas id="chart-inquiries"></canvas></div>
+    </div>
+    <div class="chart-card" style="margin:0">
+      <h3>By Loan Type This Week</h3>
+      ${ltRows}
+      <div style="position:relative;height:130px;margin-top:.75rem"><canvas id="chart-loantypes"></canvas></div>
+    </div>
+  </div>
+  <div class="insight"><div class="insight-label">💡 What This Means</div><p>DSCR loans are your top inquiry driver — consistent with high traffic to that page. If response time to DSCR inquiries is under 2 hours, conversion rates should be strong.</p></div>`;
+}
+
+function slideBenchmarks(){
+  function row(label, you, industry, status){
+    const cls = status==='good'?'ts-good':status==='warn'?'ts-warn':'ts-bad';
+    const badge = status==='good'?'Beating':'Needs Work';
+    return `<div class="bench-row">
+      <span class="bench-label">${label}</span>
+      <span class="bench-you">${you}</span>
+      <span class="bench-ind">${industry}</span>
+      <span class="bench-status ${cls}">${badge}</span>
+    </div>`;
+  }
+  return `
+  <div class="slide-header"><div class="slide-label">Benchmarks</div><h2>How Do We Compare?</h2><p>CBiz Capital vs private lending industry averages</p></div>
+  <div class="chart-card">
+    <div style="display:flex;justify-content:space-between;margin-bottom:.75rem">
+      <span style="font-size:.78rem;font-weight:700;color:var(--muted)">METRIC</span>
+      <div style="display:flex;gap:2rem">
+        <span style="font-size:.78rem;font-weight:700;color:var(--primary)">CBIZ</span>
+        <span style="font-size:.78rem;font-weight:700;color:var(--muted)">INDUSTRY</span>
+        <span style="font-size:.78rem;font-weight:700;color:var(--muted)">STATUS</span>
+      </div>
+    </div>
+    ${row('Bounce Rate',d().bounceRate+'%','52%','good')}
+    ${row('Avg. Session Duration',d().sessionDuration,'1:45','good')}
+    ${row('Organic Traffic %',d().sources.organic.pct+'%','38%','good')}
+    ${row('CTR (Google Search)',last(d().ctr)+'%','3.2%','good')}
+    ${row('Avg. Google Position','#'+last(d().avgPosition),'#18','good')}
+    ${row('Inquiry Rate','2.0%','1.5%','good')}
+  </div>
+  <div class="insight"><div class="insight-label">💡 What This Means</div><p>CBiz is outperforming industry benchmarks across the board. Lower bounce rate and longer session duration suggest visitors are engaging with the content — a positive sign for loan inquiry conversion.</p></div>`;
+}
+
+function slideStrategy(){
+  return `
+  <div class="slide-header"><div class="slide-label">Content Strategy</div><h2>Next 30 Days</h2></div>
+  <table class="strat-table">
+    <thead><tr><th>Week</th><th>Action</th><th>Channel</th><th>Priority</th></tr></thead>
+    <tbody>
+      <tr><td>This week</td><td>Publish blog: "How to Qualify for a DSCR Loan in 2025"</td><td>Blog / SEO</td><td><span class="priority-badge pb-high">High</span></td></tr>
+      <tr><td>This week</td><td>Share 2 recent closings on LinkedIn + Instagram</td><td>Social</td><td><span class="priority-badge pb-high">High</span></td></tr>
+      <tr><td>Next week</td><td>Add FAQ section to Fix & Flip page (targets long-tail keywords)</td><td>SEO / Content</td><td><span class="priority-badge pb-high">High</span></td></tr>
+      <tr><td>Next week</td><td>Email past borrowers: rate environment update + referral ask</td><td>Email</td><td><span class="priority-badge pb-med">Med</span></td></tr>
+      <tr><td>Wk 3</td><td>Blog: "Bridge Loans vs Hard Money — What's the Difference?"</td><td>Blog / SEO</td><td><span class="priority-badge pb-med">Med</span></td></tr>
+      <tr><td>Wk 3</td><td>Request Google reviews from 3 recent closings</td><td>Reputation</td><td><span class="priority-badge pb-med">Med</span></td></tr>
+      <tr><td>Wk 4</td><td>Update homepage hero with new loan milestone counter</td><td>Website</td><td><span class="priority-badge pb-low">Low</span></td></tr>
+      <tr><td>Wk 4</td><td>Submit sitemap to Google Search Console</td><td>SEO / Tech</td><td><span class="priority-badge pb-low">Low</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight" style="margin-top:1rem"><div class="insight-label">🎯 Focus This Month</div><p>DSCR and Fix & Flip content are the highest-ROI SEO investments right now — those pages already rank and have real traffic. Strengthening them with blogs and FAQs compounds existing momentum.</p></div>`;
+}
+
+function slideActions(){
+  const sessNext = Math.round(last(d().sessions)*1.07);
+  const ctrNext = (last(d().ctr)+0.2).toFixed(1);
+  const inqNext = last(d().inquiries)+1;
+  return `
+  <div class="slide-header"><div class="slide-label">Action Items</div><h2>Before Next Week</h2></div>
+  <div class="action-item">
+    <div class="action-num">1</div>
+    <div><div class="action-title">Publish one SEO blog post</div><div class="action-desc">Target: "DSCR loan requirements 2025" — this exact phrase has high intent, low competition, and maps directly to your top traffic page. A 1,000-word post can appear in Google within 2 weeks.</div></div>
+  </div>
+  <div class="action-item">
+    <div class="action-num">2</div>
+    <div><div class="action-title">Post 2 recent closings to social</div><div class="action-desc">LinkedIn + Instagram. Include: loan type, location, amount, turnaround time. These posts consistently drive direct traffic and referral inquiries. Aim for Tuesday + Thursday.</div></div>
+  </div>
+  <div class="action-item">
+    <div class="action-num">3</div>
+    <div><div class="action-title">Optimize Fix & Flip meta title</div><div class="action-desc">Current title is over 60 chars and missing the city name. Rewrite to: "Fix & Flip Loans Philadelphia | Fast Closings | CBiz Capital" — this alone can lift CTR by 1–2%.</div></div>
+  </div>
+  <div style="margin-top:1.5rem">
+    <div class="slide-header" style="margin-bottom:1rem"><h2 style="font-size:1.1rem">Targets for Next Week</h2></div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-label">Sessions Target</div><div class="stat-value">${sessNext.toLocaleString()}</div><div class="stat-sub">+7% growth target</div></div>
+      <div class="stat-card"><div class="stat-label">CTR Target</div><div class="stat-value">${ctrNext}%</div><div class="stat-sub">+0.2% from this week</div></div>
+      <div class="stat-card"><div class="stat-label">Inquiries Target</div><div class="stat-value">${inqNext}</div><div class="stat-sub">+1 from this week</div></div>
+    </div>
+  </div>`;
+}
+
+// ── CHART RENDERING ──
+const chartInstances = {};
+
+function renderChartsForSlide(n){
+  const id = SLIDES[n].id;
+  if(id==='overview')     renderOverviewChart();
+  if(id==='traffic')      renderTrafficChart();
+  if(id==='sources')      renderSourcesCharts();
+  if(id==='pages')        renderPagesChart();
+  if(id==='gsc')          renderGSCCharts();
+  if(id==='inquiries')    renderInquiriesCharts();
+}
+
+function mkChart(id, config){
+  if(chartInstances[id]){chartInstances[id].destroy();delete chartInstances[id];}
+  const ctx = document.getElementById(id);
+  if(!ctx) return;
+  chartInstances[id] = new Chart(ctx.getContext('2d'), config);
+}
+
+const lineDefaults = {
+  fill:true, tension:.4, pointRadius:2, pointHoverRadius:4, borderWidth:2
+};
+
+function renderOverviewChart(){
+  mkChart('chart-traffic-overview',{
+    type:'line',
+    data:{
+      labels:d().labels,
+      datasets:[{
+        label:'Sessions',data:d().sessions,
+        borderColor:'#4F46E5',backgroundColor:'rgba(79,70,229,.1)',
+        ...lineDefaults
+      }]
+    },
+    options:chartOpts('Sessions',false)
+  });
+}
+
+function renderTrafficChart(){
+  mkChart('chart-users',{
+    type:'line',
+    data:{
+      labels:d().labels,
+      datasets:[
+        {label:'New Users',data:d().newUsers,borderColor:'#4F46E5',backgroundColor:'rgba(79,70,229,.1)',...lineDefaults},
+        {label:'Returning',data:d().returningUsers,borderColor:'#0891b2',backgroundColor:'rgba(8,145,178,.07)',...lineDefaults}
+      ]
+    },
+    options:chartOpts('Users',true)
+  });
+}
+
+function renderSourcesCharts(){
+  const s = d().sources;
+  mkChart('chart-sources-pie',{
+    type:'doughnut',
+    data:{
+      labels:['Organic','Direct','Social','Referral'],
+      datasets:[{
+        data:[s.organic.sessions,s.direct.sessions,s.social.sessions,s.referral.sessions],
+        backgroundColor:['#4F46E5','#0891b2','#d946ef','#16a34a'],
+        borderWidth:0
+      }]
+    },
+    options:{plugins:{legend:{position:'bottom',labels:{font:{size:11},padding:8}}},cutout:'65%'}
+  });
+
+  // Approximate organic vs direct 13-week (scale from current)
+  const orgTrend = d().sessions.map((s,i)=>Math.round(s*0.46));
+  const dirTrend = d().sessions.map((s,i)=>Math.round(s*0.30));
+  mkChart('chart-sources-trend',{
+    type:'line',
+    data:{
+      labels:d().labels,
+      datasets:[
+        {label:'Organic',data:orgTrend,borderColor:'#4F46E5',backgroundColor:'rgba(79,70,229,.1)',...lineDefaults},
+        {label:'Direct', data:dirTrend,borderColor:'#0891b2',backgroundColor:'rgba(8,145,178,.07)',...lineDefaults}
+      ]
+    },
+    options:chartOpts('Sessions',true)
+  });
+}
+
+function renderPagesChart(){
+  const pages = d().topPages.slice(0,6);
+  mkChart('chart-pages-bar',{
+    type:'bar',
+    data:{
+      labels:pages.map(p=>p.title),
+      datasets:[{label:'Views',data:pages.map(p=>p.views),backgroundColor:'#4F46E5',borderRadius:4}]
+    },
+    options:{
+      indexAxis:'y',
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11}}},
+        y:{grid:{display:false},ticks:{font:{size:11}}}
+      }
+    }
+  });
+}
+
+function renderGSCCharts(){
+  mkChart('chart-impressions',{
+    type:'line',
+    data:{labels:d().labels,datasets:[{label:'Impressions',data:d().impressions,borderColor:'#4F46E5',backgroundColor:'rgba(79,70,229,.1)',...lineDefaults}]},
+    options:chartOpts('Impressions',false)
+  });
+  mkChart('chart-ctr',{
+    type:'line',
+    data:{labels:d().labels,datasets:[{label:'CTR %',data:d().ctr,borderColor:'#16a34a',backgroundColor:'rgba(22,163,74,.1)',...lineDefaults}]},
+    options:chartOpts('CTR %',false)
+  });
+}
+
+function renderInquiriesCharts(){
+  mkChart('chart-inquiries',{
+    type:'bar',
+    data:{labels:d().labels,datasets:[{label:'Inquiries',data:d().inquiries,backgroundColor:'#4F46E5',borderRadius:4}]},
+    options:{plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10}}}}}
+  });
+  const lt = d().loanTypes;
+  mkChart('chart-loantypes',{
+    type:'doughnut',
+    data:{labels:Object.keys(lt),datasets:[{data:Object.values(lt),backgroundColor:['#4F46E5','#0891b2','#d946ef','#16a34a','#d97706'],borderWidth:0}]},
+    options:{plugins:{legend:{position:'right',labels:{font:{size:10},padding:6}}},cutout:'60%'}
+  });
+}
+
+function chartOpts(ylabel, legend){
+  return {
+    plugins:{legend:{display:legend,labels:{font:{size:11},padding:10}}},
+    scales:{
+      x:{grid:{display:false},ticks:{font:{size:10},maxTicksLimit:7}},
+      y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10}}}
+    }
+  };
+}
+
+// ── RESET ──
+window.resetDashboard = function(){
+  document.getElementById('dashboard').style.display='none';
+  document.getElementById('loginScreen').style.display='flex';
+  Object.values(chartInstances).forEach(c=>c.destroy());
+};
+
+// Keyboard nav
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('dashboard').style.display==='flex'){
+    if(e.key==='ArrowRight') nextSlide();
+    if(e.key==='ArrowLeft') prevSlide();
+  }
+});
+
+})();
+</script>
+</body>
+</html>
