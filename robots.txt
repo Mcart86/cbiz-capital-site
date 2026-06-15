@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Block template and internal URLs with ! prefix
+Disallow: /*!*
+
+# Block URLs with campaign tracking parameters that create duplicates
+Disallow: /*gad_campaign*
+Disallow: /*gad_source*
+Disallow: /*utm_*
+
+# Allow Google and Bing to access the site normally
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap
+Sitemap: https://cbizcapital.com/sitemap.xml
