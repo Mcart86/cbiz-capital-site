@@ -87,6 +87,68 @@
   status = 301
   force = true
 
+# Rewrites - serve the actual .html file content at the clean URL (200, not a redirect)
+# These must come AFTER the .html->clean 301 rules above, and BEFORE the catch-all 404 rule.
+[[redirects]]
+  from = "/dscr-rental-loans"
+  to = "/dscr-rental-loans.html"
+  status = 200
+
+[[redirects]]
+  from = "/fix-and-flip"
+  to = "/fix-and-flip.html"
+  status = 200
+
+[[redirects]]
+  from = "/bridge-loans"
+  to = "/bridge-loans.html"
+  status = 200
+
+[[redirects]]
+  from = "/multifamily-loans"
+  to = "/multifamily-loans.html"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/blogs"
+  to = "/blogs.html"
+  status = 200
+
+[[redirects]]
+  from = "/faqs"
+  to = "/faqs.html"
+  status = 200
+
+[[redirects]]
+  from = "/recent-loan-closings"
+  to = "/recent-loan-closings.html"
+  status = 200
+
+[[redirects]]
+  from = "/weekly-dashboard"
+  to = "/weekly-dashboard.html"
+  status = 200
+
+[[redirects]]
+  from = "/asset-based-lending"
+  to = "/asset-based-lending.html"
+  status = 200
+
+[[redirects]]
+  from = "/builders-risk-insurance"
+  to = "/builders-risk-insurance.html"
+  status = 200
+
 # 404 handling
 [[redirects]]
   from = "/*"

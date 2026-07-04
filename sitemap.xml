@@ -6,47 +6,47 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://cbizcapital.com/about.html</loc>
+    <loc>https://cbizcapital.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cbizcapital.com/dscr-rental-loans.html</loc>
+    <loc>https://cbizcapital.com/dscr-rental-loans</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cbizcapital.com/fix-and-flip.html</loc>
+    <loc>https://cbizcapital.com/fix-and-flip</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cbizcapital.com/bridge-loans.html</loc>
+    <loc>https://cbizcapital.com/bridge-loans</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cbizcapital.com/multifamily-loans.html</loc>
+    <loc>https://cbizcapital.com/multifamily-loans</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cbizcapital.com/recent-loan-closings.html</loc>
+    <loc>https://cbizcapital.com/recent-loan-closings</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cbizcapital.com/blogs.html</loc>
+    <loc>https://cbizcapital.com/blogs</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cbizcapital.com/faqs.html</loc>
+    <loc>https://cbizcapital.com/faqs</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cbizcapital.com/contact.html</loc>
+    <loc>https://cbizcapital.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
