@@ -55,8 +55,22 @@ a{text-decoration:none;color:inherit}
 .read-more{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--primary);transition:gap .2s}
 .blog-card:hover .read-more{gap:10px}
 
+/* Blog Tiles Grid (clickable squares) */
+.blog-tiles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.blog-tile{position:relative;aspect-ratio:1/1;background:#fff;border:1px solid var(--border);border-radius:20px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 20px rgba(6,27,58,.05);transition:all .22s ease;cursor:pointer}
+.blog-tile:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(6,27,58,.12);border-color:var(--purple-border)}
+.blog-tile-tag{display:inline-flex;align-self:flex-start;padding:5px 11px;border-radius:999px;font-size:11px;font-weight:800;background:var(--light-purple);color:var(--primary);border:1px solid var(--purple-border);letter-spacing:.06em;text-transform:uppercase}
+.blog-tile-title{font-size:19px;font-weight:800;line-height:1.3;letter-spacing:-.3px;color:var(--navy);margin:16px 0 0;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.blog-tile-cta{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--primary);margin-top:16px}
+.blog-tile:hover .blog-tile-cta{gap:10px}
+.blog-back{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--primary);margin-bottom:32px;cursor:pointer}
+.blog-back:hover{gap:12px}
+@media(max-width:960px){.blog-tiles-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.blog-tiles-grid{grid-template-columns:1fr}.blog-tile{aspect-ratio:auto;min-height:200px}}
+
 /* Article Sections */
-.article{padding:80px 0;border-top:1px solid var(--border);max-width:780px;margin:0 auto}
+.article{padding:80px 0;border-top:1px solid var(--border);max-width:780px;margin:0 auto;display:none}
+.article.active{display:block}
 .article:first-of-type{border-top:none}
 .article-inner{display:grid;grid-template-columns:1fr;gap:0;max-width:780px}
 .article-sidebar{}
@@ -621,9 +635,68 @@ footer img{filter:brightness(0) invert(1)!important;}
   </div>
 </section>
 
-<!-- BLOG CARDS -->
-<section class="blog-section">
+<!-- BLOG TILES -->
+<section class="blog-section" id="blogGridSection">
   <div class="container">
+    <div class="blog-tiles-grid" id="blogGrid">
+      <a href="#post-1" class="blog-tile" data-post="post-1" onclick="return openPost(this)">
+        <span class="blog-tile-tag">Market Insight</span>
+        <h3 class="blog-tile-title">2026 Housing Market Overview – Insights from CBizCapital</h3>
+        <span class="blog-tile-cta">Read Article →</span>
+      </a>
+      <a href="#post-2" class="blog-tile" data-post="post-2" onclick="return openPost(this)">
+        <span class="blog-tile-tag">Financing Guide</span>
+        <h3 class="blog-tile-title">Unlocking Opportunities: DSCR, Fix &amp; Flip, Construction, and Commercial Loans</h3>
+        <span class="blog-tile-cta">Read Article →</span>
+      </a>
+      <a href="#post-3" class="blog-tile" data-post="post-3" onclick="return openPost(this)">
+        <span class="blog-tile-tag">About CBiz</span>
+        <h3 class="blog-tile-title">Unlocking Financial Potential: An Overview of CBiz Capital</h3>
+        <span class="blog-tile-cta">Read Article →</span>
+      </a>
+      <a href="#post-4" class="blog-tile" data-post="post-4" onclick="return openPost(this)">
+        <span class="blog-tile-tag">DSCR Loans</span>
+        <h3 class="blog-tile-title">Why Some of the Best Real Estate Investors Don't Qualify for Traditional Loans</h3>
+        <span class="blog-tile-cta">Read Article →</span>
+      </a>
+      <a href="#post-5" class="blog-tile" data-post="post-5" onclick="return openPost(this)">
+        <span class="blog-tile-tag">Business Financing</span>
+        <h3 class="blog-tile-title">Why Speed Matters: How Being Financially Prepared Gives Your Business a Competitive Advantage</h3>
+        <span class="blog-tile-cta">Read Article →</span>
+      </a>
+      <a href="#post-6" class="blog-tile" data-post="post-6" onclick="return openPost(this)">
+        <span class="blog-tile-tag">Business Financing</span>
+        <h3 class="blog-tile-title">Five Financial Red Flags That Could Delay Your Business Loan Approval</h3>
+        <span class="blog-tile-cta">Read Article →</span>
+      </a>
+      <a href="#post-7" class="blog-tile" data-post="post-7" onclick="return openPost(this)">
+        <span class="blog-tile-tag">M&amp;A Advisory</span>
+        <h3 class="blog-tile-title">Is Your Business Ready to Sell? Seven Questions Every Owner Should Ask</h3>
+        <span class="blog-tile-cta">Read Article →</span>
+      </a>
+      <a href="#post-8" class="blog-tile" data-post="post-8" onclick="return openPost(this)">
+        <span class="blog-tile-tag">DSCR Loans</span>
+        <h3 class="blog-tile-title">Understanding DSCR Loans: A Flexible Financing Solution for Real Estate Investors</h3>
+        <span class="blog-tile-cta">Read Article →</span>
+      </a>
+      <a href="#post-9" class="blog-tile" data-post="post-9" onclick="return openPost(this)">
+        <span class="blog-tile-tag">Fix &amp; Flip</span>
+        <h3 class="blog-tile-title">Why Summer and Fall Are Prime Seasons for Fix-and-Flip Projects</h3>
+        <span class="blog-tile-cta">Read Article →</span>
+      </a>
+      <a href="#post-10" class="blog-tile" data-post="post-10" onclick="return openPost(this)">
+        <span class="blog-tile-tag">Fix &amp; Flip</span>
+        <h3 class="blog-tile-title">Mastering the Financing Strategy for Fix-and-Flip Success</h3>
+        <span class="blog-tile-cta">Read Article →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG READER -->
+<section class="blog-section" id="blogReaderSection" style="display:none">
+  <div class="container">
+    <a href="/blogs" class="blog-back" onclick="return closeReader()">← Back to All Articles</a>
     <!-- ── POST 1 ── -->
     <article id="post-1" class="article">
       <div class="article-inner" style="display:block">
@@ -1064,6 +1137,34 @@ footer img{filter:brightness(0) invert(1)!important;}
 
   </div>
 </section>
+
+<script>
+function openPost(el){
+  var id = el.getAttribute('data-post');
+  document.querySelectorAll('.article').forEach(function(a){ a.classList.remove('active'); });
+  var target = document.getElementById(id);
+  if(target){ target.classList.add('active'); }
+  document.getElementById('blogGridSection').style.display = 'none';
+  document.getElementById('blogReaderSection').style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+  if(history.replaceState){ history.replaceState(null, '', '#'+id); }
+  return false;
+}
+function closeReader(){
+  document.getElementById('blogReaderSection').style.display = 'none';
+  document.getElementById('blogGridSection').style.display = 'block';
+  if(history.replaceState){ history.replaceState(null, '', '/blogs'); }
+  window.scrollTo({top:0, behavior:'smooth'});
+  return false;
+}
+document.addEventListener('DOMContentLoaded', function(){
+  var hash = window.location.hash.replace('#','');
+  if(hash){
+    var el = document.querySelector('.blog-tile[data-post="'+hash+'"]');
+    if(el){ openPost(el); }
+  }
+});
+</script>
 
 <!-- CTA -->
 <section id="contact" class="cta-band">
