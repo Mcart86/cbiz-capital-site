@@ -1033,7 +1033,7 @@ footer img{filter:brightness(0) invert(1)!important;}
       headers:{'Content-Type':'application/json','Accept':'application/json'},
       body:JSON.stringify({_subject:'[Feedback] '+window.location.pathname,Page:window.location.href,Element:elP.textContent,Feedback:val})
     }).then(function(){
-      modal.innerHTML='<div style="text-align:center;padding:12px 0"><div style="font-size:40px;margin-bottom:10px">&#9989;</div><p style="font:700 15px system-ui,sans-serif;color:#061B3A;margin:0 0 4px">Sent!</p><p style="font-size:13px;color:#5B6B82;margin:0">We'll review and make the update.</p></div>';
+      modal.innerHTML='<div style="text-align:center;padding:12px 0"><div style="font-size:40px;margin-bottom:10px">&#9989;</div><p style="font:700 15px system-ui,sans-serif;color:#061B3A;margin:0 0 4px">Sent!</p><p style="font-size:13px;color:#5B6B82;margin:0">We&#39;ll review and make the update.</p></div>';
       setTimeout(function(){closeModal();},2500);
     }).catch(function(){self.textContent='Send';self.disabled=false;alert('Error. Try again.');});
   });
