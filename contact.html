@@ -8,6 +8,17 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-2TMR4JGCB4');
+
+  // Track outbound "Apply Now" clicks as a lead-gen key event
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href*="commerciallendingservicesllc.com"]');
+    if(a){
+      gtag('event', 'apply_now_click', {
+        'link_text': a.textContent.trim(),
+        'link_location': window.location.pathname
+      });
+    }
+  });
 </script>
 <meta charset="UTF-8" />
 <link rel="icon" href="/favicon.png" type="image/png" />
@@ -897,6 +908,9 @@ var trigger = document.querySelector('.services-trigger');
         if(res.ok){
           contactForm.style.display = 'none';
           document.getElementById('formSuccess').style.display = 'block';
+          gtag('event', 'generate_lead', {
+            'form_location': window.location.pathname
+          });
         } else {
           btn.disabled = false;
           btn.textContent = 'Send Message →';
