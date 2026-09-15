@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
 
+# Block internal dashboard
+Disallow: /weekly-dashboard.html
+
 # Block template and internal URLs with ! prefix
 Disallow: /*!*
 
@@ -9,12 +12,24 @@ Disallow: /*gad_campaign*
 Disallow: /*gad_source*
 Disallow: /*utm_*
 
-# Allow Google and Bing to access the site normally
+# Googlebot and Bingbot get their own explicit group (required, since a
+# named group overrides the wildcard group entirely) - rules duplicated
+# here so tracking-param/internal blocks actually apply to them too
 User-agent: Googlebot
 Allow: /
+Disallow: /weekly-dashboard.html
+Disallow: /*!*
+Disallow: /*gad_campaign*
+Disallow: /*gad_source*
+Disallow: /*utm_*
 
 User-agent: Bingbot
 Allow: /
+Disallow: /weekly-dashboard.html
+Disallow: /*!*
+Disallow: /*gad_campaign*
+Disallow: /*gad_source*
+Disallow: /*utm_*
 
 # Sitemap
 Sitemap: https://cbizcapital.com/sitemap.xml
