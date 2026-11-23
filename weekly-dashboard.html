@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CBizCapital — Weekly Analytics Dashboard</title>
+<title>Cbizcapital — Weekly Analytics Dashboard</title>
 <meta name="robots" content="noindex, nofollow">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -185,7 +185,7 @@ h1,h2,h3,h4{font-family:'Manrope',sans-serif}
 <div id="loginScreen">
   <div class="login-card">
     <div class="login-logo">
-      <img src="/logo.png" alt="CBizCapital">
+      <img src="/logo.png" alt="Cbizcapital">
       <span class="login-badge">WEEKLY ANALYTICS</span>
     </div>
     <h2>Dashboard Access</h2>
@@ -194,25 +194,25 @@ h1,h2,h3,h4{font-family:'Manrope',sans-serif}
     <div class="field-group">
       <label>GA4 Property ID</label>
       <input type="text" id="ga4Id" value="540243324" class="pre-filled">
-      <small>✅ Pre-filled for CBizCapital</small>
+      <small>✅ Pre-filled for Cbizcapital</small>
     </div>
 
     <div class="field-group">
       <label>Search Console Property URL</label>
       <input type="text" id="scProperty" value="https://cbizcapital.com/" class="pre-filled">
-      <small>✅ Pre-filled for CBizCapital</small>
+      <small>✅ Pre-filled for Cbizcapital</small>
     </div>
 
     <div class="field-group">
       <label>Formspree Form ID</label>
       <input type="text" id="formspreeId" value="xdabwwkq" class="pre-filled">
-      <small>✅ Pre-filled for CBizCapital</small>
+      <small>✅ Pre-filled for Cbizcapital</small>
     </div>
 
     <button class="btn-primary" onclick="startOAuth()">Sign in with Google &amp; Load Data →</button>
     <div class="divider">or</div>
     <button class="btn-demo" onclick="loadDemo()">Preview Demo Data</button>
-    <p class="login-note">Authorized internal use only · CBizCapital</p>
+    <p class="login-note">Authorized internal use only · Cbizcapital</p>
   </div>
 </div>
 
@@ -220,7 +220,7 @@ h1,h2,h3,h4{font-family:'Manrope',sans-serif}
 <div id="loadingScreen" style="display:none;min-height:100vh;align-items:center;justify-content:center;background:linear-gradient(135deg,#061B3A 0%,#0D2554 60%,#3730A3 100%)">
   <div class="loading-card">
     <div class="logo-lock">
-      <img src="/logo.png" alt="CBizCapital">
+      <img src="/logo.png" alt="Cbizcapital">
     </div>
     <h3>Building Your Weekly Report</h3>
     <ul class="step-list" id="stepList">
@@ -242,7 +242,7 @@ h1,h2,h3,h4{font-family:'Manrope',sans-serif}
 <div id="dashboard" style="display:none;flex-direction:column;min-height:100vh">
   <div class="topbar">
     <div class="topbar-left">
-      <img src="/logo.png" alt="CBizCapital">
+      <img src="/logo.png" alt="Cbizcapital">
       <span class="topbar-badge" id="dataSourceBadge">WEEKLY ANALYTICS</span>
     </div>
     <div class="topbar-right">
@@ -405,7 +405,7 @@ async function fetchGA4(){
   const pr = await gapiPost(`https://analyticsdata.googleapis.com/v1beta/properties/${GA4_PROPERTY}:runReport`, pageBody);
   const topPages = (pr.rows || []).slice(0,8).map(row => ({
     path: row.dimensionValues[0].value,
-    title: row.dimensionValues[1].value.replace(' | CBizCapital','').replace('CBizCapital','Home'),
+    title: row.dimensionValues[1].value.replace(' | Cbizcapital','').replace('Cbizcapital','Home'),
     views: parseInt(row.metricValues[0].value)||0
   }));
 
@@ -671,7 +671,7 @@ const prev = arr=>arr[arr.length-2];
 const pct  = (a,b)=>b?Math.round((a-b)/b*100):0;
 const chg  = (a,b)=>{ const p=pct(a,b); return p>=0?`<span class="stat-change up">▲ ${p}% vs last week</span>`:`<span class="stat-change down">▼ ${Math.abs(p)}% vs last week</span>`; };
 
-function demoNote(){ return D().isDemo ? '<div class="tip-box">📊 Demo data — click Reset and sign in with Google to load your live CBizCapital data.</div>' : ''; }
+function demoNote(){ return D().isDemo ? '<div class="tip-box">📊 Demo data — click Reset and sign in with Google to load your live Cbizcapital data.</div>' : ''; }
 
 function slideOverview(){
   const s=last(D().sessions),ps=prev(D().sessions),imp=last(D().impressions),pimp=prev(D().impressions),inq=last(D().inquiries),pos=last(D().avgPosition);
@@ -746,7 +746,7 @@ function slideSources(){
     <div class="chart-card" style="margin:0"><h3>Sources Breakdown</h3><div style="position:relative;height:175px"><canvas id="chart-sources-pie"></canvas></div></div>
   </div>
   <div class="chart-card" style="margin-top:.9rem"><h3>Organic vs Direct — 13-Week Trend</h3><div class="chart-wrap"><canvas id="chart-sources-trend"></canvas></div></div>
-  <div class="insight"><div class="insight-label">💡 What This Means</div><p>Organic search at ${s.organic.pct}% means borrowers are finding CBizCapital on Google without paid ads. Growing direct traffic signals brand recognition among referral partners.</p></div>`;
+  <div class="insight"><div class="insight-label">💡 What This Means</div><p>Organic search at ${s.organic.pct}% means borrowers are finding Cbizcapital on Google without paid ads. Growing direct traffic signals brand recognition among referral partners.</p></div>`;
 }
 
 function slidePages(){
@@ -812,7 +812,7 @@ function slideBenchmarks(){
     const cls=status==='good'?'ts-good':status==='warn'?'ts-warn':'ts-bad';
     return `<div class="bench-row"><span class="bench-label">${label}</span><span class="bench-you">${you}</span><span class="bench-ind">${ind}</span><span class="bench-status ${cls}">${status==='good'?'Beating':'Needs Work'}</span></div>`;
   };
-  return `<div class="slide-header"><div class="slide-label">Benchmarks</div><h2>How Do We Compare?</h2><p>CBizCapital vs private lending industry averages</p></div>
+  return `<div class="slide-header"><div class="slide-label">Benchmarks</div><h2>How Do We Compare?</h2><p>Cbizcapital vs private lending industry averages</p></div>
   <div class="chart-card">
     <div style="display:flex;justify-content:space-between;margin-bottom:.75rem">
       <span style="font-size:.75rem;font-weight:700;color:var(--muted)">METRIC</span>
@@ -851,7 +851,7 @@ function slideActions(){
   return `<div class="slide-header"><div class="slide-label">Action Items</div><h2>Before Next Week</h2></div>
   <div class="action-item"><div class="action-num">1</div><div><div class="action-title">Publish one SEO blog post</div><div class="action-desc">Target: "DSCR loan requirements 2025" — high intent, low competition, maps directly to your top traffic page. A 1,000-word post can appear in Google within 2 weeks.</div></div></div>
   <div class="action-item"><div class="action-num">2</div><div><div class="action-title">Post 2 recent closings to social</div><div class="action-desc">LinkedIn + Instagram. Include loan type, location, amount, turnaround time. These posts consistently drive direct traffic and referral inquiries. Aim for Tuesday + Thursday.</div></div></div>
-  <div class="action-item"><div class="action-num">3</div><div><div class="action-title">Optimize Fix & Flip meta title</div><div class="action-desc">Rewrite to: "Fix & Flip Loans Philadelphia | Fast Closings | CBizCapital" — this alone can lift CTR by 1–2% and costs 10 minutes.</div></div></div>
+  <div class="action-item"><div class="action-num">3</div><div><div class="action-title">Optimize Fix & Flip meta title</div><div class="action-desc">Rewrite to: "Fix & Flip Loans Philadelphia | Fast Closings | Cbizcapital" — this alone can lift CTR by 1–2% and costs 10 minutes.</div></div></div>
   <div style="margin-top:1.4rem"><div class="slide-label">Targets for Next Week</div>
   <div class="stat-grid">
     <div class="stat-card"><div class="stat-label">Sessions Target</div><div class="stat-value">${sessNext.toLocaleString()}</div><div class="stat-sub">+7% growth target</div></div>
