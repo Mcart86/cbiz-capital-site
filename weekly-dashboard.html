@@ -778,7 +778,7 @@ function slideGSC(){
 function slideKeywords(){
   const ranking=(D().rankingKeywords||[]).map(k=>`<span class="kw-tag ranking">✅ ${k}</span>`).join('');
   const target=(D().targetKeywords||[]).map(k=>`<span class="kw-tag">🎯 ${k}</span>`).join('');
-  return `<div class="slide-header"><div class="slide-label">Keyword Rankings</div><h2>How People Find CBiz on Google</h2></div>
+  return `<div class="slide-header"><div class="slide-label">Keyword Rankings</div><h2>How People Find Cbizcapital on Google</h2></div>
   <div class="two-col">
     <div class="chart-card" style="margin:0"><h3>Currently Ranking For</h3><p style="font-size:.8rem;color:var(--muted);margin-bottom:.6rem">Keywords with confirmed impressions this week</p><div class="kw-grid">${ranking||'<span style="color:var(--muted);font-size:.85rem">No data yet — connect Search Console</span>'}</div></div>
     <div class="chart-card" style="margin:0"><h3>Target Keywords</h3><p style="font-size:.8rem;color:var(--muted);margin-bottom:.6rem">High-intent terms to build content around</p><div class="kw-grid">${target}</div></div>
@@ -816,7 +816,7 @@ function slideBenchmarks(){
   <div class="chart-card">
     <div style="display:flex;justify-content:space-between;margin-bottom:.75rem">
       <span style="font-size:.75rem;font-weight:700;color:var(--muted)">METRIC</span>
-      <div style="display:flex;gap:2rem"><span style="font-size:.75rem;font-weight:700;color:var(--primary)">CBIZ</span><span style="font-size:.75rem;font-weight:700;color:var(--muted)">INDUSTRY AVG</span><span style="font-size:.75rem;font-weight:700;color:var(--muted)">STATUS</span></div>
+      <div style="display:flex;gap:2rem"><span style="font-size:.75rem;font-weight:700;color:var(--primary)">Cbizcapital</span><span style="font-size:.75rem;font-weight:700;color:var(--muted)">INDUSTRY AVG</span><span style="font-size:.75rem;font-weight:700;color:var(--muted)">STATUS</span></div>
     </div>
     ${row('Bounce Rate',D().bounceRate+'%','52%','good')}
     ${row('Avg. Session Duration',D().sessionDuration,'1:45','good')}
@@ -824,7 +824,7 @@ function slideBenchmarks(){
     ${row('CTR (Google Search)',last(D().ctr)+'%','3.2%','good')}
     ${row('Avg. Google Position','#'+last(D().avgPosition),'#18','good')}
   </div>
-  <div class="insight"><div class="insight-label">💡 What This Means</div><p>CBiz is outperforming industry benchmarks across the board. Lower bounce rate and longer session duration suggest visitors are engaging with the content — a strong signal for loan inquiry conversion.</p></div>`;
+  <div class="insight"><div class="insight-label">💡 What This Means</div><p>Cbizcapital is outperforming industry benchmarks across the board. Lower bounce rate and longer session duration suggest visitors are engaging with the content — a strong signal for loan inquiry conversion.</p></div>`;
 }
 
 function slideStrategy(){
