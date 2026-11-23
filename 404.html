@@ -176,8 +176,8 @@ footer img{filter:brightness(0) invert(1)!important;}
     stopPick();
   }
 
-  btn.addEventListener('click',function(e){e.stopPropagation();startPick();});
-  document.getElementById('cbfb-cancel').addEventListener('click',closeModal);
+  if(btn){btn.addEventListener('click',function(e){e.stopPropagation();startPick();});}
+  var cb=document.getElementById('cbfb-cancel');if(cb){cb.addEventListener('click',closeModal);}
 
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal();}});
 
